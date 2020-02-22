@@ -1,4 +1,4 @@
-# Alignment Algorithms {#align_alg}
+# Alignment Algorithms {#alignalg}
 
 ## Longest Common Subsequence
 
