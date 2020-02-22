@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Local Alignment: Homework | A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Local Alignment: Homework | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Local Alignment: Homework | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie" />
+
+
+<meta name="date" content="2020-02-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="local-alignment.html"/>
+<link rel="next" href="global-alignment-code-r.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="dynprog.html"><a href="dynprog.html"><i class="fa fa-check"></i><b>2</b> Dynamic Programming</a><ul>
+<li class="chapter" data-level="2.1" data-path="dynprog.html"><a href="dynprog.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="dynprog.html"><a href="dynprog.html#rod-cutting"><i class="fa fa-check"></i><b>2.2</b> Rod cutting</a></li>
+<li class="chapter" data-level="2.3" data-path="dynprog.html"><a href="dynprog.html#fibonacci-rabbits"><i class="fa fa-check"></i><b>2.3</b> Fibonacci rabbits</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="align.html"><a href="align.html"><i class="fa fa-check"></i><b>3</b> Alignment</a></li>
+<li class="chapter" data-level="4" data-path="longest-common-subsequence.html"><a href="longest-common-subsequence.html"><i class="fa fa-check"></i><b>4</b> Longest Common Subsequence</a></li>
+<li class="chapter" data-level="5" data-path="global-alignment.html"><a href="global-alignment.html"><i class="fa fa-check"></i><b>5</b> Global Alignment</a></li>
+<li class="chapter" data-level="6" data-path="local-alignment.html"><a href="local-alignment.html"><i class="fa fa-check"></i><b>6</b> Local Alignment</a></li>
+<li class="chapter" data-level="7" data-path="local-alignment-homework.html"><a href="local-alignment-homework.html"><i class="fa fa-check"></i><b>7</b> Local Alignment: Homework</a></li>
+<li class="chapter" data-level="8" data-path="global-alignment-code-r.html"><a href="global-alignment-code-r.html"><i class="fa fa-check"></i><b>8</b> Global Alignment Code (R)</a></li>
+<li class="chapter" data-level="9" data-path="global-alignment-code-python.html"><a href="global-alignment-code-python.html"><i class="fa fa-check"></i><b>9</b> Global Alignment Code (Python)</a></li>
+<li class="chapter" data-level="10" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html"><i class="fa fa-check"></i><b>10</b> Longest Common Subsequence</a><ul>
+<li class="chapter" data-level="10.0.1" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#fastq-dump-for-paired-end-reads"><i class="fa fa-check"></i><b>10.0.1</b> Fastq Dump for Paired End Reads</a></li>
+<li class="chapter" data-level="10.1" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#remote-blast"><i class="fa fa-check"></i><b>10.1</b> Remote Blast</a></li>
+<li class="chapter" data-level="10.2" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#local-blast"><i class="fa fa-check"></i><b>10.2</b> Local Blast</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#loading-fasta-files"><i class="fa fa-check"></i><b>10.2.1</b> Loading FASTA Files</a></li>
+<li class="chapter" data-level="10.2.2" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#creating-sequence-sets"><i class="fa fa-check"></i><b>10.2.2</b> Creating Sequence Sets</a></li>
+<li class="chapter" data-level="10.2.3" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#sample-metadata"><i class="fa fa-check"></i><b>10.2.3</b> Sample Metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#creating-gc-functions"><i class="fa fa-check"></i><b>10.3</b> Creating GC Functions</a></li>
+<li class="chapter" data-level="10.4" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#ncbi-esearch"><i class="fa fa-check"></i><b>10.4</b> NCBI ESearch</a></li>
+<li class="chapter" data-level="10.5" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#cds"><i class="fa fa-check"></i><b>10.5</b> CDS</a></li>
+<li class="chapter" data-level="10.6" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#whole-genomes"><i class="fa fa-check"></i><b>10.6</b> Whole Genomes</a></li>
+<li class="chapter" data-level="10.7" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#otu-picking"><i class="fa fa-check"></i><b>10.7</b> OTU Picking</a></li>
+<li class="chapter" data-level="10.8" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#summarizing-our-results"><i class="fa fa-check"></i><b>10.8</b> Summarizing Our Results</a></li>
+<li class="chapter" data-level="10.9" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#loading-qiime-results-into-phyloseq"><i class="fa fa-check"></i><b>10.9</b> Loading QIIME Results into Phyloseq</a></li>
+<li class="chapter" data-level="10.10" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#fastq-prep"><i class="fa fa-check"></i><b>10.10</b> FASTQ Prep</a></li>
+<li class="chapter" data-level="10.11" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#otu-picking-1"><i class="fa fa-check"></i><b>10.11</b> OTU Picking</a></li>
+<li class="chapter" data-level="10.12" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#running-dada2-on-proteus"><i class="fa fa-check"></i><b>10.12</b> Running Dada2 on Proteus</a><ul>
+<li class="chapter" data-level="10.12.1" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#method-1-using-rosenclassgrp-shared-r-library"><i class="fa fa-check"></i><b>10.12.1</b> Method 1: Using rosenclassGrp Shared R Library</a></li>
+<li class="chapter" data-level="10.12.2" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#method-2-creating-a-local-library"><i class="fa fa-check"></i><b>10.12.2</b> Method 2: Creating a Local Library</a></li>
+</ul></li>
+<li class="chapter" data-level="10.13" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#hypothesis-testing-and-power"><i class="fa fa-check"></i><b>10.13</b> Hypothesis Testing and Power</a></li>
+<li class="chapter" data-level="10.14" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#multiple-comparisons"><i class="fa fa-check"></i><b>10.14</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="10.14.1" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#bonferroni"><i class="fa fa-check"></i><b>10.14.1</b> Bonferroni</a></li>
+<li class="chapter" data-level="10.14.2" data-path="longest-common-subsequence-1.html"><a href="longest-common-subsequence-1.html#false-discovery-rate"><i class="fa fa-check"></i><b>10.14.2</b> False Discovery Rate</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="local-alignment-homework" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Local Alignment: Homework</h1>
+<p><strong>Edit the global alignment code with the information above to create a function that calculates the local alignment between strings x and y.</strong> Use a penalty of -5 and a PAM250 scoring matrix:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">pam250 &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">read.table</span>(<span class="st">&#39;https://gist.githubusercontent.com/sw1/8870a124624f31585d5c15be72fcfc21/raw/0b783786e3797d1bb55172e750776e26021224b0/PAM250.dat&#39;</span>))</a></code></pre></div>
+<p>See below for the global alignment code. Fit your algorithm to these sequences:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">xy &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_lines</span>(<span class="st">&#39;https://gist.githubusercontent.com/sw1/8870a124624f31585d5c15be72fcfc21/raw/6617b2ceae8765ff7b91f4a600fc5460b335279d/local_sequences&#39;</span>)</a></code></pre></div>
+<p>Report the following:</p>
+<ol style="list-style-type: decimal">
+<li>The alignment in its own text file (.txt, .dat, etc.)</li>
+<li>The max score</li>
+<li>Your code (in a text file – specifically, not a .doc or .docx)</li>
+</ol>
+<p>It’s worth commenting your code to help indicate what you were thinking. Note that a correct forward pass will result in the correct max score; a correct forward <em>and</em> backward pass is required for the correct alignment.</p>
+<p>A few hints:</p>
+<ol style="list-style-type: decimal">
+<li>You’ll need to update (1) the piecewise function and (2) the score vector.</li>
+<li>You no longer want to start your backtrack at the bottom right corner (the sink), so update accordingly.</li>
+<li>The backtrack will require another if statement.</li>
+<li>The backtrack may require some debugging to ensure that your indexes are correct.</li>
+</ol>
+<p>Also, the code may take as little as 35 seconds to run (and even faster on Python) for the sequences given above. That cmdfun command wrapping the function will speed up your function; it is <strong>not</strong> necessary. If you’re approaching 5 minutes, something is likely wrong. The correct score is around 3000.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="local-alignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="global-alignment-code-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bioinformatics_class.pdf", "bioinformatics_class.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

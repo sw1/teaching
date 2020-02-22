@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Longest Common Subsequence | A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Longest Common Subsequence | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Longest Common Subsequence | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie" />
+
+
+<meta name="date" content="2020-02-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="align.html"/>
+<link rel="next" href="align-alg.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="dynprog.html"><a href="dynprog.html"><i class="fa fa-check"></i><b>2</b> Dynamic Programming</a><ul>
+<li class="chapter" data-level="2.1" data-path="dynprog.html"><a href="dynprog.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="dynprog.html"><a href="dynprog.html#rod-cutting"><i class="fa fa-check"></i><b>2.2</b> Rod cutting</a></li>
+<li class="chapter" data-level="2.3" data-path="dynprog.html"><a href="dynprog.html#fibonacci-rabbits"><i class="fa fa-check"></i><b>2.3</b> Fibonacci rabbits</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="align.html"><a href="align.html"><i class="fa fa-check"></i><b>3</b> Alignment</a></li>
+<li class="chapter" data-level="4" data-path="longest-common-subsequence.html"><a href="longest-common-subsequence.html"><i class="fa fa-check"></i><b>4</b> Longest Common Subsequence</a></li>
+<li class="chapter" data-level="5" data-path="align-alg.html"><a href="align-alg.html"><i class="fa fa-check"></i><b>5</b> Alignment Algorithms</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="align-alg.html"><a href="align-alg.html#fastq-dump-for-paired-end-reads"><i class="fa fa-check"></i><b>5.0.1</b> Fastq Dump for Paired End Reads</a></li>
+<li class="chapter" data-level="5.1" data-path="align-alg.html"><a href="align-alg.html#remote-blast"><i class="fa fa-check"></i><b>5.1</b> Remote Blast</a></li>
+<li class="chapter" data-level="5.2" data-path="align-alg.html"><a href="align-alg.html#local-blast"><i class="fa fa-check"></i><b>5.2</b> Local Blast</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="align-alg.html"><a href="align-alg.html#loading-fasta-files"><i class="fa fa-check"></i><b>5.2.1</b> Loading FASTA Files</a></li>
+<li class="chapter" data-level="5.2.2" data-path="align-alg.html"><a href="align-alg.html#creating-sequence-sets"><i class="fa fa-check"></i><b>5.2.2</b> Creating Sequence Sets</a></li>
+<li class="chapter" data-level="5.2.3" data-path="align-alg.html"><a href="align-alg.html#sample-metadata"><i class="fa fa-check"></i><b>5.2.3</b> Sample Metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="align-alg.html"><a href="align-alg.html#creating-gc-functions"><i class="fa fa-check"></i><b>5.3</b> Creating GC Functions</a></li>
+<li class="chapter" data-level="5.4" data-path="align-alg.html"><a href="align-alg.html#ncbi-esearch"><i class="fa fa-check"></i><b>5.4</b> NCBI ESearch</a></li>
+<li class="chapter" data-level="5.5" data-path="align-alg.html"><a href="align-alg.html#cds"><i class="fa fa-check"></i><b>5.5</b> CDS</a></li>
+<li class="chapter" data-level="5.6" data-path="align-alg.html"><a href="align-alg.html#whole-genomes"><i class="fa fa-check"></i><b>5.6</b> Whole Genomes</a></li>
+<li class="chapter" data-level="5.7" data-path="align-alg.html"><a href="align-alg.html#otu-picking"><i class="fa fa-check"></i><b>5.7</b> OTU Picking</a></li>
+<li class="chapter" data-level="5.8" data-path="align-alg.html"><a href="align-alg.html#summarizing-our-results"><i class="fa fa-check"></i><b>5.8</b> Summarizing Our Results</a></li>
+<li class="chapter" data-level="5.9" data-path="align-alg.html"><a href="align-alg.html#loading-qiime-results-into-phyloseq"><i class="fa fa-check"></i><b>5.9</b> Loading QIIME Results into Phyloseq</a></li>
+<li class="chapter" data-level="5.10" data-path="align-alg.html"><a href="align-alg.html#fastq-prep"><i class="fa fa-check"></i><b>5.10</b> FASTQ Prep</a></li>
+<li class="chapter" data-level="5.11" data-path="align-alg.html"><a href="align-alg.html#otu-picking-1"><i class="fa fa-check"></i><b>5.11</b> OTU Picking</a></li>
+<li class="chapter" data-level="5.12" data-path="align-alg.html"><a href="align-alg.html#running-dada2-on-proteus"><i class="fa fa-check"></i><b>5.12</b> Running Dada2 on Proteus</a><ul>
+<li class="chapter" data-level="5.12.1" data-path="align-alg.html"><a href="align-alg.html#method-1-using-rosenclassgrp-shared-r-library"><i class="fa fa-check"></i><b>5.12.1</b> Method 1: Using rosenclassGrp Shared R Library</a></li>
+<li class="chapter" data-level="5.12.2" data-path="align-alg.html"><a href="align-alg.html#method-2-creating-a-local-library"><i class="fa fa-check"></i><b>5.12.2</b> Method 2: Creating a Local Library</a></li>
+</ul></li>
+<li class="chapter" data-level="5.13" data-path="align-alg.html"><a href="align-alg.html#hypothesis-testing-and-power"><i class="fa fa-check"></i><b>5.13</b> Hypothesis Testing and Power</a></li>
+<li class="chapter" data-level="5.14" data-path="align-alg.html"><a href="align-alg.html#multiple-comparisons"><i class="fa fa-check"></i><b>5.14</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="5.14.1" data-path="align-alg.html"><a href="align-alg.html#bonferroni"><i class="fa fa-check"></i><b>5.14.1</b> Bonferroni</a></li>
+<li class="chapter" data-level="5.14.2" data-path="align-alg.html"><a href="align-alg.html#false-discovery-rate"><i class="fa fa-check"></i><b>5.14.2</b> False Discovery Rate</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="longest-common-subsequence" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Longest Common Subsequence</h1>
+<p>We’re going to tackle alignment programatically in three steps: (1) finding the longest common subsequence, (2) performing a global alignment, and finally (3) performing a local alignment. These steps build upon one another, so the order should seem natural.</p>
+<p>A <em>subsequence</em> is simply an ordered set; <strong>it need not be consecutive</strong>. For example, if we had the sequence ABCDEFG, then ABC, ACF, and DFG would all be subsequences, whereas AGD would not. We aim to find the largest subsequence that two nucleotide sequences share. This boils down to essentially an alignment problem only involving insertions and deletions.</p>
+<p>The algorithm is as follows:</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="align.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="align-alg.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bioinformatics_class.pdf", "bioinformatics_class.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

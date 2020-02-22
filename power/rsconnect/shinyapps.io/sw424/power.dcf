@@ -1,0 +1,12 @@
+name: power
+title: power
+username:
+account: sw424
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1847967
+bundleId: 2819746
+url: https://sw424.shinyapps.io/power/
+when: 1582357882.00264
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,0 +1,5 @@
+book_filename: "bioinformatics_class"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "

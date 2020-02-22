@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Global Alignment (Python) | A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Global Alignment (Python) | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Global Alignment (Python) | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie" />
+
+
+<meta name="date" content="2020-02-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="global-alignment-r.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="dynprog.html"><a href="dynprog.html"><i class="fa fa-check"></i><b>2</b> Dynamic Programming</a><ul>
+<li class="chapter" data-level="2.1" data-path="dynprog.html"><a href="dynprog.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="dynprog.html"><a href="dynprog.html#rod-cutting"><i class="fa fa-check"></i><b>2.2</b> Rod cutting</a></li>
+<li class="chapter" data-level="2.3" data-path="dynprog.html"><a href="dynprog.html#fibonacci-rabbits"><i class="fa fa-check"></i><b>2.3</b> Fibonacci rabbits</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="align.html"><a href="align.html"><i class="fa fa-check"></i><b>3</b> Alignment</a></li>
+<li class="chapter" data-level="4" data-path="align-alg.html"><a href="align-alg.html"><i class="fa fa-check"></i><b>4</b> Alignment Algorithms</a></li>
+<li class="chapter" data-level="5" data-path="longest-common-subsequence.html"><a href="longest-common-subsequence.html"><i class="fa fa-check"></i><b>5</b> Longest Common Subsequence</a></li>
+<li class="chapter" data-level="6" data-path="global-alignment-r.html"><a href="global-alignment-r.html"><i class="fa fa-check"></i><b>6</b> Global Alignment (R)</a></li>
+<li class="chapter" data-level="7" data-path="global-alignment-python.html"><a href="global-alignment-python.html"><i class="fa fa-check"></i><b>7</b> Global Alignment (Python)</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="global-alignment-python.html"><a href="global-alignment-python.html#fastq-dump-for-paired-end-reads"><i class="fa fa-check"></i><b>7.0.1</b> Fastq Dump for Paired End Reads</a></li>
+<li class="chapter" data-level="7.1" data-path="global-alignment-python.html"><a href="global-alignment-python.html#remote-blast"><i class="fa fa-check"></i><b>7.1</b> Remote Blast</a></li>
+<li class="chapter" data-level="7.2" data-path="global-alignment-python.html"><a href="global-alignment-python.html#local-blast"><i class="fa fa-check"></i><b>7.2</b> Local Blast</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="global-alignment-python.html"><a href="global-alignment-python.html#loading-fasta-files"><i class="fa fa-check"></i><b>7.2.1</b> Loading FASTA Files</a></li>
+<li class="chapter" data-level="7.2.2" data-path="global-alignment-python.html"><a href="global-alignment-python.html#creating-sequence-sets"><i class="fa fa-check"></i><b>7.2.2</b> Creating Sequence Sets</a></li>
+<li class="chapter" data-level="7.2.3" data-path="global-alignment-python.html"><a href="global-alignment-python.html#sample-metadata"><i class="fa fa-check"></i><b>7.2.3</b> Sample Metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="global-alignment-python.html"><a href="global-alignment-python.html#creating-gc-functions"><i class="fa fa-check"></i><b>7.3</b> Creating GC Functions</a></li>
+<li class="chapter" data-level="7.4" data-path="global-alignment-python.html"><a href="global-alignment-python.html#ncbi-esearch"><i class="fa fa-check"></i><b>7.4</b> NCBI ESearch</a></li>
+<li class="chapter" data-level="7.5" data-path="global-alignment-python.html"><a href="global-alignment-python.html#cds"><i class="fa fa-check"></i><b>7.5</b> CDS</a></li>
+<li class="chapter" data-level="7.6" data-path="global-alignment-python.html"><a href="global-alignment-python.html#whole-genomes"><i class="fa fa-check"></i><b>7.6</b> Whole Genomes</a></li>
+<li class="chapter" data-level="7.7" data-path="global-alignment-python.html"><a href="global-alignment-python.html#otu-picking"><i class="fa fa-check"></i><b>7.7</b> OTU Picking</a></li>
+<li class="chapter" data-level="7.8" data-path="global-alignment-python.html"><a href="global-alignment-python.html#summarizing-our-results"><i class="fa fa-check"></i><b>7.8</b> Summarizing Our Results</a></li>
+<li class="chapter" data-level="7.9" data-path="global-alignment-python.html"><a href="global-alignment-python.html#loading-qiime-results-into-phyloseq"><i class="fa fa-check"></i><b>7.9</b> Loading QIIME Results into Phyloseq</a></li>
+<li class="chapter" data-level="7.10" data-path="global-alignment-python.html"><a href="global-alignment-python.html#fastq-prep"><i class="fa fa-check"></i><b>7.10</b> FASTQ Prep</a></li>
+<li class="chapter" data-level="7.11" data-path="global-alignment-python.html"><a href="global-alignment-python.html#otu-picking-1"><i class="fa fa-check"></i><b>7.11</b> OTU Picking</a></li>
+<li class="chapter" data-level="7.12" data-path="global-alignment-python.html"><a href="global-alignment-python.html#running-dada2-on-proteus"><i class="fa fa-check"></i><b>7.12</b> Running Dada2 on Proteus</a><ul>
+<li class="chapter" data-level="7.12.1" data-path="global-alignment-python.html"><a href="global-alignment-python.html#method-1-using-rosenclassgrp-shared-r-library"><i class="fa fa-check"></i><b>7.12.1</b> Method 1: Using rosenclassGrp Shared R Library</a></li>
+<li class="chapter" data-level="7.12.2" data-path="global-alignment-python.html"><a href="global-alignment-python.html#method-2-creating-a-local-library"><i class="fa fa-check"></i><b>7.12.2</b> Method 2: Creating a Local Library</a></li>
+</ul></li>
+<li class="chapter" data-level="7.13" data-path="global-alignment-python.html"><a href="global-alignment-python.html#hypothesis-testing-and-power"><i class="fa fa-check"></i><b>7.13</b> Hypothesis Testing and Power</a></li>
+<li class="chapter" data-level="7.14" data-path="global-alignment-python.html"><a href="global-alignment-python.html#multiple-comparisons"><i class="fa fa-check"></i><b>7.14</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="7.14.1" data-path="global-alignment-python.html"><a href="global-alignment-python.html#bonferroni"><i class="fa fa-check"></i><b>7.14.1</b> Bonferroni</a></li>
+<li class="chapter" data-level="7.14.2" data-path="global-alignment-python.html"><a href="global-alignment-python.html#false-discovery-rate"><i class="fa fa-check"></i><b>7.14.2</b> False Discovery Rate</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="global-alignment-python" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Global Alignment (Python)</h1>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="im">import</span> urllib.request</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">def</span> scoring_matrix(filename):</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">    scoring <span class="op">=</span> urllib.request.urlopen(filename).readlines()</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">    scoring <span class="op">=</span> [i.decode(<span class="st">&quot;utf-8&quot;</span>).strip(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>)  <span class="cf">for</span> i <span class="kw">in</span> scoring[<span class="dv">1</span>:]]</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">    keys <span class="op">=</span> [i[<span class="dv">0</span>] <span class="cf">for</span> i <span class="kw">in</span> scoring]</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">    scoring <span class="op">=</span> [i.split()[<span class="dv">1</span>:] <span class="cf">for</span> i <span class="kw">in</span> scoring]</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">    scoring_dict <span class="op">=</span> {}</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">    <span class="cf">for</span> ii,i <span class="kw">in</span> <span class="bu">enumerate</span>(keys):</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">        scoring_dict[i] <span class="op">=</span> {}</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">        <span class="cf">for</span> ji,j <span class="kw">in</span> <span class="bu">enumerate</span>(keys):</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">            scoring_dict[i][j] <span class="op">=</span> <span class="bu">int</span>(scoring[ii][ji])</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">    <span class="cf">return</span> scoring_dict</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">    </a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="kw">def</span> global_alignment(v,w,penalty,matrix_file):</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16">    score_matrix <span class="op">=</span> scoring_matrix(matrix_file)</a>
+<a class="sourceLine" id="cb5-17" data-line-number="17">    s <span class="op">=</span> [[<span class="dv">0</span>]<span class="op">*</span>(<span class="bu">len</span>(w)<span class="op">+</span><span class="dv">1</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(v)<span class="op">+</span><span class="dv">1</span>)]</a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">    s[<span class="dv">0</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">0</span>,penalty<span class="op">*</span><span class="bu">len</span>(s[<span class="dv">0</span>]),penalty))</a>
+<a class="sourceLine" id="cb5-19" data-line-number="19">    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="bu">len</span>(s)):</a>
+<a class="sourceLine" id="cb5-20" data-line-number="20">        s[i][<span class="dv">0</span>] <span class="op">=</span> penalty <span class="op">+</span> s[i<span class="dv">-1</span>][<span class="dv">0</span>]</a>
+<a class="sourceLine" id="cb5-21" data-line-number="21">    path <span class="op">=</span> [[<span class="st">&#39;||&#39;</span>] <span class="op">+</span> [<span class="st">&#39;--&#39;</span>]<span class="op">*</span>(<span class="bu">len</span>(w)) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(v)<span class="op">+</span><span class="dv">1</span>)]</a>
+<a class="sourceLine" id="cb5-22" data-line-number="22">    path[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\\</span><span class="st">&#39;</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23">    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="bu">len</span>(v)<span class="op">+</span><span class="dv">1</span>):</a>
+<a class="sourceLine" id="cb5-24" data-line-number="24">        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="bu">len</span>(w)<span class="op">+</span><span class="dv">1</span>):</a>
+<a class="sourceLine" id="cb5-25" data-line-number="25">            score <span class="op">=</span> score_matrix[v[i<span class="dv">-1</span>]][w[j<span class="dv">-1</span>]]</a>
+<a class="sourceLine" id="cb5-26" data-line-number="26">            s[i][j] <span class="op">=</span> <span class="bu">max</span>(s[i<span class="dv">-1</span>][j<span class="dv">-1</span>] <span class="op">+</span> score, s[i][j<span class="dv">-1</span>] <span class="op">+</span> penalty,s[i<span class="dv">-1</span>][j] <span class="op">+</span> penalty)</a>
+<a class="sourceLine" id="cb5-27" data-line-number="27">            <span class="cf">if</span> s[i][j] <span class="op">==</span> s[i<span class="dv">-1</span>][j] <span class="op">+</span> penalty:</a>
+<a class="sourceLine" id="cb5-28" data-line-number="28">                path[i][j] <span class="op">=</span> <span class="st">&#39;||&#39;</span></a>
+<a class="sourceLine" id="cb5-29" data-line-number="29">            <span class="cf">if</span> s[i][j] <span class="op">==</span> s[i][j<span class="dv">-1</span>] <span class="op">+</span> penalty:</a>
+<a class="sourceLine" id="cb5-30" data-line-number="30">                path[i][j] <span class="op">=</span> <span class="st">&quot;--&quot;</span></a>
+<a class="sourceLine" id="cb5-31" data-line-number="31">            <span class="cf">if</span> s[i][j] <span class="op">==</span> s[i<span class="dv">-1</span>][j<span class="dv">-1</span>] <span class="op">+</span> score:</a>
+<a class="sourceLine" id="cb5-32" data-line-number="32">                path[i][j] <span class="op">=</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb5-33" data-line-number="33">    score <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb5-34" data-line-number="34">    align1 <span class="op">=</span> <span class="st">&#39;&#39;</span></a>
+<a class="sourceLine" id="cb5-35" data-line-number="35">    align2 <span class="op">=</span> <span class="st">&#39;&#39;</span></a>
+<a class="sourceLine" id="cb5-36" data-line-number="36">    <span class="cf">while</span> i <span class="op">&gt;=</span> <span class="dv">1</span> <span class="kw">or</span> j <span class="op">&gt;=</span> <span class="dv">1</span>:</a>
+<a class="sourceLine" id="cb5-37" data-line-number="37">        <span class="cf">if</span> path[i][j] <span class="op">==</span> <span class="st">&quot;||&quot;</span>:</a>
+<a class="sourceLine" id="cb5-38" data-line-number="38">            align1 <span class="op">+=</span> v[i<span class="dv">-1</span>]</a>
+<a class="sourceLine" id="cb5-39" data-line-number="39">            align2 <span class="op">+=</span> <span class="st">&#39;-&#39;</span></a>
+<a class="sourceLine" id="cb5-40" data-line-number="40">            score <span class="op">+=</span> penalty</a>
+<a class="sourceLine" id="cb5-41" data-line-number="41">            i <span class="op">-=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb5-42" data-line-number="42">        <span class="cf">elif</span> path[i][j] <span class="op">==</span> <span class="st">&quot;--&quot;</span>:</a>
+<a class="sourceLine" id="cb5-43" data-line-number="43">            align1 <span class="op">+=</span> <span class="st">&#39;-&#39;</span></a>
+<a class="sourceLine" id="cb5-44" data-line-number="44">            align2 <span class="op">+=</span> w[j<span class="dv">-1</span>]</a>
+<a class="sourceLine" id="cb5-45" data-line-number="45">            score <span class="op">+=</span> penalty</a>
+<a class="sourceLine" id="cb5-46" data-line-number="46">            j <span class="op">-=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb5-47" data-line-number="47">        <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb5-48" data-line-number="48">            align1 <span class="op">+=</span> v[i<span class="dv">-1</span>]</a>
+<a class="sourceLine" id="cb5-49" data-line-number="49">            align2 <span class="op">+=</span> w[j<span class="dv">-1</span>]</a>
+<a class="sourceLine" id="cb5-50" data-line-number="50">            score <span class="op">+=</span> score_matrix[w[j<span class="dv">-1</span>]][v[i<span class="dv">-1</span>]]</a>
+<a class="sourceLine" id="cb5-51" data-line-number="51">            i <span class="op">-=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb5-52" data-line-number="52">            j <span class="op">-=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb5-53" data-line-number="53">    align1 <span class="op">=</span> align1[::<span class="op">-</span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb5-54" data-line-number="54">    align2 <span class="op">=</span> align2[::<span class="op">-</span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb5-55" data-line-number="55">    <span class="bu">print</span>(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>.join([<span class="bu">str</span>(score),align1,align2]))</a>
+<a class="sourceLine" id="cb5-56" data-line-number="56">    <span class="cf">return</span> [score, align1,align2]</a>
+<a class="sourceLine" id="cb5-57" data-line-number="57">    </a>
+<a class="sourceLine" id="cb5-58" data-line-number="58">blosum62 <span class="op">=</span> <span class="st">&#39;https://gist.githubusercontent.com/sw1/8870a124624f31585d5c15be72fcfc21/raw/34c4a34ce49d58b595c3fb2dc77b89a5b6a9b0af/blosum62.dat&#39;</span></a>
+<a class="sourceLine" id="cb5-59" data-line-number="59">x <span class="op">=</span> <span class="st">&#39;ISTHISALL&#39;</span></a>
+<a class="sourceLine" id="cb5-60" data-line-number="60">y <span class="op">=</span> <span class="st">&#39;ALIGNED&#39;</span></a>
+<a class="sourceLine" id="cb5-61" data-line-number="61">penalty <span class="op">=</span> <span class="dv">-5</span></a>
+<a class="sourceLine" id="cb5-62" data-line-number="62">global_alignment(x,y,penalty,blosum62)</a></code></pre></div>
+
+<div id="fastq-dump-for-paired-end-reads" class="section level3">
+<h3><span class="header-section-number">7.0.1</span> Fastq Dump for Paired End Reads</h3>
+
+</div>
+<div id="remote-blast" class="section level2">
+<h2><span class="header-section-number">7.1</span> Remote Blast</h2>
+</div>
+<div id="local-blast" class="section level2">
+<h2><span class="header-section-number">7.2</span> Local Blast</h2>
+
+<div id="loading-fasta-files" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Loading FASTA Files</h3>
+</div>
+<div id="creating-sequence-sets" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Creating Sequence Sets</h3>
+</div>
+<div id="sample-metadata" class="section level3">
+<h3><span class="header-section-number">7.2.3</span> Sample Metadata</h3>
+</div>
+</div>
+<div id="creating-gc-functions" class="section level2">
+<h2><span class="header-section-number">7.3</span> Creating GC Functions</h2>
+</div>
+<div id="ncbi-esearch" class="section level2">
+<h2><span class="header-section-number">7.4</span> NCBI ESearch</h2>
+</div>
+<div id="cds" class="section level2">
+<h2><span class="header-section-number">7.5</span> CDS</h2>
+</div>
+<div id="whole-genomes" class="section level2">
+<h2><span class="header-section-number">7.6</span> Whole Genomes</h2>
+
+</div>
+<div id="otu-picking" class="section level2">
+<h2><span class="header-section-number">7.7</span> OTU Picking</h2>
+</div>
+<div id="summarizing-our-results" class="section level2">
+<h2><span class="header-section-number">7.8</span> Summarizing Our Results</h2>
+</div>
+<div id="loading-qiime-results-into-phyloseq" class="section level2">
+<h2><span class="header-section-number">7.9</span> Loading QIIME Results into Phyloseq</h2>
+
+
+</div>
+<div id="fastq-prep" class="section level2">
+<h2><span class="header-section-number">7.10</span> FASTQ Prep</h2>
+</div>
+<div id="otu-picking-1" class="section level2">
+<h2><span class="header-section-number">7.11</span> OTU Picking</h2>
+</div>
+<div id="running-dada2-on-proteus" class="section level2">
+<h2><span class="header-section-number">7.12</span> Running Dada2 on Proteus</h2>
+<div id="method-1-using-rosenclassgrp-shared-r-library" class="section level3">
+<h3><span class="header-section-number">7.12.1</span> Method 1: Using rosenclassGrp Shared R Library</h3>
+</div>
+<div id="method-2-creating-a-local-library" class="section level3">
+<h3><span class="header-section-number">7.12.2</span> Method 2: Creating a Local Library</h3>
+
+</div>
+</div>
+<div id="hypothesis-testing-and-power" class="section level2">
+<h2><span class="header-section-number">7.13</span> Hypothesis Testing and Power</h2>
+</div>
+<div id="multiple-comparisons" class="section level2">
+<h2><span class="header-section-number">7.14</span> Multiple Comparisons</h2>
+<div id="bonferroni" class="section level3">
+<h3><span class="header-section-number">7.14.1</span> Bonferroni</h3>
+</div>
+<div id="false-discovery-rate" class="section level3">
+<h3><span class="header-section-number">7.14.2</span> False Discovery Rate</h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="global-alignment-r.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bioinformatics_class.pdf", "bioinformatics_class.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
