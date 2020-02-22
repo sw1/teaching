@@ -1,1 +1,9 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/home/about/ for how to compile this example.
+<div align="center">
+
+# **Bioinformatics**
+
+This is a set of code, notes, lectures, and research that should be helpful for learning purposes. Click the link below to access the book. <br/><br>
+
+[Book](https://sw1.github.io/teaching/)
+
+</div>

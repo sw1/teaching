@@ -7,7 +7,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "This is a set of code, notes, lectures, and research that should be helpful for learning purposes."
+description: "Code, notes, lectures, and research that should be helpful for learning purposes."
 ---
 
 # Introduction

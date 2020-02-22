@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Bioconductor | Worked Bioninformatics, Statistics, and Machine Learning Examples</title>
+  <meta name="description" content="Code, notes, lectures, and research that should be helpful for learning purposes." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Bioconductor | Worked Bioninformatics, Statistics, and Machine Learning Examples" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Code, notes, lectures, and research that should be helpful for learning purposes." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Bioconductor | Worked Bioninformatics, Statistics, and Machine Learning Examples" />
+  
+  <meta name="twitter:description" content="Code, notes, lectures, and research that should be helpful for learning purposes." />
+  
+
+<meta name="author" content="Stephen Woloszynek" />
+
+
+<meta name="date" content="2020-02-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="align-alg.html"/>
+<link rel="next" href="sra.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="dynprog.html"><a href="dynprog.html"><i class="fa fa-check"></i><b>2</b> Dynamic Programming</a><ul>
+<li class="chapter" data-level="2.1" data-path="dynprog.html"><a href="dynprog.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="dynprog.html"><a href="dynprog.html#rod-cutting"><i class="fa fa-check"></i><b>2.2</b> Rod cutting</a></li>
+<li class="chapter" data-level="2.3" data-path="dynprog.html"><a href="dynprog.html#fibonacci-rabbits"><i class="fa fa-check"></i><b>2.3</b> Fibonacci rabbits</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="align.html"><a href="align.html"><i class="fa fa-check"></i><b>3</b> Alignment</a><ul>
+<li class="chapter" data-level="3.1" data-path="align.html"><a href="align.html#longest-common-subsequence"><i class="fa fa-check"></i><b>3.1</b> Longest Common Subsequence</a></li>
+<li class="chapter" data-level="3.2" data-path="align.html"><a href="align.html#global-alignment"><i class="fa fa-check"></i><b>3.2</b> Global Alignment</a></li>
+<li class="chapter" data-level="3.3" data-path="align.html"><a href="align.html#local-alignment"><i class="fa fa-check"></i><b>3.3</b> Local Alignment</a></li>
+<li class="chapter" data-level="3.4" data-path="align.html"><a href="align.html#local-alignment-homework"><i class="fa fa-check"></i><b>3.4</b> Local Alignment: Homework</a></li>
+<li class="chapter" data-level="3.5" data-path="align.html"><a href="align.html#global-alignment-code-r"><i class="fa fa-check"></i><b>3.5</b> Global Alignment Code (R)</a></li>
+<li class="chapter" data-level="3.6" data-path="align.html"><a href="align.html#global-alignment-code-python"><i class="fa fa-check"></i><b>3.6</b> Global Alignment Code (Python)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="align-alg.html"><a href="align-alg.html"><i class="fa fa-check"></i><b>4</b> Alignment Algorithms</a><ul>
+<li class="chapter" data-level="4.1" data-path="align-alg.html"><a href="align-alg.html#longest-common-subsequence-1"><i class="fa fa-check"></i><b>4.1</b> Longest Common Subsequence</a></li>
+<li class="chapter" data-level="4.2" data-path="align-alg.html"><a href="align-alg.html#global-alignment-r"><i class="fa fa-check"></i><b>4.2</b> Global Alignment (R)</a></li>
+<li class="chapter" data-level="4.3" data-path="align-alg.html"><a href="align-alg.html#global-alignment-python"><i class="fa fa-check"></i><b>4.3</b> Global Alignment (Python)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="biocond.html"><a href="biocond.html"><i class="fa fa-check"></i><b>5</b> Bioconductor</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="biocond.html"><a href="biocond.html#loading-fasta-files"><i class="fa fa-check"></i><b>5.0.1</b> Loading FASTA Files</a></li>
+<li class="chapter" data-level="5.0.2" data-path="biocond.html"><a href="biocond.html#creating-sequence-sets"><i class="fa fa-check"></i><b>5.0.2</b> Creating Sequence Sets</a></li>
+<li class="chapter" data-level="5.0.3" data-path="biocond.html"><a href="biocond.html#sample-metadata"><i class="fa fa-check"></i><b>5.0.3</b> Sample Metadata</a></li>
+<li class="chapter" data-level="5.1" data-path="biocond.html"><a href="biocond.html#creating-gc-functions"><i class="fa fa-check"></i><b>5.1</b> Creating GC Functions</a></li>
+<li class="chapter" data-level="5.2" data-path="biocond.html"><a href="biocond.html#ncbi-esearch"><i class="fa fa-check"></i><b>5.2</b> NCBI ESearch</a></li>
+<li class="chapter" data-level="5.3" data-path="biocond.html"><a href="biocond.html#cds"><i class="fa fa-check"></i><b>5.3</b> CDS</a></li>
+<li class="chapter" data-level="5.4" data-path="biocond.html"><a href="biocond.html#whole-genomes"><i class="fa fa-check"></i><b>5.4</b> Whole Genomes</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sra.html"><a href="sra.html"><i class="fa fa-check"></i><b>6</b> Retrieving Projects</a><ul>
+<li class="chapter" data-level="6.0.1" data-path="sra.html"><a href="sra.html#fastq-dump-for-paired-end-reads"><i class="fa fa-check"></i><b>6.0.1</b> Fastq Dump for Paired End Reads</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="phyloseq.html"><a href="phyloseq.html"><i class="fa fa-check"></i><b>7</b> Phyloseq</a></li>
+<li class="chapter" data-level="8" data-path="dada.html"><a href="dada.html"><i class="fa fa-check"></i><b>8</b> Dada2</a><ul>
+<li class="chapter" data-level="8.1" data-path="dada.html"><a href="dada.html#fastq-prep"><i class="fa fa-check"></i><b>8.1</b> FASTQ Prep</a></li>
+<li class="chapter" data-level="8.2" data-path="dada.html"><a href="dada.html#otu-picking"><i class="fa fa-check"></i><b>8.2</b> OTU Picking</a></li>
+<li class="chapter" data-level="8.3" data-path="dada.html"><a href="dada.html#running-dada2-on-proteus"><i class="fa fa-check"></i><b>8.3</b> Running Dada2 on Proteus</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="dada.html"><a href="dada.html#method-1-using-namegrp-shared-r-library"><i class="fa fa-check"></i><b>8.3.1</b> Method 1: Using nameGrp Shared R Library</a></li>
+<li class="chapter" data-level="8.3.2" data-path="dada.html"><a href="dada.html#method-2-creating-a-local-library"><i class="fa fa-check"></i><b>8.3.2</b> Method 2: Creating a Local Library</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="qiime.html"><a href="qiime.html"><i class="fa fa-check"></i><b>9</b> Qiime</a><ul>
+<li class="chapter" data-level="9.1" data-path="qiime.html"><a href="qiime.html#otu-picking-1"><i class="fa fa-check"></i><b>9.1</b> OTU Picking</a></li>
+<li class="chapter" data-level="9.2" data-path="qiime.html"><a href="qiime.html#summarizing-our-results"><i class="fa fa-check"></i><b>9.2</b> Summarizing Our Results</a></li>
+<li class="chapter" data-level="9.3" data-path="qiime.html"><a href="qiime.html#loading-qiime-results-into-phyloseq"><i class="fa fa-check"></i><b>9.3</b> Loading QIIME Results into Phyloseq</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="multcomp.html"><a href="multcomp.html"><i class="fa fa-check"></i><b>10</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="10.1" data-path="multcomp.html"><a href="multcomp.html#hypothesis-testing-and-power"><i class="fa fa-check"></i><b>10.1</b> Hypothesis Testing and Power</a></li>
+<li class="chapter" data-level="10.2" data-path="multcomp.html"><a href="multcomp.html#multiple-comparisons"><i class="fa fa-check"></i><b>10.2</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="multcomp.html"><a href="multcomp.html#bonferroni"><i class="fa fa-check"></i><b>10.2.1</b> Bonferroni</a></li>
+<li class="chapter" data-level="10.2.2" data-path="multcomp.html"><a href="multcomp.html#false-discovery-rate"><i class="fa fa-check"></i><b>10.2.2</b> False Discovery Rate</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/sw1/" target="blank">Published by Stephen Woloszynek</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Worked Bioninformatics, Statistics, and Machine Learning Examples</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="biocond" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Bioconductor</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(Biostrings)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(reutils)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">library</span>(XML)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">library</span>(BSgenome)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw">library</span>(BSgenome.Athaliana.TAIR<span class="fl">.04232008</span>)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw">source</span>(<span class="st">&#39;https://gist.githubusercontent.com/sw1/8870a124624f31585d5c15be72fcfc21/raw/162b0c542482d481f79b0160071114eb38cb568e/r_bioinformatics_functions.R&#39;</span>)</a></code></pre></div>
+<div id="loading-fasta-files" class="section level3">
+<h3><span class="header-section-number">5.0.1</span> Loading FASTA Files</h3>
+<p>A FASTA file is a file containing multiple nucleotide or amino acid sequences, each with their own identifier, formatted as a header that starts with ‘&gt;’. A file essentially looks like</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="op">&gt;</span>Sequence_<span class="dv">1</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">GGCGAT</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="op">&gt;</span>Sequence_<span class="dv">2</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">AAATCG</a></code></pre></div>
+<p>and so on. The structure of the content of the file is important, not necessarily the file extension. You can have a FASTA file with a .txt extension, no extension, or the common .fna extension. The trick is to know how these files are formatted to identify them. (Note that wikipedia tends to have the best information on bioinformatics file types, quality scoring, etc.)</p>
+<p>The other file type worth noting is FAST<strong>Q</strong>, which, in addition to sequence information, also contains a quality score for each position in the sequence that measures how likely that nucleotide or protein is correct. FASTQ files look somewhat different than FASTA:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="op">@</span>Sequence_<span class="dv">1</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="op">+</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="op">!</span><span class="st">&#39;&#39;</span><span class="op">*</span>((((<span class="op">**</span><span class="er">*</span><span class="op">+</span>))<span class="op">%%%++)(%%%</span>%).<span class="dv">1</span><span class="op">**</span><span class="er">*</span><span class="op">-+</span><span class="er">*</span><span class="st">&#39;&#39;</span>)<span class="er">)</span><span class="op">**</span>55CCF<span class="op">&gt;</span><span class="er">&gt;&gt;&gt;&gt;&gt;</span>CCCCCCC65</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="op">@</span>Sequence_<span class="dv">2</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="op">+</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">9C;=;=<span class="er">&lt;</span><span class="dv">9</span><span class="op">@</span><span class="dv">4868</span><span class="op">&gt;</span><span class="dv">9</span><span class="op">:</span>67AA<span class="op">&lt;</span><span class="dv">9</span><span class="op">&gt;</span><span class="dv">65</span><span class="op">&lt;=</span><span class="er">&gt;</span><span class="dv">59</span><span class="op">-+</span><span class="er">*</span><span class="st">&#39;&#39;</span><span class="er">))</span><span class="op">**</span>55CCFMNO<span class="op">&gt;</span><span class="er">&gt;&gt;&gt;&gt;&gt;</span>FFFFC65</a></code></pre></div>
+<p>Again, for a given sequence, line 1 has the header, but unlike the FASTA file, FASTQ headers begin with ‘@’. Line 2 is the actual sequence, followed by ‘+’ on line 3. The quality score is then found on line 4 and will be the same length as the sequence on line 1.</p>
+<p>Let’s load a FASTA file. We’ll use a simple Bioconductor function.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">fasta &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="st">&#39;https://gist.githubusercontent.com/sw1/8870a124624f31585d5c15be72fcfc21/raw/f1fb586160d12c34f29532c731066fd8912a0e0c/example.fasta&#39;</span>,<span class="dt">format=</span><span class="st">&#39;fasta&#39;</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">fasta</a></code></pre></div>
+<pre><code>##   A DNAStringSet instance of length 8
+##     width seq                                               names               
+## [1]   893 TGGTAGAACGTGTGGGCTCGAGA...TCCCTAGTTAGCGAGGTCCATAA Sequence_9715
+## [2]   860 TACTGCTTGTACAAGCCTCATCT...TAATAGACGTTGTACCGGGGGAA Sequence_5667
+## [3]   815 TATGTGTTTCATTTAGGACCTCG...GTTCCATAAAACGGTCAAGCAGT Sequence_2989
+## [4]   912 TGGTGCCGAGGCTCGAGTGTACG...GGTATGGGAAATTCAACAAACAC Sequence_2049
+## [5]   806 CTAGCAATGGCAAATTAGATGTA...ACTTGAACAGAAAATCAACCGGA Sequence_5456
+## [6]   834 AAACGAGAACGTGGAGATTTGCC...CAGTCGGGAGTACTAACTGATTT Sequence_1118
+## [7]   818 CAGAAAGCATGAGTCTCGCCCTG...AGCTTACGCCTATTTTCCCCAGT Sequence_7043
+## [8]   878 CGCCGCACTATCCACGTTAAAAG...TCTAAGTAGTACCTAACAGAACA Sequence_0123</code></pre>
+<p>For FASTQ, it’s essentially the same except we change ‘fasta’ to ‘fastq’ for the format argument:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">fastq &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="st">&#39;https://gist.githubusercontent.com/sw1/8870a124624f31585d5c15be72fcfc21/raw/f1fb586160d12c34f29532c731066fd8912a0e0c/example.fastq&#39;</span>,<span class="dt">format=</span><span class="st">&#39;fastq&#39;</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">fastq</a></code></pre></div>
+<pre><code>##   A DNAStringSet instance of length 250
+##       width seq                                             names               
+##   [1]    31 TTTCCGGGGCACATAATCTTCAGCCGGGCGC                 Sequence_2:UMI_AT...
+##   [2]    31 TATCCTTGCAATACTCTCCGAACGGGAGAGC                 Sequence_8:UMI_CT...
+##   [3]    31 GCAGTTTAAGATCATTTTATTGAAGAGCAAG                 Sequence_12:UMI_G...
+##   [4]    31 GGCATTGCAAAATTTATTACACCCCCAGATC                 Sequence_21:UMI_A...
+##   [5]    31 CCCCCTTAAATAGCTGTTTATTTGGCCCCAG                 Sequence_29:UMI_G...
+##   ...   ... ...
+## [246]    31 GCTGTAGGAACAGCAGTCTTGGTGGTTAGCA                 Sequence_819:UMI_...
+## [247]    31 CCATTATAATAGCCATCTTTATTTGTAAAAA                 Sequence_823:UMI_...
+## [248]    31 AGCTTTGCAACCATACTCCCCCCGGAACCCA                 Sequence_824:UMI_...
+## [249]    31 GCCCCCCCCCAAATCGGAAAAACACACCCCC                 Sequence_828:UMI_...
+## [250]    31 AGGGTGGGGGATCACATTTATTGTATTGAGG                 Sequence_834:UMI_...</code></pre>
+</div>
+<div id="creating-sequence-sets" class="section level3">
+<h3><span class="header-section-number">5.0.2</span> Creating Sequence Sets</h3>
+<p>Let’s approach a FASTA problem from a different direction now. We’ll create a DNA string set from a bunch of individual sequences, then write the set to a FASTA file.</p>
+<p>Run the following command to add three new variables to your environment: <strong>s1</strong>, <strong>s2</strong>, and <strong>s3</strong>. Each represents a different DNA sequence or ‘read.’</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">problem_createsequencesets</span>()</a></code></pre></div>
+<pre><code>## Added s1, s2, and s3 to environment.</code></pre>
+<p>We’re going to create a DNAStringSet object, which can then be saved as a FASTA file. First, we have to combine the sequences into a vector and then pass this vector into <strong>DNAStringSet()</strong>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">S &lt;-<span class="st"> </span><span class="kw">c</span>(s1,s2,s3)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">SS &lt;-<span class="st"> </span><span class="kw">DNAStringSet</span>(S)</a></code></pre></div>
+<p>Recall that FASTA files have header names. Let’s create header names for these three sequences. We can manually do it like so</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">names</span>(SS) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;sequence_1&#39;</span>,<span class="st">&#39;sequence_2&#39;</span>,<span class="st">&#39;sequence_3&#39;</span>)</a></code></pre></div>
+<p>but this will be far from ideal if we had, say, 100,000 sequences. Instead, we’re going to use a function called <strong>paste()</strong>, which basically pastes together vectors of text, element-wise:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">DOG &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;dog1&#39;</span>,<span class="st">&#39;dog2&#39;</span>,<span class="st">&#39;dog3&#39;</span>)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">CAT &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;cat1&#39;</span>,<span class="st">&#39;cat2&#39;</span>,<span class="st">&#39;cat3&#39;</span>)</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="kw">paste</span>(DOG,CAT)</a></code></pre></div>
+<pre><code>## [1] &quot;dog1 cat1&quot; &quot;dog2 cat2&quot; &quot;dog3 cat3&quot;</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">paste</span>(DOG,CAT,<span class="dt">sep=</span><span class="st">&#39;-&#39;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;dog1-cat1&quot; &quot;dog2-cat2&quot; &quot;dog3-cat3&quot;</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">paste</span>(DOG,CAT,<span class="dt">sep=</span><span class="st">&#39;_&#39;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;dog1_cat1&quot; &quot;dog2_cat2&quot; &quot;dog3_cat3&quot;</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">paste</span>(DOG,CAT,<span class="dt">sep=</span><span class="st">&#39;&#39;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;dog1cat1&quot; &quot;dog2cat2&quot; &quot;dog3cat3&quot;</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">paste</span>(<span class="st">&#39;dog&#39;</span>,<span class="st">&#39;cat&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">sep=</span><span class="st">&#39;&#39;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;dogcat1&quot; &quot;dogcat2&quot; &quot;dogcat3&quot;</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">paste</span>(<span class="st">&#39;dog&#39;</span>,<span class="st">&#39;cat&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">sep=</span><span class="st">&#39;_&#39;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;dog_cat_1&quot; &quot;dog_cat_2&quot; &quot;dog_cat_3&quot;</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">paste</span>(<span class="st">&#39;dog_&#39;</span>,<span class="st">&#39;cat&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">sep=</span><span class="st">&#39;&#39;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;dog_cat1&quot; &quot;dog_cat2&quot; &quot;dog_cat3&quot;</code></pre>
+<p>This is how we’ll create our header names. We can grab the number of total sequences in our set using length(), which will let us create a vector to number our sequences. We’ll create a header name that includes each sequence number, the word sequence, along with a user name. We’ll also pass in the date using the <strong>date()</strong> function.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">seq_names &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;sequence_&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(SS),<span class="st">&#39; | User_12 | &#39;</span>,<span class="kw">date</span>(), <span class="dt">sep=</span><span class="st">&#39;&#39;</span>)</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">seq_names</a></code></pre></div>
+<pre><code>## [1] &quot;sequence_1 | User_12 | Sat Feb 22 03:29:33 2020&quot;
+## [2] &quot;sequence_2 | User_12 | Sat Feb 22 03:29:33 2020&quot;
+## [3] &quot;sequence_3 | User_12 | Sat Feb 22 03:29:33 2020&quot;</code></pre>
+<p>Now, we’ll rename the sequences in the set with these names:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">names</span>(SS) &lt;-<span class="st"> </span>seq_names</a></code></pre></div>
+<p>Finally, we can save our sequence set as a FASTA file:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">output_name &lt;-<span class="st"> &#39;seq_set_out.fasta&#39;</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="kw">writeXStringSet</span>(SS,<span class="dt">file=</span>output_name,<span class="dt">format=</span><span class="st">&quot;fasta&quot;</span>)</a></code></pre></div>
+</div>
+<div id="sample-metadata" class="section level3">
+<h3><span class="header-section-number">5.0.3</span> Sample Metadata</h3>
+<p>Often, the sequences we’re working with have corresponding metadata. These metadata can range from information about the specific sequence (e.g., the type of sequencer used) to information about the organism from which the sequence was acquired (e.g., species, treatment, age). The way in which we can link our sequence reads in the FASTA file to the metadata is via the header name.</p>
+<p>Load the following sequence set:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">FASTA &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="st">&#39;https://gist.githubusercontent.com/sw1/8870a124624f31585d5c15be72fcfc21/raw/10bc2f50d1c739827ea2ba4edb146b36a6a4c14a/problems_metadata.fasta&#39;</span>,<span class="dt">format=</span><span class="st">&#39;fasta&#39;</span>)</a></code></pre></div>
+<p>To place the metadata, named <strong>META</strong>, into your environement, run the following:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">problem_metadata</span>(FASTA)</a></code></pre></div>
+<pre><code>## Added META to environment.</code></pre>
+<p>We’ll henceforth refer to the rows as ‘samples.’ If we want to know which samples were sequenced at the Philadelphia sequencing center, we can type</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">which</span>(META<span class="op">$</span>Center <span class="op">==</span><span class="st"> &#39;Philadelphia&#39;</span>)</a></code></pre></div>
+<pre><code>## [1]  86  88  89  91  92  99 100</code></pre>
+<p>If we wanted to find the sequence with the header name ‘Rosalind_6333’, we can do</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">FASTA[<span class="st">&#39;Sequence_6333&#39;</span>]</a></code></pre></div>
+<pre><code>##   A DNAStringSet instance of length 1
+##     width seq                                               names               
+## [1]  1000 TTCGCAGTATCCAGGTACAGGGG...TCGGACGATGACAGTGGACATGT Sequence_6333</code></pre>
+<p>And if we wanted to get the sequences corresponding to rows 12, 15, and 78 in the metadata file:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">header_names &lt;-<span class="st"> </span>META<span class="op">$</span>ID[<span class="kw">c</span>(<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">78</span>)]</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">FASTA[header_names]</a></code></pre></div>
+<pre><code>##   A DNAStringSet instance of length 3
+##     width seq                                               names               
+## [1]  1000 TTGCAGGGTGGGCATGGTGGTAG...GTCAGCGATTAACATGTTGGCTA Sequence_1385
+## [2]  1000 CACTGAGGCGAATGAATATAAAA...GCCGAATAGCTACAACAGACACT Sequence_7797
+## [3]  1000 ATTGGTTTTGAAGCGACAGCGTT...TTCAGATCCGGTCCATAGAAATT Sequence_8314</code></pre>
+</div>
+<div id="creating-gc-functions" class="section level2">
+<h2><span class="header-section-number">5.1</span> Creating GC Functions</h2>
+<p>The goal here will be (a) to demonstrate how to write a function and (b) better understand some useful GC quantification techniques.</p>
+<p>We’ll create a function that can calcualte the GC content in a given sequence. We’ll also give this function an additional parameter that allows it to calculate the GC content at a specific codon position.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">gc_calc &lt;-<span class="st"> </span><span class="cf">function</span>(x) (x[<span class="st">&#39;g&#39;</span>]<span class="op">+</span>x[<span class="st">&#39;c&#39;</span>])<span class="op">/</span><span class="kw">sum</span>(x)</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">gc &lt;-<span class="st"> </span><span class="cf">function</span>(s,pos){</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb39-5" data-line-number="5">  s &lt;-<span class="st"> </span>stringr<span class="op">::</span><span class="kw">str_to_lower</span>(s)</a>
+<a class="sourceLine" id="cb39-6" data-line-number="6">  s &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">strsplit</span>(s,<span class="st">&#39;&#39;</span>))</a>
+<a class="sourceLine" id="cb39-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb39-8" data-line-number="8">  <span class="cf">if</span> (<span class="op">!</span><span class="kw">missing</span>(pos)) s &lt;-<span class="st"> </span>s[<span class="kw">seq</span>(pos,<span class="kw">length</span>(s),<span class="dv">3</span>)]</a>
+<a class="sourceLine" id="cb39-9" data-line-number="9">  counts &lt;-<span class="st"> </span><span class="kw">table</span>(s)</a>
+<a class="sourceLine" id="cb39-10" data-line-number="10">  </a>
+<a class="sourceLine" id="cb39-11" data-line-number="11">  <span class="kw">gc_calc</span>(counts)</a>
+<a class="sourceLine" id="cb39-12" data-line-number="12">  </a>
+<a class="sourceLine" id="cb39-13" data-line-number="13">}</a></code></pre></div>
+<p>Now, we’ll create a function to calculate the GC skew. This function will calcuate the skew for the entire sequence or successive windows in the sequence of some given size.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">gc_skew_calc &lt;-<span class="st"> </span><span class="cf">function</span>(x) {counts &lt;-<span class="st"> </span><span class="kw">table</span>(x); (counts[<span class="st">&#39;g&#39;</span>]<span class="op">-</span>counts[<span class="st">&#39;c&#39;</span>])<span class="op">/</span>(counts[<span class="st">&#39;g&#39;</span>]<span class="op">+</span>counts[<span class="st">&#39;c&#39;</span>])}</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb40-3" data-line-number="3">gc_skew &lt;-<span class="st"> </span><span class="cf">function</span>(s,win){</a>
+<a class="sourceLine" id="cb40-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb40-5" data-line-number="5">  s &lt;-<span class="st"> </span>stringr<span class="op">::</span><span class="kw">str_to_lower</span>(s)</a>
+<a class="sourceLine" id="cb40-6" data-line-number="6">  s &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">strsplit</span>(s,<span class="st">&#39;&#39;</span>))</a>
+<a class="sourceLine" id="cb40-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb40-8" data-line-number="8">  <span class="cf">if</span> (<span class="kw">missing</span>(win)) {</a>
+<a class="sourceLine" id="cb40-9" data-line-number="9">    gc &lt;-<span class="st"> </span><span class="kw">gc_skew_calc</span>(s)</a>
+<a class="sourceLine" id="cb40-10" data-line-number="10">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb40-11" data-line-number="11">    start &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>,<span class="kw">length</span>(s),win)</a>
+<a class="sourceLine" id="cb40-12" data-line-number="12">    gc &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb40-13" data-line-number="13">    <span class="cf">for</span> (i <span class="cf">in</span> start){</a>
+<a class="sourceLine" id="cb40-14" data-line-number="14">      gc &lt;-<span class="st"> </span><span class="kw">c</span>(gc, <span class="kw">gc_skew_calc</span>(s[(i)<span class="op">:</span>(i<span class="op">+</span>win<span class="dv">-1</span>)]))</a>
+<a class="sourceLine" id="cb40-15" data-line-number="15">    }</a>
+<a class="sourceLine" id="cb40-16" data-line-number="16">  }</a>
+<a class="sourceLine" id="cb40-17" data-line-number="17">  </a>
+<a class="sourceLine" id="cb40-18" data-line-number="18">  gc</a>
+<a class="sourceLine" id="cb40-19" data-line-number="19">  </a>
+<a class="sourceLine" id="cb40-20" data-line-number="20">}</a></code></pre></div>
+<p>First, we can look at the GC content in some random sequences:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">generate_random_dna_gc_s</span>(<span class="dt">len=</span><span class="dv">1000</span>,<span class="dt">seed=</span><span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## Added s to environment (seed=5).</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">gc</span>(s)</a></code></pre></div>
+<pre><code>##     g 
+## 0.559</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">gc</span>(s,<span class="dv">1</span>)</a></code></pre></div>
+<pre><code>##            g 
+## 0.5628742515</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">gc</span>(s,<span class="dv">2</span>)</a></code></pre></div>
+<pre><code>##            g 
+## 0.5405405405</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">gc</span>(s,<span class="dv">3</span>)</a></code></pre></div>
+<pre><code>##            g 
+## 0.5735735736</code></pre>
+<p>And then we can check the skew:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">generate_random_dna_skew_s</span>(<span class="dt">len=</span><span class="dv">1000</span>,<span class="dt">w=</span><span class="dv">1</span>,<span class="dt">seed=</span><span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## Added s to environment (seed=5).</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">gc_skew</span>(s)</a></code></pre></div>
+<pre><code>##            g 
+## 0.2573402418</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">gc_skew</span>(s,<span class="dv">100</span>)</a></code></pre></div>
+<pre><code>##              g              g              g              g              g 
+##  0.04545454545 -0.01818181818  0.26315789474  0.37704918033  0.10714285714 
+##              g              g              g              g              g 
+##  0.35593220339  0.14754098361  0.36666666667  0.26315789474  0.53623188406</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw">plot_skew</span>(<span class="kw">gc_skew</span>(s,<span class="dv">25</span>))</a></code></pre></div>
+<p><img src="bioinformatics_class_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+</div>
+<div id="ncbi-esearch" class="section level2">
+<h2><span class="header-section-number">5.2</span> NCBI ESearch</h2>
+<p>This will look very familiar to the Python tutorial from earlier, but with more of an “R flavor.” Let’s look for 3 cds entries.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">ids1 &lt;-<span class="st"> </span><span class="kw">esearch</span>(<span class="st">&quot;CFTR AND human[Organism] AND complete&quot;</span>,<span class="dt">db=</span><span class="st">&#39;nucleotide&#39;</span>,<span class="dt">retmax=</span><span class="dv">15</span>,<span class="dt">sort=</span><span class="st">&#39;relevance&#39;</span>)</a>
+<a class="sourceLine" id="cb58-2" data-line-number="2">ids2 &lt;-<span class="st"> </span><span class="kw">esearch</span>(<span class="st">&quot;PKD1 AND human[Organism] AND complete&quot;</span>,<span class="dt">db=</span><span class="st">&#39;nucleotide&#39;</span>,<span class="dt">retmax=</span><span class="dv">15</span>,<span class="dt">sort=</span><span class="st">&#39;relevance&#39;</span>)</a>
+<a class="sourceLine" id="cb58-3" data-line-number="3">ids3 &lt;-<span class="st"> </span><span class="kw">esearch</span>(<span class="st">&quot;DMPK AND human[Organism] AND complete&quot;</span>,<span class="dt">db=</span><span class="st">&#39;nucleotide&#39;</span>,<span class="dt">retmax=</span><span class="dv">15</span>,<span class="dt">sort=</span><span class="st">&#39;relevance&#39;</span>)</a></code></pre></div>
+<p>We can parse a particular entry into a dataframe:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">ids_df &lt;-<span class="st"> </span>reutils<span class="op">::</span><span class="kw">content</span>(<span class="kw">esummary</span>(ids1),<span class="st">&#39;parsed&#39;</span>)</a></code></pre></div>
+<pre><code>## Warning: HTTP error: Status 429; Too Many Requests</code></pre>
+<pre><code>## Warning: Errors parsing DocumentSummary</code></pre>
+<p>We can also look at the text entries for each gene:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">efetch</span>(ids1[<span class="dv">1</span>], <span class="dt">rettype =</span> <span class="st">&quot;fasta&quot;</span>, <span class="dt">retmode =</span> <span class="st">&quot;text&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: HTTP error: Status 429; Too Many Requests</code></pre>
+<pre><code>## Object of class &#39;efetch&#39; 
+## [1] &quot;HTTP error: Status 429; Too Many Requests&quot;
+## EFetch query using the &#39;nucleotide&#39; database.
+## Query url: &#39;https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?=efe...&#39;
+## Retrieval type: &#39;fasta&#39;, retrieval mode: &#39;text&#39;</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">efetch</span>(ids2[<span class="dv">4</span>], <span class="dt">rettype =</span> <span class="st">&quot;fasta&quot;</span>, <span class="dt">retmode =</span> <span class="st">&quot;text&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: HTTP error: Status 429; Too Many Requests</code></pre>
+<pre><code>## Object of class &#39;efetch&#39; 
+## [1] &quot;HTTP error: Status 429; Too Many Requests&quot;
+## EFetch query using the &#39;nucleotide&#39; database.
+## Query url: &#39;https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?=efe...&#39;
+## Retrieval type: &#39;fasta&#39;, retrieval mode: &#39;text&#39;</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">efetch</span>(ids3[<span class="dv">5</span>], <span class="dt">rettype =</span> <span class="st">&quot;fasta&quot;</span>, <span class="dt">retmode =</span> <span class="st">&quot;text&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: HTTP error: Status 429; Too Many Requests</code></pre>
+<pre><code>## Object of class &#39;efetch&#39; 
+## [1] &quot;HTTP error: Status 429; Too Many Requests&quot;
+## EFetch query using the &#39;nucleotide&#39; database.
+## Query url: &#39;https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?=efe...&#39;
+## Retrieval type: &#39;fasta&#39;, retrieval mode: &#39;text&#39;</code></pre>
+<p>These look good, so let’s combine the UIDs into a vector:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">ids &lt;-<span class="st"> </span><span class="kw">c</span>(ids1[<span class="dv">1</span>],ids2[<span class="dv">4</span>],ids3[<span class="dv">5</span>])</a></code></pre></div>
+<p>Now, we can extract important information, such as the sequence, by switching to XML mode:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">FASTA &lt;-<span class="st"> </span><span class="kw">efetch</span>(ids,<span class="dt">db=</span><span class="st">&#39;nucleotide&#39;</span>, <span class="dt">rettype =</span> <span class="st">&quot;fasta&quot;</span>, <span class="dt">retmode =</span> <span class="st">&quot;xml&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: HTTP error: Status 429; Too Many Requests</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">SEQS &lt;-<span class="st"> </span>FASTA<span class="op">$</span><span class="kw">xmlValue</span>(<span class="st">&#39;//TSeq_sequence&#39;</span>)</a></code></pre></div>
+<p>But there is actually a much better way, consistent with the FASTA tutorial above:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">tmp &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</a>
+<a class="sourceLine" id="cb75-2" data-line-number="2">FASTA &lt;-<span class="st"> </span><span class="kw">efetch</span>(ids,<span class="dt">db=</span><span class="st">&#39;nucleotide&#39;</span>, <span class="dt">rettype =</span> <span class="st">&quot;fasta&quot;</span>, <span class="dt">retmode =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">outfile=</span>tmp)</a>
+<a class="sourceLine" id="cb75-3" data-line-number="3">FASTA &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(tmp)</a></code></pre></div>
+<p>Now, let’s calculate the GC content, which is easy using a bioconductor functoin (we’ll skip over our functoin from before):</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">letterFrequency</span>(FASTA,<span class="st">&#39;GC&#39;</span>,<span class="dt">as.prob=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>##               G|C
+## [1,] 0.3225755543
+## [2,] 0.6391795013
+## [3,] 0.5959700336</code></pre>
+<p>If we want the GC skew, we can use our function from before. That will give us the same GC skew result that we got from BioPython:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">skew &lt;-<span class="st"> </span><span class="kw">gc_skew</span>(FASTA[[<span class="dv">2</span>]],<span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="kw">plot_skew</span>(skew)</a></code></pre></div>
+<p><img src="bioinformatics_class_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>But, we can use a function in Bioconductor. The difference betweent his function and our implementation (and hence BioPython’s) is the way the window is defined. BioPython’s were not overlapping; here they are.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">skew &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">seq_along</span>(FASTA), <span class="cf">function</span>(i,w) {</a>
+<a class="sourceLine" id="cb79-2" data-line-number="2">  numer &lt;-<span class="st"> </span><span class="kw">letterFrequencyInSlidingView</span>(FASTA[[i]],<span class="st">&#39;G&#39;</span>,<span class="dt">view.width=</span>w) <span class="op">-</span></a>
+<a class="sourceLine" id="cb79-3" data-line-number="3"><span class="st">    </span><span class="kw">letterFrequencyInSlidingView</span>(FASTA[[i]],<span class="st">&#39;C&#39;</span>,<span class="dt">view.width=</span>w)</a>
+<a class="sourceLine" id="cb79-4" data-line-number="4">  denom &lt;-<span class="st"> </span><span class="kw">letterFrequencyInSlidingView</span>(FASTA[[i]],<span class="st">&#39;GC&#39;</span>,<span class="dt">view.width=</span>w)</a>
+<a class="sourceLine" id="cb79-5" data-line-number="5">  numer<span class="op">/</span>denom</a>
+<a class="sourceLine" id="cb79-6" data-line-number="6">},<span class="dt">w=</span><span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb79-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb79-8" data-line-number="8"><span class="kw">plot_skew</span>(skew[[<span class="dv">2</span>]])</a></code></pre></div>
+<p><img src="bioinformatics_class_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+</div>
+<div id="cds" class="section level2">
+<h2><span class="header-section-number">5.3</span> CDS</h2>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">ID &lt;-<span class="st"> </span><span class="kw">esearch</span>(<span class="st">&quot;Galdieria sulphuraria[Organism] AND whole genome&quot;</span>,<span class="dt">db=</span><span class="st">&#39;nucleotide&#39;</span>,<span class="dt">retmax=</span><span class="dv">5</span>,<span class="dt">sort=</span><span class="st">&#39;relevance&#39;</span>)</a>
+<a class="sourceLine" id="cb80-2" data-line-number="2">rec &lt;-<span class="st"> </span><span class="kw">efetch</span>(ID[<span class="dv">1</span>],<span class="dt">db=</span><span class="st">&#39;nucleotide&#39;</span>, <span class="dt">rettype =</span> <span class="st">&quot;gb&quot;</span>, <span class="dt">retmode =</span> <span class="st">&quot;xml&quot;</span>)</a>
+<a class="sourceLine" id="cb80-3" data-line-number="3">prec &lt;-<span class="st"> </span>reutils<span class="op">::</span><span class="kw">content</span>(rec,<span class="dt">as=</span><span class="st">&#39;text&#39;</span>)</a>
+<a class="sourceLine" id="cb80-4" data-line-number="4">prec &lt;-<span class="st"> </span><span class="kw">xmlParse</span>(prec)</a>
+<a class="sourceLine" id="cb80-5" data-line-number="5">prec &lt;-<span class="st"> </span><span class="kw">xmlToList</span>(prec)</a>
+<a class="sourceLine" id="cb80-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb80-7" data-line-number="7">features &lt;-<span class="st"> </span>prec<span class="op">$</span>GBSeq<span class="op">$</span><span class="st">`</span><span class="dt">GBSeq_feature-table</span><span class="st">`</span></a>
+<a class="sourceLine" id="cb80-8" data-line-number="8">cds_idx &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">sapply</span>(features,<span class="cf">function</span>(x) x[[<span class="dv">1</span>]]) <span class="op">==</span><span class="st"> &#39;CDS&#39;</span>)</a>
+<a class="sourceLine" id="cb80-9" data-line-number="9">features &lt;-<span class="st"> </span>features[cds_idx]</a>
+<a class="sourceLine" id="cb80-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb80-11" data-line-number="11">features &lt;-<span class="st"> </span><span class="kw">lapply</span>(features,cleanup_feat_table)</a>
+<a class="sourceLine" id="cb80-12" data-line-number="12"><span class="kw">na.omit</span>(<span class="kw">sapply</span>(features,<span class="cf">function</span>(x) <span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&#39;ATPase&#39;</span>,x[<span class="st">&#39;product&#39;</span>]),x[<span class="st">&#39;protein_id&#39;</span>],<span class="ot">NA</span>)))</a></code></pre></div>
+<pre><code>## named list()</code></pre>
+</div>
+<div id="whole-genomes" class="section level2">
+<h2><span class="header-section-number">5.4</span> Whole Genomes</h2>
+<p>A nice thing about Bioconductor is how easy it is to access genomic information. Bioconductor has a pacakge called ‘BSgenome’ that contains complete genomes of a ton of organisms. Simply look:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw">available.genomes</span>() </a></code></pre></div>
+<pre><code>##  [1] &quot;BSgenome.Alyrata.JGI.v1&quot;                  
+##  [2] &quot;BSgenome.Amellifera.BeeBase.assembly4&quot;    
+##  [3] &quot;BSgenome.Amellifera.UCSC.apiMel2&quot;         
+##  [4] &quot;BSgenome.Amellifera.UCSC.apiMel2.masked&quot;  
+##  [5] &quot;BSgenome.Aofficinalis.NCBI.V1&quot;            
+##  [6] &quot;BSgenome.Athaliana.TAIR.04232008&quot;         
+##  [7] &quot;BSgenome.Athaliana.TAIR.TAIR9&quot;            
+##  [8] &quot;BSgenome.Btaurus.UCSC.bosTau3&quot;            
+##  [9] &quot;BSgenome.Btaurus.UCSC.bosTau3.masked&quot;     
+## [10] &quot;BSgenome.Btaurus.UCSC.bosTau4&quot;            
+## [11] &quot;BSgenome.Btaurus.UCSC.bosTau4.masked&quot;     
+## [12] &quot;BSgenome.Btaurus.UCSC.bosTau6&quot;            
+## [13] &quot;BSgenome.Btaurus.UCSC.bosTau6.masked&quot;     
+## [14] &quot;BSgenome.Btaurus.UCSC.bosTau8&quot;            
+## [15] &quot;BSgenome.Btaurus.UCSC.bosTau9&quot;            
+## [16] &quot;BSgenome.Carietinum.NCBI.v1&quot;              
+## [17] &quot;BSgenome.Celegans.UCSC.ce10&quot;              
+## [18] &quot;BSgenome.Celegans.UCSC.ce11&quot;              
+## [19] &quot;BSgenome.Celegans.UCSC.ce2&quot;               
+## [20] &quot;BSgenome.Celegans.UCSC.ce6&quot;               
+## [21] &quot;BSgenome.Cfamiliaris.UCSC.canFam2&quot;        
+## [22] &quot;BSgenome.Cfamiliaris.UCSC.canFam2.masked&quot; 
+## [23] &quot;BSgenome.Cfamiliaris.UCSC.canFam3&quot;        
+## [24] &quot;BSgenome.Cfamiliaris.UCSC.canFam3.masked&quot; 
+## [25] &quot;BSgenome.Cjacchus.UCSC.calJac3&quot;           
+## [26] &quot;BSgenome.Dmelanogaster.UCSC.dm2&quot;          
+## [27] &quot;BSgenome.Dmelanogaster.UCSC.dm2.masked&quot;   
+## [28] &quot;BSgenome.Dmelanogaster.UCSC.dm3&quot;          
+## [29] &quot;BSgenome.Dmelanogaster.UCSC.dm3.masked&quot;   
+## [30] &quot;BSgenome.Dmelanogaster.UCSC.dm6&quot;          
+## [31] &quot;BSgenome.Drerio.UCSC.danRer10&quot;            
+## [32] &quot;BSgenome.Drerio.UCSC.danRer11&quot;            
+## [33] &quot;BSgenome.Drerio.UCSC.danRer5&quot;             
+## [34] &quot;BSgenome.Drerio.UCSC.danRer5.masked&quot;      
+## [35] &quot;BSgenome.Drerio.UCSC.danRer6&quot;             
+## [36] &quot;BSgenome.Drerio.UCSC.danRer6.masked&quot;      
+## [37] &quot;BSgenome.Drerio.UCSC.danRer7&quot;             
+## [38] &quot;BSgenome.Drerio.UCSC.danRer7.masked&quot;      
+## [39] &quot;BSgenome.Ecoli.NCBI.20080805&quot;             
+## [40] &quot;BSgenome.Gaculeatus.UCSC.gasAcu1&quot;         
+## [41] &quot;BSgenome.Gaculeatus.UCSC.gasAcu1.masked&quot;  
+## [42] &quot;BSgenome.Ggallus.UCSC.galGal3&quot;            
+## [43] &quot;BSgenome.Ggallus.UCSC.galGal3.masked&quot;     
+## [44] &quot;BSgenome.Ggallus.UCSC.galGal4&quot;            
+## [45] &quot;BSgenome.Ggallus.UCSC.galGal4.masked&quot;     
+## [46] &quot;BSgenome.Ggallus.UCSC.galGal5&quot;            
+## [47] &quot;BSgenome.Ggallus.UCSC.galGal6&quot;            
+## [48] &quot;BSgenome.Hsapiens.1000genomes.hs37d5&quot;     
+## [49] &quot;BSgenome.Hsapiens.NCBI.GRCh38&quot;            
+## [50] &quot;BSgenome.Hsapiens.UCSC.hg17&quot;              
+## [51] &quot;BSgenome.Hsapiens.UCSC.hg17.masked&quot;       
+## [52] &quot;BSgenome.Hsapiens.UCSC.hg18&quot;              
+## [53] &quot;BSgenome.Hsapiens.UCSC.hg18.masked&quot;       
+## [54] &quot;BSgenome.Hsapiens.UCSC.hg19&quot;              
+## [55] &quot;BSgenome.Hsapiens.UCSC.hg19.masked&quot;       
+## [56] &quot;BSgenome.Hsapiens.UCSC.hg38&quot;              
+## [57] &quot;BSgenome.Hsapiens.UCSC.hg38.masked&quot;       
+## [58] &quot;BSgenome.Mdomestica.UCSC.monDom5&quot;         
+## [59] &quot;BSgenome.Mfascicularis.NCBI.5.0&quot;          
+## [60] &quot;BSgenome.Mfuro.UCSC.musFur1&quot;              
+## [61] &quot;BSgenome.Mmulatta.UCSC.rheMac10&quot;          
+## [62] &quot;BSgenome.Mmulatta.UCSC.rheMac2&quot;           
+## [63] &quot;BSgenome.Mmulatta.UCSC.rheMac2.masked&quot;    
+## [64] &quot;BSgenome.Mmulatta.UCSC.rheMac3&quot;           
+## [65] &quot;BSgenome.Mmulatta.UCSC.rheMac3.masked&quot;    
+## [66] &quot;BSgenome.Mmulatta.UCSC.rheMac8&quot;           
+## [67] &quot;BSgenome.Mmusculus.UCSC.mm10&quot;             
+## [68] &quot;BSgenome.Mmusculus.UCSC.mm10.masked&quot;      
+## [69] &quot;BSgenome.Mmusculus.UCSC.mm8&quot;              
+## [70] &quot;BSgenome.Mmusculus.UCSC.mm8.masked&quot;       
+## [71] &quot;BSgenome.Mmusculus.UCSC.mm9&quot;              
+## [72] &quot;BSgenome.Mmusculus.UCSC.mm9.masked&quot;       
+## [73] &quot;BSgenome.Osativa.MSU.MSU7&quot;                
+## [74] &quot;BSgenome.Ptroglodytes.UCSC.panTro2&quot;       
+## [75] &quot;BSgenome.Ptroglodytes.UCSC.panTro2.masked&quot;
+## [76] &quot;BSgenome.Ptroglodytes.UCSC.panTro3&quot;       
+## [77] &quot;BSgenome.Ptroglodytes.UCSC.panTro3.masked&quot;
+## [78] &quot;BSgenome.Ptroglodytes.UCSC.panTro5&quot;       
+## [79] &quot;BSgenome.Ptroglodytes.UCSC.panTro6&quot;       
+## [80] &quot;BSgenome.Rnorvegicus.UCSC.rn4&quot;            
+## [81] &quot;BSgenome.Rnorvegicus.UCSC.rn4.masked&quot;     
+## [82] &quot;BSgenome.Rnorvegicus.UCSC.rn5&quot;            
+## [83] &quot;BSgenome.Rnorvegicus.UCSC.rn5.masked&quot;     
+## [84] &quot;BSgenome.Rnorvegicus.UCSC.rn6&quot;            
+## [85] &quot;BSgenome.Scerevisiae.UCSC.sacCer1&quot;        
+## [86] &quot;BSgenome.Scerevisiae.UCSC.sacCer2&quot;        
+## [87] &quot;BSgenome.Scerevisiae.UCSC.sacCer3&quot;        
+## [88] &quot;BSgenome.Sscrofa.UCSC.susScr11&quot;           
+## [89] &quot;BSgenome.Sscrofa.UCSC.susScr3&quot;            
+## [90] &quot;BSgenome.Sscrofa.UCSC.susScr3.masked&quot;     
+## [91] &quot;BSgenome.Tgondii.ToxoDB.7.0&quot;              
+## [92] &quot;BSgenome.Tguttata.UCSC.taeGut1&quot;           
+## [93] &quot;BSgenome.Tguttata.UCSC.taeGut1.masked&quot;    
+## [94] &quot;BSgenome.Tguttata.UCSC.taeGut2&quot;           
+## [95] &quot;BSgenome.Vvinifera.URGI.IGGP12Xv0&quot;        
+## [96] &quot;BSgenome.Vvinifera.URGI.IGGP12Xv2&quot;        
+## [97] &quot;BSgenome.Vvinifera.URGI.IGGP8X&quot;</code></pre>
+<p>We can install a specific genomes and parse them quite easily:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="kw">load_library</span>(BSgenome.Athaliana.TAIR<span class="fl">.04232008</span>)</a></code></pre></div>
+<p>For example, to calculate the GC content of each chromosome in either genome, we can do the following:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">params &lt;-<span class="st"> </span><span class="kw">new</span>(<span class="st">&#39;BSParams&#39;</span>,</a>
+<a class="sourceLine" id="cb85-2" data-line-number="2">              <span class="dt">X=</span>Athaliana,</a>
+<a class="sourceLine" id="cb85-3" data-line-number="3">              <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">letterFrequency</span>(x,<span class="st">&#39;GC&#39;</span>,<span class="dt">as.prob=</span><span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb85-4" data-line-number="4">              <span class="dt">exclude=</span><span class="kw">c</span>(<span class="st">&#39;M&#39;</span>,<span class="st">&#39;C&#39;</span>))</a>
+<a class="sourceLine" id="cb85-5" data-line-number="5"><span class="kw">unlist</span>(<span class="kw">bsapply</span>(params))</a></code></pre></div>
+<pre><code>##     chr1.G|C     chr2.G|C     chr3.G|C     chr4.G|C     chr5.G|C 
+## 0.3567394241 0.3584669531 0.3630477097 0.3619816947 0.3590229191</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="align-alg.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sra.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bioinformatics_class.pdf", "bioinformatics_class.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
