@@ -145,10 +145,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="align.html"><a href="align.html#global-alignment-code-r"><i class="fa fa-check"></i><b>3.5</b> Global Alignment Code (R)</a></li>
 <li class="chapter" data-level="3.6" data-path="align.html"><a href="align.html#global-alignment-code-python"><i class="fa fa-check"></i><b>3.6</b> Global Alignment Code (Python)</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="align-alg.html"><a href="align-alg.html"><i class="fa fa-check"></i><b>4</b> Alignment Algorithms</a><ul>
-<li class="chapter" data-level="4.1" data-path="align-alg.html"><a href="align-alg.html#longest-common-subsequence-1"><i class="fa fa-check"></i><b>4.1</b> Longest Common Subsequence</a></li>
-<li class="chapter" data-level="4.2" data-path="align-alg.html"><a href="align-alg.html#global-alignment-r"><i class="fa fa-check"></i><b>4.2</b> Global Alignment (R)</a></li>
-<li class="chapter" data-level="4.3" data-path="align-alg.html"><a href="align-alg.html#global-alignment-python"><i class="fa fa-check"></i><b>4.3</b> Global Alignment (Python)</a></li>
+<li class="chapter" data-level="4" data-path="alignalg.html"><a href="alignalg.html"><i class="fa fa-check"></i><b>4</b> Alignment Algorithms</a><ul>
+<li class="chapter" data-level="4.1" data-path="alignalg.html"><a href="alignalg.html#longest-common-subsequence-1"><i class="fa fa-check"></i><b>4.1</b> Longest Common Subsequence</a></li>
+<li class="chapter" data-level="4.2" data-path="alignalg.html"><a href="alignalg.html#global-alignment-r"><i class="fa fa-check"></i><b>4.2</b> Global Alignment (R)</a></li>
+<li class="chapter" data-level="4.3" data-path="alignalg.html"><a href="alignalg.html#global-alignment-python"><i class="fa fa-check"></i><b>4.3</b> Global Alignment (Python)</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="biocond.html"><a href="biocond.html"><i class="fa fa-check"></i><b>5</b> Bioconductor</a><ul>
 <li class="chapter" data-level="5.0.1" data-path="biocond.html"><a href="biocond.html#loading-fasta-files"><i class="fa fa-check"></i><b>5.0.1</b> Loading FASTA Files</a></li>
@@ -243,10 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   \end{array}\right.
 \]</span></p>
 <p>We can see the effect of varying <span class="math inline">\(\lambda\)</span> values in the figure below:</p>
-<div class="figure">
-<img src="figs/lasso/1.png" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/1.png" /></p>
 <p>The value of <span class="math inline">\(y_j\)</span> is represented by the black lines, whereas the subthresholding transformation is represented by the blue lines. For values outside of the <span class="math inline">\(|y_j|\)</span> interval, the function essentially drives <span class="math inline">\(y_j\)</span> closer to 0. Once it’s within that interval, <span class="math inline">\(y_j\)</span> is <em>set</em> to zero. The size of this interval is determined by <span class="math inline">\(\lambda\)</span>, with larger values producing a larger interval, and consequently, a more sparse solution.</p>
 </div>
 <div id="multivariate-lasso-regression" class="section level2">
@@ -273,102 +270,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="times-1000-matrix-5-target-coefficients" class="section level3">
 <h3><span class="header-section-number">11.5.1</span> <span class="math inline">\(50 \times 1000\)</span> Matrix | 5 Target Coefficients</h3>
 <p>Before any analysis of the results was performed, there seemed to be numerical issues when performing the algorithm on small <span class="math inline">\(\lambda\)</span> values (<span class="math inline">\(&lt;.05\)</span>). The objective and all <span class="math inline">\(\beta\)</span> coefficients would increase exponentially after every update. Only with larger <span class="math inline">\(\lambda\)</span> values would the algorithm converge (and note it would always converge to the correct values). It turned out this was unrelated to the code; there were no errors. Instead, it was a function of the number of cores set. All initial runs were performed with 64 cores, resulting in the numerical issue for small <span class="math inline">\(\lambda\)</span> values. Note that this is neither an MPI problem nor a problem inherent to the cluster. The issue lies in selecting more simultaneous updates than there is data (rows in matrix X), which, in this simulation, there are 50. See the figure below:</p>
-<div class="figure">
-<img src="figs/lasso/2.png" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/2.png" /></p>
 <p>If we increase the sample size to 100, then the convergence problem is gone:</p>
-<div class="figure">
-<img src="figs/lasso/3.png" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/3.png" /></p>
 <p>And the ability to achieve convergence as a function of processors is also dictated by <span class="math inline">\(\lambda\)</span>:</p>
-<div class="figure">
-<img src="figs/lasso/4.png" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/4.png" /></p>
 <p>Here are the lasso traces for 10 independent samples for the above parameter settings</p>
-<div class="figure">
-<img src="figs/lasso/5.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/5.jpg" /></p>
 <p>The text on the right hand side represents the indexes of the true coefficients used to generate the system for each sample. Their height represents their true value. We can easily see which traces correspond to which index, and moreover, we can see the <span class="math inline">\(\lambda\)</span> value in which the traces achieve the correct value. Every sample managed to both identify and estimate the correct index and its coefficient at some point throughout the trace. The figures seem to suggest that <span class="math inline">\(\lambda=-.005\)</span> did the best job at estimating the true values. Coefficients with larger values were more robust to smaller <span class="math inline">\(\lambda\)</span> values. For example, in sample 7, coefficients 154 and 895 were nonzero for <span class="math inline">\(\lambda\)</span> values well over 1. Coefficient 399 was driven to zero around <span class="math inline">\(\lambda=.5\)</span>, whereas the remaining two coefficients were set to 0 much sooner.</p>
 <p>Here is the error at each <span class="math inline">\(\lambda\)</span> averaged across samples:</p>
-<div class="figure">
-<img src="figs/lasso/6.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/6.jpg" /></p>
 <p>The error term here is measured as the following: <span class="math display">\[\mathrm{Error}=\frac{||\hat x - x||_2}{||x||_2}\]</span>. This figure confirms <span class="math inline">\(\lambda=.005\)</span> performing the best. It should be noted that there was an iteration cap, so the very small <span class="math inline">\(\lambda\)</span> values likely just failed to reach a reasonable approximation. While they clearly were converging and hence approaching a reasonable solution, it simply would have taken too long and these values were the result of 20,000 iterations using 48 cores. The error began to rise somewhat around <span class="math inline">\(\lambda=.779\)</span> The hump in this region and the subsequent decline can be attributed to the variability regarding when certain coefficients are driven to 0. Samples 1 and 2 have a few relatively robust coefficients that help decrease the error, whereas the coefficients in sample 4 are probably key contributors in the hump around <span class="math inline">\(\lambda=.779\)</span>.</p>
 </div>
 <div id="times-10000-matrix-5-target-coefficients" class="section level3">
 <h3><span class="header-section-number">11.5.2</span> <span class="math inline">\(50 \times 10000\)</span> Matrix | 5 Target Coefficients</h3>
-<div class="figure">
-<img src="figs/lasso/7.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/7.jpg" /></p>
 <p>Now we are dealing with 10 times more unwanted coefficients, and the figures make it quite obvious that lasso is having more trouble than the <span class="math inline">\(50 \times 1000\)</span> case. Sample 10 managed to capture only 1 coefficient for a prolonged stretch, and it also had quite a few false positives for moderate <span class="math inline">\(\lambda\)</span> values. Sample 3 also had quite a few false positives, but farther along than sample 10. Samples 7 and 8 detected only 2 of the 5 coefficients. Like the previous simulation, larger true coefficients were more robust at being detected across <span class="math inline">\(\lambda\)</span> values, exemplified quite well by sample 2.</p>
-<div class="figure">
-<img src="figs/lasso/8.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/8.jpg" /></p>
 <p>Unlike the last simulation, <span class="math inline">\(\lambda=.005\)</span> performed poorly. The best value seemed to be around <span class="math inline">\(\lambda=.058\)</span>, although each value ranging from .058 to .371 did quite well. Still, even for .058, the error was larger (approximately .300) than .005 (.009) for the last simulation</p>
 </div>
 <div id="times-10000-matrix-5-target-coefficients-1" class="section level3">
 <h3><span class="header-section-number">11.5.3</span> <span class="math inline">\(200 \times 10000\)</span> Matrix | 5 Target Coefficients</h3>
-<div class="figure">
-<img src="figs/lasso/9.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/9.jpg" /></p>
 <p>By increasing the number of data points from 50 to 200, there seems to be a return to the behavior we saw in the <span class="math inline">\(50 \times 1000\)</span> simulation. Notwithstanding sample 6, all of the samples managed to estimate at least 4 of the 5 coefficients. Again, if the coefficient was truly large, then it behaved robustly across all <span class="math inline">\(\lambda\)</span> values.</p>
-<div class="figure">
-<img src="figs/lasso/10.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/10.jpg" /></p>
 <p>The error too seems similar to the <span class="math inline">\(50 \times 1000\)</span> simulation. The minimum ended up being at <span class="math inline">\(\lambda=0.007\)</span>, analogous to the minimum of .005 we saw in the smaller system. The error managed to stay low even for a slightly larger <span class="math inline">\(\lambda\)</span> (.01). Like all of the simulations so far, there is a hump at the moderate <span class="math inline">\(\lambda\)</span> values.</p>
 <p>Based on the last 3 simulations, there seems to be a trade-off between the amount of data (i.e., the number of rows in <span class="math inline">\(X\)</span>) and the number of coefficients (i.e., the columns in <span class="math inline">\(X\)</span>). More coefficients gives lasso problems, but given more data, then lasso returns to form. Let’s see how lasso does at estimating more coefficients.</p>
 </div>
 <div id="times-10000-matrix-15-target-coefficients" class="section level3">
 <h3><span class="header-section-number">11.5.4</span> <span class="math inline">\(50 \times 10000\)</span> Matrix | 15 Target Coefficients</h3>
-<div class="figure">
-<img src="figs/lasso/11.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/11.jpg" /></p>
 <p>Now lasso seems to be struggling to find the true coefficients. Other than sample 4, which managed to only capture about 6 of the 15 coefficients, all of the samples performed poorly. Other than a few large coefficients, most traces were lost in false positives. Also, unlike the systems with only 5 true coefficients, this simulation resulted in many incorrect traces of similar magnitude to the true coefficients, represented by the black lines. It’s surprising that lasso even failed to capture the larger coefficients (see the labels far from the x-axis). The fact that there are quite a few coefficients not much larger than 0 in terms of magnitude (recall they are sampled from a normal distribution (0,1)) gives lasso problems setting any potentially non-zero coefficient to zero. This may be remedied by a smaller tolerance, but most likely, it won’t make a difference. For example, with <span class="math inline">\(\lambda=2.\)</span> (sample 4), the tolerance level was reached after only 1999 iterations, managing only to capture 4 coefficients, all of which are far smaller in magnitude than their true counterparts. A smaller <span class="math inline">\(\lambda\)</span> of 0.01 (sample 10) reached the iteration cap of 20,000, but ended up with 317 coefficients, far more than the target 15. A more moderate value, <span class="math inline">\(\lambda=1.05\)</span> (sample 1), broke after 5499 iterations, ending with 21 coefficients, which is closer to 15, but nevertheless failed to capture any of the true estimates of the larger coefficients since no trace reaches the required height.</p>
-<div class="figure">
-<img src="figs/lasso/12.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/12.jpg" /></p>
 <p>Note the gap in the plot was due to the aforementioned convergence/core issue; hence, those <span class="math inline">\(\lambda\)</span> values were omitted. The error here essentially reaches a plateau for the majority of the <span class="math inline">\(\lambda\)</span> values. The error drops at the end, but this is not due to improved estimation, but instead a result of driving many of the incorrect estimates to zero.</p>
 <p>Considering this situation, if one has a dataset with many potentially informative coefficients, unless some yield significantly large estimates relative to the majority, then lasso will likely have problems. Since this simulation dealt with true coefficients near 0, many false positives resulted. A noisy dataset probably requires the use of larger <span class="math inline">\(\lambda\)</span> values and the hope that the some coefficients are significantly more informative than the others.</p>
 </div>
 <div id="times-10000-matrix-30-target-coefficients" class="section level3">
 <h3><span class="header-section-number">11.5.5</span> <span class="math inline">\(50 \times 10000\)</span> Matrix | 30 Target Coefficients</h3>
-<div class="figure">
-<img src="figs/lasso/13.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/13.jpg" /></p>
 <p>And here’s an even noisier system, with 30 true coefficients. Only sample 8 was able to separate a coefficient from the crown. Driving <span class="math inline">\(\lambda\)</span> up further for this sample would likely isolate it. Sample 5 also had a large robust estimate, but it was a false positive. Clearly the conclusion reached in the last simulation can only be confirmed here.</p>
-<div class="figure">
-<img src="figs/lasso/14.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/14.jpg" /></p>
 <p>The trend here is similar to the system with 15 true values. If we increase <span class="math inline">\(\lambda\)</span> further, we would likely see the same drop in error we see before since we’d be driving the many incorrect estimates to zero.</p>
 </div>
 <div id="scaling-the-coeficients" class="section level3">
 <h3><span class="header-section-number">11.5.6</span> Scaling the coeficients</h3>
 <p>It seems plausible that as we increase the number of false coefficients, we decrease the chance of identifying true coefficients unless those coefficients are much different than the majority – i.e., more informative. Instead of increasing the sampling size this time, let’s increase the magnitude of the true coefficients by scaling them 10-fold. Using a <em>very</em> large <span class="math inline">\(50 \times 100000\)</span> matrix, we get the following:</p>
-<div class="figure">
-<img src="figs/lasso/15.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/15.jpg" /></p>
 <p>Even with 100,000 potential coefficients to work with, lasso managed to cleanly identify one of the five targets. Moreover, while there are quite a few false positives around <span class="math inline">\(\lambda=.211\)</span> (30), there are <em>far</em> less than 100,000, and 3 total true coefficients were still detectable. At <span class="math inline">\(\lambda=.525\)</span>, 4 coefficients were returned, albeit only 1 being correct. Had we used larger <span class="math inline">\(\lambda\)</span> values, we likely would have ended with at most 1 true and 1 false coefficient. Note that the 5 starting coefficients had values of -4.79, 9.88, 3.12, 1.22, and 7.02. That robust coefficient was, to no one’s surprise, the coefficient with the largest value in magnitude of the 5, 9.88.</p>
 </div>
 <div id="comparison" class="section level3">
 <h3><span class="header-section-number">11.5.7</span> Comparison</h3>
-<div class="figure">
-<img src="figs/lasso/16.jpg" alt="alt text" />
-<p class="caption">alt text</p>
-</div>
+<p><img src="figs/lasso/16.jpg" /></p>
 <p>Here is a figure showing all of the error traces. The small system (<span class="math inline">\(50 \times 1000\)</span>) and the large system with more data (<span class="math inline">\(200 \times 10000\)</span>) performed the best assuming a small <span class="math inline">\(\lambda\)</span> was used. Interestingly, if only uses a larger <span class="math inline">\(\lambda\)</span>, then that small system tends to perform the worst. Still, it’s quite clear that identifying informative features is a function of the amount of data, the number of features, the number of true coefficients, and their size.</p>
 </div>
 </div>

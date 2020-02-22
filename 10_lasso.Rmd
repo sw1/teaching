@@ -32,7 +32,7 @@ Solving the lasso problem is more difficult than simple linear regression. The f
 
 We can see the effect of varying $\lambda$ values in the figure below:
 
-![alt text](figs/lasso/1.png)
+![](figs/lasso/1.png)
 
 The value of $y_j$ is represented by the black lines, whereas the subthresholding transformation is represented by the blue lines. For values outside of the $|y_j|$ interval, the function essentially drives $y_j$ closer to 0. Once it's within that interval, $y_j$ is *set* to zero. The size of this interval is determined by $\lambda$, with larger values producing a larger interval, and consequently, a more sparse solution.
 
@@ -65,45 +65,45 @@ All matrices were generated as follows: X, a $m \times n$ matrix, and k $\beta$ 
 
 Before any analysis of the results was performed, there seemed to be numerical issues when performing the algorithm on small $\lambda$ values ($<.05$). The objective and all $\beta$ coefficients would increase exponentially after every update. Only with larger $\lambda$ values would the algorithm converge (and note it would always converge to the correct values). It turned out this was unrelated to the code; there were no errors. Instead, it was a function of the number of cores set. All initial runs were performed with 64 cores, resulting in the numerical issue for small $\lambda$ values. Note that this is neither an MPI problem nor a problem inherent to the cluster. The issue lies in selecting more simultaneous updates than there is data (rows in matrix X), which, in this simulation, there are 50. See the figure below:
 
-![alt text](figs/lasso/2.png)
+![](figs/lasso/2.png)
 
 If we increase the sample size to 100, then the convergence problem is gone:
 
-![alt text](figs/lasso/3.png)
+![](figs/lasso/3.png)
 
 And the ability to achieve convergence as a function of processors is also dictated by $\lambda$:
 
-![alt text](figs/lasso/4.png)
+![](figs/lasso/4.png)
 
 Here are the lasso traces for 10 independent samples for the above parameter settings
 
-![alt text](figs/lasso/5.jpg)
+![](figs/lasso/5.jpg)
 
 The text on the right hand side represents the indexes of the true coefficients used to generate the system for each sample. Their height represents their true value. We can easily see which traces correspond to which index, and moreover, we can see the $\lambda$ value in which the traces achieve the correct value. Every sample managed to both identify and estimate the correct index and its coefficient at some point throughout the trace. The figures seem to suggest that $\lambda=-.005$ did the best job at estimating the true values. Coefficients with larger values were more robust to smaller $\lambda$ values. For example, in sample 7, coefficients 154 and 895 were nonzero for $\lambda$ values well over 1. Coefficient 399 was driven to zero around $\lambda=.5$, whereas the remaining two coefficients were set to 0 much sooner.
 
 Here is the error at each $\lambda$ averaged across samples:
 
-![alt text](figs/lasso/6.jpg)
+![](figs/lasso/6.jpg)
 
 The error term here is measured as the following: $$\mathrm{Error}=\frac{||\hat x - x||_2}{||x||_2}$$. This figure confirms $\lambda=.005$ performing the best. It should be noted that there was an iteration cap, so the very small $\lambda$ values likely just failed to reach a reasonable approximation. While they clearly were converging and hence approaching a reasonable solution, it simply would have taken too long and these values were the result of 20,000 iterations using 48 cores. The error began to rise somewhat around $\lambda=.779$ The hump in this region and the subsequent decline can be attributed to the variability regarding when certain coefficients are driven to 0. Samples 1 and 2 have a few relatively robust coefficients that help decrease the error, whereas the coefficients in sample 4 are probably key contributors in the hump around $\lambda=.779$.
 
 ### $50 \times 10000$ Matrix | 5 Target Coefficients
 
-![alt text](figs/lasso/7.jpg)
+![](figs/lasso/7.jpg)
 
 Now we are dealing with 10 times more unwanted coefficients, and the figures make it quite obvious that lasso is having more trouble than the $50 \times 1000$ case. Sample 10 managed to capture only 1 coefficient for a prolonged stretch, and it also had quite a few false positives for moderate $\lambda$ values. Sample 3 also had quite a few false positives, but farther along than sample 10. Samples 7 and 8 detected only 2 of the 5 coefficients. Like the previous simulation, larger true coefficients were more robust at being detected across $\lambda$ values, exemplified quite well by sample 2.
 
-![alt text](figs/lasso/8.jpg)
+![](figs/lasso/8.jpg)
 
 Unlike the last simulation, $\lambda=.005$ performed poorly. The best value seemed to be around $\lambda=.058$, although each value ranging from .058 to .371 did quite well. Still, even for .058, the error was larger (approximately .300) than .005 (.009) for the last simulation
 
 ### $200 \times 10000$ Matrix | 5 Target Coefficients
 
-![alt text](figs/lasso/9.jpg)
+![](figs/lasso/9.jpg)
 
 By increasing the number of data points from 50 to 200, there seems to be a return to the behavior we saw in the $50 \times 1000$ simulation. Notwithstanding sample 6, all of the samples managed to estimate at least 4 of the 5 coefficients. Again, if the coefficient was truly large, then it behaved robustly across all $\lambda$ values.
 
-![alt text](figs/lasso/10.jpg)
+![](figs/lasso/10.jpg)
 
 The error too seems similar to the $50 \times 1000$ simulation. The minimum ended up being at $\lambda=0.007$, analogous to the minimum of .005 we saw in the smaller system. The error managed to stay low even for a slightly larger $\lambda$ (.01). Like all of the simulations so far, there is a hump at the moderate $\lambda$ values. 
 
@@ -111,11 +111,11 @@ Based on the last 3 simulations, there seems to be a trade-off between the amoun
 
 ### $50 \times 10000$ Matrix | 15 Target Coefficients
 
-![alt text](figs/lasso/11.jpg)
+![](figs/lasso/11.jpg)
 
 Now lasso seems to be struggling to find the true coefficients. Other than sample 4, which managed to only capture about 6 of the 15 coefficients, all of the samples performed poorly. Other than a few large coefficients, most traces were lost in false positives. Also, unlike the systems with only 5 true coefficients, this simulation resulted in many incorrect traces of similar magnitude to the true coefficients, represented by the black lines. It's surprising that lasso even failed to capture the larger coefficients (see the labels far from the x-axis). The fact that there are quite a few coefficients not much larger than 0 in terms of magnitude (recall they are sampled from a normal distribution (0,1)) gives lasso problems setting any potentially non-zero coefficient to zero. This may be remedied by a smaller tolerance, but most likely, it won't make a difference. For example, with $\lambda=2.$ (sample 4), the tolerance level was reached after only 1999 iterations, managing only to capture 4 coefficients, all of which are far smaller in magnitude than their true counterparts. A smaller $\lambda$ of 0.01 (sample 10) reached the iteration cap of 20,000, but ended up with 317 coefficients, far more than the target 15. A more moderate value, $\lambda=1.05$ (sample 1), broke after 5499 iterations, ending with 21 coefficients, which is closer to 15, but nevertheless failed to capture any of the true estimates of the larger coefficients since no trace reaches the required height.
 
-![alt text](figs/lasso/12.jpg)
+![](figs/lasso/12.jpg)
 
 Note the gap in the plot was due to the aforementioned convergence/core issue; hence, those $\lambda$ values were omitted. The error here essentially reaches a plateau for the majority of the $\lambda$ values. The error drops at the end, but this is not due to improved estimation, but instead a result of driving many of the incorrect estimates to zero. 
 
@@ -123,11 +123,11 @@ Considering this situation, if one has a dataset with many potentially informati
 
 ### $50 \times 10000$ Matrix | 30 Target Coefficients
 
-![alt text](figs/lasso/13.jpg)
+![](figs/lasso/13.jpg)
 
 And here's an even noisier system, with 30 true coefficients. Only sample 8 was able to separate a coefficient from the crown. Driving $\lambda$ up further for this sample would likely isolate it. Sample 5 also had a large robust estimate, but it was a false positive. Clearly the conclusion reached in the last simulation can only be confirmed here.
 
-![alt text](figs/lasso/14.jpg)
+![](figs/lasso/14.jpg)
 
 The trend here is similar to the system with 15 true values. If we increase $\lambda$ further, we would likely see the same drop in error we see before since we'd be driving the many incorrect estimates to zero.
 
@@ -135,13 +135,13 @@ The trend here is similar to the system with 15 true values. If we increase $\la
 
 It seems plausible that as we increase the number of false coefficients, we decrease the chance of identifying true coefficients unless those coefficients are much different than the majority -- i.e., more informative. Instead of increasing the sampling size this time, let's increase the magnitude of the true coefficients by scaling them 10-fold. Using a *very* large $50 \times 100000$ matrix, we get the following:
 
-![alt text](figs/lasso/15.jpg)
+![](figs/lasso/15.jpg)
 
 Even with 100,000 potential coefficients to work with, lasso managed to cleanly identify one of the five targets. Moreover, while there are quite a few false positives around $\lambda=.211$ (30), there are *far* less than 100,000, and 3 total true coefficients were still detectable. At $\lambda=.525$, 4 coefficients were returned, albeit only 1 being correct. Had we used larger $\lambda$ values, we likely would have ended with at most 1 true and 1 false coefficient. Note that the 5 starting coefficients had values of -4.79, 9.88, 3.12, 1.22, and 7.02. That robust coefficient was, to no one's surprise, the coefficient with the largest value in magnitude of the 5, 9.88. 
 
 ### Comparison 
 
-![alt text](figs/lasso/16.jpg)
+![](figs/lasso/16.jpg)
 
 Here is a figure showing all of the error traces. The small system ($50 \times 1000$) and the large system with more data ($200 \times 10000$) performed the best assuming a small $\lambda$ was used. Interestingly, if only uses a larger $\lambda$, then that small system tends to perform the worst. Still, it's quite clear that identifying informative features is a function of the amount of data, the number of features, the number of true coefficients, and their size.
 
