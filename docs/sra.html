@@ -24,7 +24,7 @@
 <meta name="author" content="Stephen Woloszynek" />
 
 
-<meta name="date" content="2020-02-22" />
+<meta name="date" content="2020-02-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -259,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.9.3" data-path="ml.html"><a href="ml.html#stick-breaking"><i class="fa fa-check"></i><b>13.9.3</b> Stick Breaking</a></li>
 </ul></li>
 <li class="chapter" data-level="13.10" data-path="ml.html"><a href="ml.html#iteratively-reweighted-least-squares"><i class="fa fa-check"></i><b>13.10</b> Iteratively Reweighted Least Squares</a></li>
-<li class="chapter" data-level="13.11" data-path="ml.html"><a href="ml.html#neural-netork"><i class="fa fa-check"></i><b>13.11</b> Neural Netork</a></li>
+<li class="chapter" data-level="13.11" data-path="ml.html"><a href="ml.html#neural-network"><i class="fa fa-check"></i><b>13.11</b> Neural Network</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/sw1/" target="blank">Published by Stephen Woloszynek</a></li>
@@ -287,10 +287,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(stringr)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(SRAdb)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(Biostrings)</a></code></pre></div>
-<p>First, download the database file to our working directly from the following link: <a href="http://dl.dropbox.com/u/51653511/SRAmetadb.sqlite.gz" class="uri">http://dl.dropbox.com/u/51653511/SRAmetadb.sqlite.gz</a> . Note that it’s over 1 GB compressed, but will be about 24 GBs once you uncompress it, which you need to do.</p>
+<p>First, download the database file to your working director via</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">getSRAdbFile</span>(<span class="dt">destdir=</span><span class="kw">getwd</span>(),<span class="dt">destfile=</span><span class="st">&#39;SRAmetadb.sqlite.gz&#39;</span>,method)</a></code></pre></div>
 <p>Then, we’ll make a connection with the database:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">sqlfile &lt;-<span class="st"> &#39;~/SRAmetadb.sqlite&#39;</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">sra_con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">SQLite</span>(),sqlfile)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">sqlfile &lt;-<span class="st"> &#39;~/SRAmetadb.sqlite&#39;</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">sra_con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">SQLite</span>(),sqlfile)</a></code></pre></div>
 <p>Let’s assume we want to download the data from the Gevers IBD study that was deposited with the following accession: PRJNA237362. We can see this project on NCBI here: <a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA237362" class="uri">https://www.ncbi.nlm.nih.gov/bioproject/PRJNA237362</a> . If we click the link next to ‘SRA Experiments’ and then click one of the sample links on the subsequent page, we’ll end up on a page that looks like this: <a href="https://www.ncbi.nlm.nih.gov/sra/SRX1418176%5Baccn%5D" class="uri">https://www.ncbi.nlm.nih.gov/sra/SRX1418176[accn]</a> . Here’ we can access the SRA project code: SRP040765. This is what we need.</p>
 <p>Before we continue, let me go over the SRA file types:</p>
 <ul>
@@ -302,8 +303,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>SRX - Sequence analysis BAM file information</li>
 </ul>
 <p>Now that we have the SRP, let’s acquire the files we need, specifically the SRA files:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">rs &lt;-<span class="st"> </span><span class="kw">listSRAfile</span>(<span class="kw">c</span>(<span class="st">&#39;SRP040765&#39;</span>), sra_con, <span class="dt">fileType =</span> <span class="st">&#39;sra&#39;</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">str</span>(rs)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">rs &lt;-<span class="st"> </span><span class="kw">listSRAfile</span>(<span class="kw">c</span>(<span class="st">&#39;SRP040765&#39;</span>), sra_con, <span class="dt">fileType =</span> <span class="st">&#39;sra&#39;</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">str</span>(rs)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    3408 obs. of  5 variables:
 ##  $ study     : chr  &quot;SRP040765&quot; &quot;SRP040765&quot; &quot;SRP040765&quot; &quot;SRP040765&quot; ...
 ##  $ sample    : chr  &quot;SRS587325&quot; &quot;SRS587957&quot; &quot;SRS587956&quot; &quot;SRS695027&quot; ...
@@ -313,12 +314,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>rs</strong> is a dataframe containing the SRP, SRS, SRX, and SRR IDs for a given sequencing run, as well as the ftp link to the actual .sra file containing the sequencing information. These are the links we can use to download the entire set of data we need to perform some analysis.</p>
 <p>Now, we could export these links and then just iterate through, maybe using bash with wget, to download all of these files. Alternatively, we can do the following:</p>
 <p>We’ll get a run ID for a run we’ld like to download:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">run &lt;-<span class="st"> </span>rs<span class="op">$</span>run[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">run</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">run &lt;-<span class="st"> </span>rs<span class="op">$</span>run[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">run</a></code></pre></div>
 <pre><code>## [1] &quot;SRR1564534&quot;</code></pre>
 <p>If we want the specific SRR (run) information, we do:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">run_info &lt;-<span class="st"> </span><span class="kw">getSRA</span>(<span class="dt">search_terms=</span><span class="st">&#39;SRP040765&#39;</span>, <span class="dt">out_types=</span><span class="kw">c</span>(<span class="st">&#39;run&#39;</span>),sra_con)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">str</span>(run_info)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">run_info &lt;-<span class="st"> </span><span class="kw">getSRA</span>(<span class="dt">search_terms=</span><span class="st">&#39;SRP040765&#39;</span>, <span class="dt">out_types=</span><span class="kw">c</span>(<span class="st">&#39;run&#39;</span>),sra_con)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">str</span>(run_info)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    3408 obs. of  11 variables:
 ##  $ run_alias      : chr  &quot;A21YN121012.1.Illumina_P7-Fexexoja.screened.bam&quot; &quot;A21YN121012.1.Illumina_P7-Wodejora.screened.bam&quot; &quot;A2WP7130403.1.Illumina_P7-Xakokoxe.screened.bam&quot; &quot;A1UEN121219.1.Illumina_P7-Birarane.screened.bam&quot; ...
 ##  $ run            : chr  &quot;SRR1564534&quot; &quot;SRR1565230&quot; &quot;SRR1215330&quot; &quot;SRR1566410&quot; ...
@@ -332,8 +333,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ run_entrez_link: logi  NA NA NA NA NA NA ...
 ##  $ run_attribute  : chr  &quot;analysis_type: AssemblyWithoutReference || flowcell_barcode: A21YN || gssr_id: 247611.0 || instrument_name: SL-&quot;| __truncated__ &quot;analysis_type: AssemblyWithoutReference || flowcell_barcode: A21YN || gssr_id: 247629.0 || instrument_name: SL-&quot;| __truncated__ &quot;analysis_type: AssemblyWithoutReference || flowcell_barcode: A2WP7 || gssr_id: 247671.0 || instrument_name: SL-&quot;| __truncated__ &quot;analysis_type: AssemblyWithoutReference || data_type: 16S || flowcell_barcode: A1UEN || gssr_id: 276389.0 || in&quot;| __truncated__ ...</code></pre>
 <p>and for the SRS (sample) information:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">sample_info &lt;-<span class="st"> </span><span class="kw">getSRA</span>(<span class="dt">search_terms=</span><span class="st">&#39;SRP040765&#39;</span>, <span class="dt">out_types=</span><span class="kw">c</span>(<span class="st">&#39;sample&#39;</span>),sra_con)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">str</span>(sample_info)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">sample_info &lt;-<span class="st"> </span><span class="kw">getSRA</span>(<span class="dt">search_terms=</span><span class="st">&#39;SRP040765&#39;</span>, <span class="dt">out_types=</span><span class="kw">c</span>(<span class="st">&#39;sample&#39;</span>),sra_con)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">str</span>(sample_info)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    1572 obs. of  10 variables:
 ##  $ sample_alias      : chr  &quot;SKBTI-0107&quot; &quot;SKBTI-0128&quot; &quot;SKBTI-0172&quot; &quot;SKBTI-0594&quot; ...
 ##  $ sample            : chr  &quot;SRS587325&quot; &quot;SRS587957&quot; &quot;SRS587956&quot; &quot;SRS695027&quot; ...
@@ -346,8 +347,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ sample_entrez_link: logi  NA NA NA NA NA NA ...
 ##  $ sample_attribute  : chr  &quot;strain: SKBTI-0107 || collection date: missing || geographic location (country and/or sea, region): USA || spec&quot;| __truncated__ &quot;strain: SKBTI-0128 || collection date: missing || geographic location (country and/or sea, region): USA || spec&quot;| __truncated__ &quot;strain: SKBTI-0172 || collection date: missing || geographic location (country and/or sea, region): USA || spec&quot;| __truncated__ &quot;strain: SKBTI-0594 || collection date: missing || geographic location (country and/or sea, region): USA || spec&quot;| __truncated__ ...</code></pre>
 <p>and SRX (experiment) information:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">experiment_info &lt;-<span class="st"> </span><span class="kw">getSRA</span>(<span class="dt">search_terms=</span><span class="st">&#39;SRP040765&#39;</span>, <span class="dt">out_types=</span><span class="kw">c</span>(<span class="st">&#39;experiment&#39;</span>),sra_con)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">str</span>(experiment_info)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">experiment_info &lt;-<span class="st"> </span><span class="kw">getSRA</span>(<span class="dt">search_terms=</span><span class="st">&#39;SRP040765&#39;</span>, <span class="dt">out_types=</span><span class="kw">c</span>(<span class="st">&#39;experiment&#39;</span>),sra_con)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">str</span>(experiment_info)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    2708 obs. of  27 variables:
 ##  $ experiment_alias             : chr  &quot;2949006.WR32770.Solexa-122962.A21YN121012.P&quot; &quot;2949006.WR32770.Solexa-122980.A21YN121012.P&quot; &quot;2949006.WR32770.Solexa-123022.A2WP7130403.P&quot; &quot;2949006.WR33991.Solexa-133729.A1UEN121219.P&quot; ...
 ##  $ experiment                   : chr  &quot;SRX691644&quot; &quot;SRX692390&quot; &quot;SRX509287&quot; &quot;SRX693364&quot; ...
@@ -378,34 +379,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ experiment_attribute         : chr  &quot;analysis_type: AssemblyWithoutReference || gssr_id: 247611.0 || library_type: 16S || lsid: broadinstitute.org:b&quot;| __truncated__ &quot;analysis_type: AssemblyWithoutReference || gssr_id: 247629.0 || library_type: 16S || lsid: broadinstitute.org:b&quot;| __truncated__ &quot;analysis_type: AssemblyWithoutReference || gssr_id: 247671.0 || library_type: 16S || lsid: broadinstitute.org:b&quot;| __truncated__ &quot;analysis_type: AssemblyWithoutReference || data_type: 16S || gssr_id: 276389.0 || library_type: 16S || lsid: br&quot;| __truncated__ ...</code></pre>
 <p>Using these commands, you should be able to download the .sra files you need along with all corresponding metadata to do analysis. Still, you might be wondering how you get the .fasta files from the .sra file. Well, the easiest way is to use something called the sra toolkit, which can be found here: <a href="https://www.ncbi.nlm.nih.gov/books/NBK158900/" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK158900/</a> .</p>
 <p>So let’s say we aimed to extract the sequences from the following sra files: SRR1635768 and SRR1566401. First, we’d download the files:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">sra_dir &lt;-<span class="st"> </span><span class="kw">tempdir</span>()</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3">sra_fns &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;SRR1634425&quot;</span>,<span class="st">&quot;SRR1634428&quot;</span>)</a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="cf">for</span> (sra <span class="cf">in</span> sra_fns) <span class="kw">getSRAfile</span>(sra, sra_con, <span class="dt">fileType =</span> <span class="st">&#39;sra&#39;</span>,<span class="dt">destDir=</span>sra_dir)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">sra_dir &lt;-<span class="st"> </span><span class="kw">tempdir</span>()</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">sra_fns &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;SRR1634425&quot;</span>,<span class="st">&quot;SRR1634428&quot;</span>)</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="cf">for</span> (sra <span class="cf">in</span> sra_fns) <span class="kw">getSRAfile</span>(sra, sra_con, <span class="dt">fileType =</span> <span class="st">&#39;sra&#39;</span>,<span class="dt">destDir=</span>sra_dir)</a></code></pre></div>
 <pre><code>## Files are saved to: 
-## &#39;/tmp/RtmpF5vs4m&#39;
+## &#39;/tmp/RtmpPpw3vu&#39;
 ## 
 ## Files are saved to: 
-## &#39;/tmp/RtmpF5vs4m&#39;</code></pre>
+## &#39;/tmp/RtmpPpw3vu&#39;</code></pre>
 <p>Then, we’d use the sra toolkit to extract the sequences. Assuming you have downloaded and installed it, we can do the following</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">sra_output &lt;-<span class="st"> </span><span class="kw">tempdir</span>()</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3">sra_files &lt;-<span class="st"> </span><span class="kw">list.files</span>(sra_dir,<span class="dt">full.names=</span><span class="ot">TRUE</span>,<span class="dt">pattern=</span><span class="st">&#39;</span><span class="ch">\\</span><span class="st">.sra$&#39;</span>)</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(sra_files)) <span class="kw">system2</span>(<span class="st">&#39;fastq-dump&#39;</span>,<span class="dt">args=</span><span class="kw">c</span>(sra_files[i],</a>
-<a class="sourceLine" id="cb15-6" data-line-number="6">                                                              <span class="st">&#39;-O&#39;</span>, sra_output,</a>
-<a class="sourceLine" id="cb15-7" data-line-number="7">                                                              <span class="st">&#39;--gzip&#39;</span>,</a>
-<a class="sourceLine" id="cb15-8" data-line-number="8">                                                              <span class="st">&#39;--clip&#39;</span>,</a>
-<a class="sourceLine" id="cb15-9" data-line-number="9">                                                              <span class="st">&#39;--skip-technical&#39;</span>,</a>
-<a class="sourceLine" id="cb15-10" data-line-number="10">                                                              <span class="st">&#39;--dumpbase&#39;</span>))</a></code></pre></div>
-<p>And now we can check:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">fqs &lt;-<span class="st"> </span><span class="kw">list.files</span>(sra_output,<span class="dt">full.names=</span><span class="ot">TRUE</span>)</a>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">sra_output &lt;-<span class="st"> </span><span class="kw">tempdir</span>()</a>
 <a class="sourceLine" id="cb16-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3">FASTQ &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(fqs,<span class="dt">format=</span><span class="st">&#39;fastq&#39;</span>)</a>
-<a class="sourceLine" id="cb16-4" data-line-number="4">FASTQ</a></code></pre></div>
+<a class="sourceLine" id="cb16-3" data-line-number="3">sra_files &lt;-<span class="st"> </span><span class="kw">list.files</span>(sra_dir,<span class="dt">full.names=</span><span class="ot">TRUE</span>,<span class="dt">pattern=</span><span class="st">&#39;</span><span class="ch">\\</span><span class="st">.sra$&#39;</span>)</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(sra_files)) <span class="kw">system2</span>(<span class="st">&#39;fastq-dump&#39;</span>,<span class="dt">args=</span><span class="kw">c</span>(sra_files[i],</a>
+<a class="sourceLine" id="cb16-6" data-line-number="6">                                                              <span class="st">&#39;-O&#39;</span>, sra_output,</a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">                                                              <span class="st">&#39;--gzip&#39;</span>,</a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">                                                              <span class="st">&#39;--clip&#39;</span>,</a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">                                                              <span class="st">&#39;--skip-technical&#39;</span>,</a>
+<a class="sourceLine" id="cb16-10" data-line-number="10">                                                              <span class="st">&#39;--dumpbase&#39;</span>))</a></code></pre></div>
+<p>And now we can check:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">fqs &lt;-<span class="st"> </span><span class="kw">list.files</span>(sra_output,<span class="dt">full.names=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">FASTQ &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(fqs,<span class="dt">format=</span><span class="st">&#39;fastq&#39;</span>)</a>
+<a class="sourceLine" id="cb17-4" data-line-number="4">FASTQ</a></code></pre></div>
 <p>Note the header names; they’re simply the SRR ids. You’d have to the sra metadata (see above) to match these to specific samples. For example,</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">sample_info &lt;-<span class="st"> </span><span class="kw">getSRA</span>(<span class="dt">search_terms=</span><span class="st">&#39;SRR1635768&#39;</span>, <span class="dt">out_types=</span><span class="kw">c</span>(<span class="st">&#39;sample&#39;</span>),sra_con)</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw">str</span>(sample_info)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">sample_info &lt;-<span class="st"> </span><span class="kw">getSRA</span>(<span class="dt">search_terms=</span><span class="st">&#39;SRR1635768&#39;</span>, <span class="dt">out_types=</span><span class="kw">c</span>(<span class="st">&#39;sample&#39;</span>),sra_con)</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">str</span>(sample_info)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    1 obs. of  10 variables:
 ##  $ sample_alias      : chr &quot;SKBTI-0325&quot;
 ##  $ sample            : chr &quot;SRS734393&quot;
@@ -420,14 +421,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fastq-dump-for-paired-end-reads" class="section level3">
 <h3><span class="header-section-number">6.0.1</span> Fastq Dump for Paired End Reads</h3>
 <p>It should be noted that simply using the fastq-dump command as above works only if your data <em>does not consist of paired end reads</em>. If you happen to have paired end reads, then the following arguments must be added to the fastq-dump call:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(sra_files)) <span class="kw">system2</span>(<span class="st">&#39;fastq-dump&#39;</span>,<span class="dt">args=</span><span class="kw">c</span>(sra_files[i],</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">                                                              <span class="st">&#39;-O&#39;</span>, sra_output,</a>
-<a class="sourceLine" id="cb19-3" data-line-number="3">                                                              <span class="st">&#39;--gzip&#39;</span>,</a>
-<a class="sourceLine" id="cb19-4" data-line-number="4">                                                              <span class="st">&#39;--clip&#39;</span>,</a>
-<a class="sourceLine" id="cb19-5" data-line-number="5">                                                              <span class="st">&#39;--skip-technical&#39;</span>,</a>
-<a class="sourceLine" id="cb19-6" data-line-number="6">                                                              <span class="st">&#39;--dumpbase&#39;</span>,</a>
-<a class="sourceLine" id="cb19-7" data-line-number="7">                                                              <span class="st">&#39;--split-files&#39;</span>,</a>
-<a class="sourceLine" id="cb19-8" data-line-number="8">                                                              <span class="st">&#39;--readids&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(sra_files)) <span class="kw">system2</span>(<span class="st">&#39;fastq-dump&#39;</span>,<span class="dt">args=</span><span class="kw">c</span>(sra_files[i],</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">                                                              <span class="st">&#39;-O&#39;</span>, sra_output,</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">                                                              <span class="st">&#39;--gzip&#39;</span>,</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4">                                                              <span class="st">&#39;--clip&#39;</span>,</a>
+<a class="sourceLine" id="cb20-5" data-line-number="5">                                                              <span class="st">&#39;--skip-technical&#39;</span>,</a>
+<a class="sourceLine" id="cb20-6" data-line-number="6">                                                              <span class="st">&#39;--dumpbase&#39;</span>,</a>
+<a class="sourceLine" id="cb20-7" data-line-number="7">                                                              <span class="st">&#39;--split-files&#39;</span>,</a>
+<a class="sourceLine" id="cb20-8" data-line-number="8">                                                              <span class="st">&#39;--readids&#39;</span>))</a></code></pre></div>
 <p>For more information, see <a href="https://edwards.sdsu.edu/research/fastq-dump/" class="uri">https://edwards.sdsu.edu/research/fastq-dump/</a></p>
 
 </div>

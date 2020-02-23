@@ -1465,12 +1465,14 @@ which in terms of $\nu^2$ is
 
 ## Dirichlet Distribution
 
-```{r}
+```{r, message=F, warning=F,echo=F}
 library(tidyverse)
 library(ggtern)
 library(gtools)
 library(cowplot)
+```
 
+```{r}
 dsim <- function(alpha=c(1,1,1),draws){
   
   if (length(alpha)==1) alpha <- rep(alpha,3)

@@ -65,9 +65,11 @@ if (postm > postf) "M" else "F"
 
 ## SVM
 
-```{r}
+```{r, message=F, warning=F,echo=F}
 library(kernlab)
+```
 
+```{r}
 data(iris)
 train <- iris
 train$y <-ifelse(train[,5]=="setosa", 1, -1)
@@ -297,9 +299,11 @@ mu2
 p
 ```
 
-```{r}
+```{r, message=F, warning=F,echo=F}
 library(tidyverse)
+```
 
+```{r}
 iter <- 1000
 mu1_vector <- vector(length=iter)
 mu2_vector <- vector(length=iter)
