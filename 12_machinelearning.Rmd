@@ -825,7 +825,7 @@ irls <- function(X,y,tol=1e-6){
 }
 ```
 
-## Neural Netork
+## Neural Network
 
 ```{python,eval=FALSE}
 import numpy as np
