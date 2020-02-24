@@ -74,8 +74,6 @@ cut_memoized <- function(prices,length){
 
 ```{r}
 cut_memoized(p,5)
-cut_memoized(p,15)
-cut_memoized(p,20)
 ```
 
 ```{r}

@@ -1,4 +1,7 @@
-#!/usr/bin/env Rscript
+#!/bin/bash
 
-bookdown::render_book(".", "bookdown::gitbook", new_session=TRUE)
-bookdown::render_book(".", "bookdown::pdf_book", new_session=TRUE)
+Rscript -e 'bookdown::render_book("index.Rmd","bookdown::pdf_book")'
+Rscript -e 'bookdown::render_book("index.Rmd","bookdown::gitbook")'
+rm map.tsv* file*.txt file*.html file*.log
+
+exit 0

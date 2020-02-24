@@ -10,10 +10,10 @@
 
   <meta property="og:title" content="Chapter 10 Multiple Comparisons | Worked Bioninformatics, Statistics, and Machine Learning Examples" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://sw1.github.io/teaching/" />
   
   <meta property="og:description" content="Code, notes, lectures, and research that should be helpful for learning purposes." />
-  
+  <meta name="github-repo" content="sw1/teaching" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 10 Multiple Comparisons | Worked Bioninformatics, Statistics, and Machine Learning Examples" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Stephen Woloszynek" />
 
 
-<meta name="date" content="2020-02-22" />
+<meta name="date" content="2020-02-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,66 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -128,7 +103,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li></li>
+<li>Data Science Examples</li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -259,7 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.9.3" data-path="ml.html"><a href="ml.html#stick-breaking"><i class="fa fa-check"></i><b>13.9.3</b> Stick Breaking</a></li>
 </ul></li>
 <li class="chapter" data-level="13.10" data-path="ml.html"><a href="ml.html#iteratively-reweighted-least-squares"><i class="fa fa-check"></i><b>13.10</b> Iteratively Reweighted Least Squares</a></li>
-<li class="chapter" data-level="13.11" data-path="ml.html"><a href="ml.html#neural-netork"><i class="fa fa-check"></i><b>13.11</b> Neural Netork</a></li>
+<li class="chapter" data-level="13.11" data-path="ml.html"><a href="ml.html#neural-network"><i class="fa fa-check"></i><b>13.11</b> Neural Network</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/sw1/" target="blank">Published by Stephen Woloszynek</a></li>
@@ -283,29 +258,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="multcomp" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Multiple Comparisons</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(shiny)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(shiny)</code></pre></div>
 <div id="hypothesis-testing-and-power" class="section level2">
 <h2><span class="header-section-number">10.1</span> Hypothesis Testing and Power</h2>
 <p>When we perform a statistical hypothesis test, we measure a given effect, assess its probability of occuring given a null hypothesis <span class="math inline">\(H_0\)</span> (i.e., the hypothesis that there is <em>no</em> relationship between our test groupings), and reject said null if the probability falls below a particular threshold. We “accept” <span class="math inline">\(H_1\)</span> and consider this test to be <em>statistically significant</em>. We aren’t always right, however; hence, hypothesis testing is prone to <em>false positives (type I errors) and false negatives (type II errors)</em>:</p>
 <table>
 <thead>
 <tr class="header">
-<th></th>
-<th><strong>Reject</strong> <span class="math inline">\(H_0\)</span></th>
-<th><strong>Reject</strong> <span class="math inline">\(H_1\)</span></th>
+<th align="left"></th>
+<th align="left"><strong>Reject</strong> <span class="math inline">\(H_0\)</span></th>
+<th align="left"><strong>Reject</strong> <span class="math inline">\(H_1\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>False</strong> <span class="math inline">\(H_0\)</span></td>
-<td>True Positives (TP)</td>
-<td>False Negatives (FN)</td>
+<td align="left"><strong>False</strong> <span class="math inline">\(H_0\)</span></td>
+<td align="left">True Positives (TP)</td>
+<td align="left">False Negatives (FN)</td>
 </tr>
 <tr class="even">
-<td><strong>True</strong> <span class="math inline">\(H_0\)</span></td>
-<td>False Positives (FP)</td>
-<td>True Negatives (TN)</td>
+<td align="left"><strong>True</strong> <span class="math inline">\(H_0\)</span></td>
+<td align="left">False Positives (FP)</td>
+<td align="left">True Negatives (TN)</td>
 </tr>
 </tbody>
 </table>
@@ -316,87 +291,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="multiple-comparisons" class="section level2">
 <h2><span class="header-section-number">10.2</span> Multiple Comparisons</h2>
 <p>Whether you continue to work with large datasets or transition into the types of data problems one often sees stemming from benchwork, you’ll come across the multiple comparisons problem. Let’s focus on a situation common when working with DNA or RNA sequencing counts. Say we were given some <span class="math inline">\(N \times M\)</span> normalized gene table, where there are <span class="math inline">\(N=100\)</span> samples and <span class="math inline">\(M=10000\)</span> genes. Of these samples, 50 will belong to group 1 and the other 50 to group 2:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">N_grp1 &lt;-<span class="st"> </span><span class="dv">50</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">N_grp2 &lt;-<span class="st"> </span><span class="dv">50</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">N &lt;-<span class="st"> </span>N_grp1<span class="op">+</span>N_grp2</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">M &lt;-<span class="st"> </span><span class="dv">10000</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="kw">set.seed</span>(<span class="dv">453</span>)</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">TABLE_grp1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N_grp1<span class="op">*</span>M,<span class="dv">0</span>,<span class="dv">1</span>),N_grp1,M,<span class="dt">dimnames=</span><span class="kw">list</span>(<span class="kw">paste0</span>(<span class="st">&#39;sample&#39;</span>,<span class="dv">1</span><span class="op">:</span>N_grp1),<span class="kw">paste0</span>(<span class="st">&#39;gene&#39;</span>,<span class="dv">1</span><span class="op">:</span>M)))</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">TABLE_grp2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N_grp2<span class="op">*</span>M,<span class="dv">0</span>,<span class="dv">1</span>),N_grp2,M,<span class="dt">dimnames=</span><span class="kw">list</span>(<span class="kw">paste0</span>(<span class="st">&#39;sample&#39;</span>,<span class="dv">1</span><span class="op">:</span>N_grp2),<span class="kw">paste0</span>(<span class="st">&#39;gene&#39;</span>,<span class="dv">1</span><span class="op">:</span>M)))</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">TABLE &lt;-<span class="st"> </span><span class="kw">rbind</span>(TABLE_grp1,TABLE_grp2)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N_grp1 &lt;-<span class="st"> </span><span class="dv">50</span>
+N_grp2 &lt;-<span class="st"> </span><span class="dv">50</span>
+N &lt;-<span class="st"> </span>N_grp1+N_grp2
+M &lt;-<span class="st"> </span><span class="dv">10000</span>
+
+<span class="kw">set.seed</span>(<span class="dv">453</span>)
+TABLE_grp1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N_grp1*M,<span class="dv">0</span>,<span class="dv">1</span>),N_grp1,M,<span class="dt">dimnames=</span><span class="kw">list</span>(<span class="kw">paste0</span>(<span class="st">&#39;sample&#39;</span>,<span class="dv">1</span>:N_grp1),<span class="kw">paste0</span>(<span class="st">&#39;gene&#39;</span>,<span class="dv">1</span>:M)))
+TABLE_grp2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N_grp2*M,<span class="dv">0</span>,<span class="dv">1</span>),N_grp2,M,<span class="dt">dimnames=</span><span class="kw">list</span>(<span class="kw">paste0</span>(<span class="st">&#39;sample&#39;</span>,<span class="dv">1</span>:N_grp2),<span class="kw">paste0</span>(<span class="st">&#39;gene&#39;</span>,<span class="dv">1</span>:M)))
+TABLE &lt;-<span class="st"> </span><span class="kw">rbind</span>(TABLE_grp1,TABLE_grp2)</code></pre></div>
 <p>Now, let’s aim to identify important genes that are different between the two groups. We can do this by performing a t test between the groups for each gene sequentially. I’m going to hardcode the t test there in case you are unfamiliar.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">tstats &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&#39;double&#39;</span>,<span class="dt">length=</span>M)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="cf">for</span> (gene <span class="cf">in</span> <span class="kw">seq_len</span>(M)){</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">  grp1 &lt;-<span class="st"> </span>TABLE[<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>,gene]</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">  grp2 &lt;-<span class="st"> </span>TABLE[<span class="dv">51</span><span class="op">:</span><span class="dv">100</span>,gene]</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">  </a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">  mu1 &lt;-<span class="st"> </span><span class="kw">mean</span>(grp1)</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">  mu2 &lt;-<span class="st"> </span><span class="kw">mean</span>(grp2)</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">  </a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">  v1 &lt;-<span class="st"> </span><span class="kw">sum</span>((grp1 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(grp1))<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">  v2 &lt;-<span class="st"> </span><span class="kw">sum</span>((grp2 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(grp2))<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">  </a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">  s2 &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>(N<span class="dv">-2</span>))<span class="op">*</span>(v1 <span class="op">+</span><span class="st"> </span>v2)</a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">  se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(s2<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span>N_grp1 <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>N_grp2))</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">  </a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">  tstats[gene] &lt;-<span class="st"> </span>(mu1<span class="op">-</span>mu2)<span class="op">/</span>se</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16">}</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tstats &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&#39;double&#39;</span>,<span class="dt">length=</span>M)
+for (gene in <span class="kw">seq_len</span>(M)){
+  grp1 &lt;-<span class="st"> </span>TABLE[<span class="dv">1</span>:<span class="dv">50</span>,gene]
+  grp2 &lt;-<span class="st"> </span>TABLE[<span class="dv">51</span>:<span class="dv">100</span>,gene]
+  
+  mu1 &lt;-<span class="st"> </span><span class="kw">mean</span>(grp1)
+  mu2 &lt;-<span class="st"> </span><span class="kw">mean</span>(grp2)
+  
+  v1 &lt;-<span class="st"> </span><span class="kw">sum</span>((grp1 -<span class="st"> </span><span class="kw">mean</span>(grp1))^<span class="dv">2</span>)
+  v2 &lt;-<span class="st"> </span><span class="kw">sum</span>((grp2 -<span class="st"> </span><span class="kw">mean</span>(grp2))^<span class="dv">2</span>)
+  
+  s2 &lt;-<span class="st"> </span>(<span class="dv">1</span>/(N<span class="dv">-2</span>))*(v1 +<span class="st"> </span>v2)
+  se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(s2*(<span class="dv">1</span>/N_grp1 +<span class="st"> </span><span class="dv">1</span>/N_grp2))
+  
+  tstats[gene] &lt;-<span class="st"> </span>(mu1-mu2)/se
+}</code></pre></div>
 <p>And now we can plot it.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">qplot</span>(tstats,<span class="dt">geom=</span><span class="st">&#39;histogram&#39;</span>,<span class="dt">color=</span><span class="kw">I</span>(<span class="st">&#39;black&#39;</span>),<span class="dt">bins=</span><span class="dv">50</span>)</a></code></pre></div>
-<p><img src="bioinformatics_class_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(tstats,<span class="dt">geom=</span><span class="st">&#39;histogram&#39;</span>,<span class="dt">color=</span><span class="kw">I</span>(<span class="st">&#39;black&#39;</span>),<span class="dt">bins=</span><span class="dv">50</span>)</code></pre></div>
+<p><img src="09_multiple_comparisons_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Clearly the t statistics are normally distributed. The typical approach with t tests is to perform a hypothesis test at the 5% significance level, such that we reject any null hypothesis with t statistics more than 2 standard deviations from the mode in either direction of this distribution. We use 2 standard deviations because qnorm(0.975) is 1.96 and qnorm(0.025) is -1.96:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">qplot</span>(tstats,<span class="dt">geom=</span><span class="st">&#39;histogram&#39;</span>,<span class="dt">color=</span><span class="kw">I</span>(<span class="st">&#39;black&#39;</span>),<span class="dt">bins=</span><span class="dv">50</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">qnorm</span>(<span class="fl">0.025</span>),<span class="dt">linetype=</span><span class="dv">2</span>,<span class="dt">color=</span><span class="st">&#39;red&#39;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">qnorm</span>(<span class="fl">0.975</span>),<span class="dt">linetype=</span><span class="dv">2</span>,<span class="dt">color=</span><span class="st">&#39;red&#39;</span>)</a></code></pre></div>
-<p><img src="bioinformatics_class_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(tstats,<span class="dt">geom=</span><span class="st">&#39;histogram&#39;</span>,<span class="dt">color=</span><span class="kw">I</span>(<span class="st">&#39;black&#39;</span>),<span class="dt">bins=</span><span class="dv">50</span>) +
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">qnorm</span>(<span class="fl">0.025</span>),<span class="dt">linetype=</span><span class="dv">2</span>,<span class="dt">color=</span><span class="st">&#39;red&#39;</span>) +
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">qnorm</span>(<span class="fl">0.975</span>),<span class="dt">linetype=</span><span class="dv">2</span>,<span class="dt">color=</span><span class="st">&#39;red&#39;</span>)</code></pre></div>
+<p><img src="09_multiple_comparisons_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>It should be apparent that there are quite a few significant genes. If you were paying attention to how our groups were generated, this should be surprising to you. We generated both groups from the <em>same</em> normal distribution. Nevertheless, we still have a ton of significant genes:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">sum</span>(tstats<span class="op">&lt;</span><span class="kw">qnorm</span>(<span class="fl">0.025</span>) <span class="op">|</span><span class="st"> </span>tstats<span class="op">&gt;</span><span class="kw">qnorm</span>(<span class="fl">0.975</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(tstats&lt;<span class="kw">qnorm</span>(<span class="fl">0.025</span>) |<span class="st"> </span>tstats&gt;<span class="kw">qnorm</span>(<span class="fl">0.975</span>))</code></pre></div>
 <pre><code>## [1] 530</code></pre>
 <p>So over 500 genes were significant despite the fact that we know there is no underlying effect. Well, this is actually quite consistent with the defiinition of a p value. Given a typical hypothesis test, we reject the null if the probability of the observation is less than the probability of the observation occuring assuming the null hypothesis is true. In other words, we reject the claim that there is no statistical effect if our p value is less than (in absolute value) <span class="math inline">\(\alpha\)</span>, the probability of a statistical effect due to random sampling variation. Therefore, because there are 10,000 genes and hence we perform 10,000 t tests, givin an <span class="math inline">\(\alpha\)</span> of 0.05, we should expect about <span class="math inline">\(0.05 \times 10000 = 500\)</span> significant t statistics due to random sampling variation alone, which is the case here.</p>
 <p>So that’s all well and good. We now know that if we set <span class="math inline">\(\alpha\)</span> at a particular level, given our null and sample size, we should expect some false positives. But is that enough information? Let’s rerun the above model, but now with an actual difference between groups:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">N_grp1 &lt;-<span class="st"> </span><span class="dv">50</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">N_grp2 &lt;-<span class="st"> </span><span class="dv">50</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">N &lt;-<span class="st"> </span>N_grp1<span class="op">+</span>N_grp2</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">M &lt;-<span class="st"> </span><span class="dv">10000</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="kw">set.seed</span>(<span class="dv">65</span>)</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">TABLE_grp1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N_grp1<span class="op">*</span>M,.<span class="dv">25</span>,<span class="dv">2</span>),N_grp1,M,<span class="dt">dimnames=</span><span class="kw">list</span>(<span class="kw">paste0</span>(<span class="st">&#39;sample&#39;</span>,<span class="dv">1</span><span class="op">:</span>N_grp1),<span class="kw">paste0</span>(<span class="st">&#39;gene&#39;</span>,<span class="dv">1</span><span class="op">:</span>M)))</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8">TABLE_grp2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N_grp2<span class="op">*</span>M,<span class="op">-</span>.<span class="dv">25</span>,<span class="dv">2</span>),N_grp2,M,<span class="dt">dimnames=</span><span class="kw">list</span>(<span class="kw">paste0</span>(<span class="st">&#39;sample&#39;</span>,<span class="dv">1</span><span class="op">:</span>N_grp2),<span class="kw">paste0</span>(<span class="st">&#39;gene&#39;</span>,<span class="dv">1</span><span class="op">:</span>M)))</a>
-<a class="sourceLine" id="cb8-9" data-line-number="9">TABLE &lt;-<span class="st"> </span><span class="kw">rbind</span>(TABLE_grp1,TABLE_grp2)</a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11">tstats &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&#39;double&#39;</span>,<span class="dt">length=</span>M)</a>
-<a class="sourceLine" id="cb8-12" data-line-number="12">tstats2 &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&#39;double&#39;</span>,<span class="dt">length=</span>M)</a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="cf">for</span> (gene <span class="cf">in</span> <span class="kw">seq_len</span>(M)){</a>
-<a class="sourceLine" id="cb8-14" data-line-number="14">  grp1 &lt;-<span class="st"> </span>TABLE[<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>,gene]</a>
-<a class="sourceLine" id="cb8-15" data-line-number="15">  grp2 &lt;-<span class="st"> </span>TABLE[<span class="dv">51</span><span class="op">:</span><span class="dv">100</span>,gene]</a>
-<a class="sourceLine" id="cb8-16" data-line-number="16">  </a>
-<a class="sourceLine" id="cb8-17" data-line-number="17">  mu1 &lt;-<span class="st"> </span><span class="kw">mean</span>(grp1)</a>
-<a class="sourceLine" id="cb8-18" data-line-number="18">  mu2 &lt;-<span class="st"> </span><span class="kw">mean</span>(grp2)</a>
-<a class="sourceLine" id="cb8-19" data-line-number="19">  </a>
-<a class="sourceLine" id="cb8-20" data-line-number="20">  v1 &lt;-<span class="st"> </span><span class="kw">sum</span>((grp1 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(grp1))<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb8-21" data-line-number="21">  v2 &lt;-<span class="st"> </span><span class="kw">sum</span>((grp2 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(grp2))<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb8-22" data-line-number="22">  </a>
-<a class="sourceLine" id="cb8-23" data-line-number="23">  s2 &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>(N<span class="dv">-2</span>))<span class="op">*</span>(v1 <span class="op">+</span><span class="st"> </span>v2)</a>
-<a class="sourceLine" id="cb8-24" data-line-number="24">  se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(s2<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span>N_grp1 <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>N_grp2))</a>
-<a class="sourceLine" id="cb8-25" data-line-number="25">  </a>
-<a class="sourceLine" id="cb8-26" data-line-number="26">  tstats[gene] &lt;-<span class="st"> </span>(mu1<span class="op">-</span>mu2)<span class="op">/</span>se</a>
-<a class="sourceLine" id="cb8-27" data-line-number="27">}</a>
-<a class="sourceLine" id="cb8-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb8-29" data-line-number="29"><span class="kw">sum</span>(tstats<span class="op">&lt;</span><span class="kw">qnorm</span>(<span class="fl">0.025</span>) <span class="op">|</span><span class="st"> </span>tstats<span class="op">&gt;</span><span class="kw">qnorm</span>(<span class="fl">0.975</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N_grp1 &lt;-<span class="st"> </span><span class="dv">50</span>
+N_grp2 &lt;-<span class="st"> </span><span class="dv">50</span>
+N &lt;-<span class="st"> </span>N_grp1+N_grp2
+M &lt;-<span class="st"> </span><span class="dv">10000</span>
+
+<span class="kw">set.seed</span>(<span class="dv">65</span>)
+TABLE_grp1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N_grp1*M,.<span class="dv">25</span>,<span class="dv">2</span>),N_grp1,M,<span class="dt">dimnames=</span><span class="kw">list</span>(<span class="kw">paste0</span>(<span class="st">&#39;sample&#39;</span>,<span class="dv">1</span>:N_grp1),<span class="kw">paste0</span>(<span class="st">&#39;gene&#39;</span>,<span class="dv">1</span>:M)))
+TABLE_grp2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N_grp2*M,-.<span class="dv">25</span>,<span class="dv">2</span>),N_grp2,M,<span class="dt">dimnames=</span><span class="kw">list</span>(<span class="kw">paste0</span>(<span class="st">&#39;sample&#39;</span>,<span class="dv">1</span>:N_grp2),<span class="kw">paste0</span>(<span class="st">&#39;gene&#39;</span>,<span class="dv">1</span>:M)))
+TABLE &lt;-<span class="st"> </span><span class="kw">rbind</span>(TABLE_grp1,TABLE_grp2)
+
+tstats &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&#39;double&#39;</span>,<span class="dt">length=</span>M)
+tstats2 &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&#39;double&#39;</span>,<span class="dt">length=</span>M)
+for (gene in <span class="kw">seq_len</span>(M)){
+  grp1 &lt;-<span class="st"> </span>TABLE[<span class="dv">1</span>:<span class="dv">50</span>,gene]
+  grp2 &lt;-<span class="st"> </span>TABLE[<span class="dv">51</span>:<span class="dv">100</span>,gene]
+  
+  mu1 &lt;-<span class="st"> </span><span class="kw">mean</span>(grp1)
+  mu2 &lt;-<span class="st"> </span><span class="kw">mean</span>(grp2)
+  
+  v1 &lt;-<span class="st"> </span><span class="kw">sum</span>((grp1 -<span class="st"> </span><span class="kw">mean</span>(grp1))^<span class="dv">2</span>)
+  v2 &lt;-<span class="st"> </span><span class="kw">sum</span>((grp2 -<span class="st"> </span><span class="kw">mean</span>(grp2))^<span class="dv">2</span>)
+  
+  s2 &lt;-<span class="st"> </span>(<span class="dv">1</span>/(N<span class="dv">-2</span>))*(v1 +<span class="st"> </span>v2)
+  se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(s2*(<span class="dv">1</span>/N_grp1 +<span class="st"> </span><span class="dv">1</span>/N_grp2))
+  
+  tstats[gene] &lt;-<span class="st"> </span>(mu1-mu2)/se
+}
+
+<span class="kw">sum</span>(tstats&lt;<span class="kw">qnorm</span>(<span class="fl">0.025</span>) |<span class="st"> </span>tstats&gt;<span class="kw">qnorm</span>(<span class="fl">0.975</span>))</code></pre></div>
 <pre><code>## [1] 2386</code></pre>
 <p>Now the two groups have different normlized gene values, which leads to over 2000 significant genes. We know from before that about 500 should be due to random sampling variation, but how do we know which ones? This brings us to methods to adjust our results such that we can interpret them more easily.</p>
 <div id="bonferroni" class="section level3">
 <h3><span class="header-section-number">10.2.1</span> Bonferroni</h3>
 <p>We’ll start with Bonferroni correction. First thing we’ll do is calculate the p values for all of those t statistics:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">pvals &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">pt</span>(tstats,N<span class="dv">-2</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pvals &lt;-<span class="st"> </span><span class="dv">2</span>*(<span class="dv">1</span>-<span class="kw">pt</span>(tstats,N<span class="dv">-2</span>))</code></pre></div>
 <p>Let’s continue to assume <span class="math inline">\(\alpha=0.05\)</span>. Now, we should have <em>about</em> the same number of significant genes as mentioned before:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">alpha &lt;-<span class="st"> </span><span class="fl">.05</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">sum</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alpha &lt;-<span class="st"> </span>.<span class="dv">05</span>
+<span class="kw">sum</span>(pvals &lt;<span class="st"> </span>alpha)</code></pre></div>
 <pre><code>## [1] 2309</code></pre>
 <p>Bonferroni corrects for multiple comparisons by controlling for the <em>family-wise error rate (FWER)</em> – the probability of making at least one false positive – by simply dividing <span class="math inline">\(\alpha\)</span> by the number of tests performed, which gives a new, adjusted <span class="math inline">\(\alpha\)</span> to use as a significance threshold:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">alpha_bonf &lt;-<span class="st"> </span>alpha<span class="op">/</span>M</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">sum</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha_bonf)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alpha_bonf &lt;-<span class="st"> </span>alpha/M
+<span class="kw">sum</span>(pvals &lt;<span class="st"> </span>alpha_bonf)</code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>This gives us only 2 significant genes. We should expect more given the way we set the group means. The issue with using Bonferonni here is that it’s quite <strong>conservative</strong>, and tends to really <strong>decrease statistical power</strong> when there are a lot of tests, as in this case. Consequently, we are likely to see a ton of <strong>false negatives</strong>. In the cases where we perform only a few tests (say 10 or less), Bonferonni is quick and easy, and probably appropriate, but definitely not here.</p>
 </div>
@@ -407,78 +382,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <table>
 <thead>
 <tr class="header">
-<th></th>
-<th><strong>Reject</strong> <span class="math inline">\(H_0\)</span></th>
-<th><strong>Reject</strong> <span class="math inline">\(H_1\)</span></th>
-<th><strong>Total</strong></th>
+<th align="left"></th>
+<th align="left"><strong>Reject</strong> <span class="math inline">\(H_0\)</span></th>
+<th align="left"><strong>Reject</strong> <span class="math inline">\(H_1\)</span></th>
+<th align="left"><strong>Total</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>False</strong> <span class="math inline">\(H_0\)</span></td>
-<td>True Positives (TP)</td>
-<td>False Negatives (FN)</td>
-<td>Actual Positives (AP)</td>
+<td align="left"><strong>False</strong> <span class="math inline">\(H_0\)</span></td>
+<td align="left">True Positives (TP)</td>
+<td align="left">False Negatives (FN)</td>
+<td align="left">Actual Positives (AP)</td>
 </tr>
 <tr class="even">
-<td><strong>True</strong> <span class="math inline">\(H_0\)</span></td>
-<td>False Positives (FP)</td>
-<td>True Negatives (TN)</td>
-<td>Actual Negatives (AN)</td>
+<td align="left"><strong>True</strong> <span class="math inline">\(H_0\)</span></td>
+<td align="left">False Positives (FP)</td>
+<td align="left">True Negatives (TN)</td>
+<td align="left">Actual Negatives (AN)</td>
 </tr>
 <tr class="odd">
-<td><strong>Total</strong></td>
-<td>Called Positives (CP)</td>
-<td>Called Negatives (CN)</td>
-<td>Total (TOTAL)</td>
+<td align="left"><strong>Total</strong></td>
+<td align="left">Called Positives (CP)</td>
+<td align="left">Called Negatives (CN)</td>
+<td align="left">Total (TOTAL)</td>
 </tr>
 </tbody>
 </table>
-<p>we can rewrite the FDR as
-<span class="math display">\[
+<p>we can rewrite the FDR as <span class="math display">\[
 \text{FDR}=\mathop{\mathbb{E}}\left[\frac{\text{FP}}{\text{CP}}\right]
 \]</span>.</p>
 <p>Assuming all of our tests are independent, and given a significance threshold <span class="math inline">\(\alpha\)</span>, the FDR has the following property</p>
 <p><span class="math display">\[
 \text{FDR}=\mathop{\mathbb{E}}\left[\frac{\text{FP}}{\text{CP}}\right] \le \alpha\frac{\text{AN}}{\text{TOTAL}} \le \alpha
-\]</span>
-Below is a figure to show what FDR correction will ultimately do to our dataset we generated above.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">alpha &lt;-<span class="st"> </span><span class="fl">.05</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">gene=</span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(pvals),</a>
-<a class="sourceLine" id="cb15-3" data-line-number="3">                 <span class="dt">p=</span><span class="kw">sort</span>(pvals),</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4">                 <span class="dt">fit=</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(pvals))<span class="op">*</span>alpha<span class="op">/</span>M)</a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="kw">ggplot</span>(df,<span class="kw">aes</span>(gene,p)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">sum</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha),<span class="dt">size=</span>.<span class="dv">5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span>alpha<span class="op">*</span>M,<span class="dt">size=</span>.<span class="dv">5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(gene,fit),<span class="dt">color=</span><span class="st">&#39;red&#39;</span>,<span class="dt">linetype=</span><span class="dv">3</span>,<span class="dt">size=</span>.<span class="dv">5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span>.<span class="dv">3</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="st">  </span><span class="kw">scale_x_log10</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_log10</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&#39;Genes&#39;</span>,<span class="dt">y=</span><span class="st">&#39;Log10 p Value&#39;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,<span class="kw">sum</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha),<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,alpha<span class="op">*</span>M,<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha*M&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>)</a></code></pre></div>
-<p><img src="bioinformatics_class_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+\]</span> Below is a figure to show what FDR correction will ultimately do to our dataset we generated above.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alpha &lt;-<span class="st"> </span>.<span class="dv">05</span>
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">gene=</span><span class="dv">1</span>:<span class="kw">length</span>(pvals),
+                 <span class="dt">p=</span><span class="kw">sort</span>(pvals),
+                 <span class="dt">fit=</span>(<span class="dv">1</span>:<span class="kw">length</span>(pvals))*alpha/M)
+<span class="kw">ggplot</span>(df,<span class="kw">aes</span>(gene,p)) +
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">sum</span>(pvals &lt;<span class="st"> </span>alpha),<span class="dt">size=</span>.<span class="dv">5</span>) +
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span>alpha*M,<span class="dt">size=</span>.<span class="dv">5</span>) +
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(gene,fit),<span class="dt">color=</span><span class="st">&#39;red&#39;</span>,<span class="dt">linetype=</span><span class="dv">3</span>,<span class="dt">size=</span>.<span class="dv">5</span>) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span>.<span class="dv">3</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_x_log10</span>() +<span class="st"> </span><span class="kw">scale_y_log10</span>() +<span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&#39;Genes&#39;</span>,<span class="dt">y=</span><span class="st">&#39;Log10 p Value&#39;</span>) +
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,<span class="kw">sum</span>(pvals &lt;<span class="st"> </span>alpha),<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>) +
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,alpha*M,<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha*M&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>)</code></pre></div>
+<p><img src="09_multiple_comparisons_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>The genes are ordered in terms of increasing p value, with everything on log scale. The vertical lines shows the number of genes with <span class="math inline">\(p&lt;\alpha\)</span> and the number of genes we should expect based on random sampling alone, <span class="math inline">\(\alpha*M\)</span>, where M is our total number of genes. The red diagonal line is the gene index multiplied by <span class="math inline">\(\alpha/\text{TOTAL}\)</span>. This gives us the FDR threshold. Any genes that fall <em>below</em> this line are considered significant after FDR adjustment.</p>
 <p>To perform this adjustment, we simply choose an alpha, then rank our M genes in terms of increasing p value and identify the largest p value for genes where</p>
 <p><span class="math display">\[
 p_\text{gene} &lt; \alpha \frac{\text{rank}}{M}
-\]</span>
-This becomes our new significance threshold:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">alpha_fdr &lt;-<span class="st"> </span><span class="kw">max</span>(df<span class="op">$</span>p[df<span class="op">$</span>p <span class="op">&lt;</span><span class="st"> </span>alpha<span class="op">*</span>df<span class="op">$</span>gene<span class="op">/</span>M])</a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="kw">sum</span>(pvals<span class="op">&lt;</span>alpha_fdr)</a></code></pre></div>
+\]</span> This becomes our new significance threshold:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alpha_fdr &lt;-<span class="st"> </span><span class="kw">max</span>(df$p[df$p &lt;<span class="st"> </span>alpha*df$gene/M])
+<span class="kw">sum</span>(pvals&lt;alpha_fdr)</code></pre></div>
 <pre><code>## [1] 222</code></pre>
 <p>This results in far more significant genes than the Bonferroni methods, but still less than half of what we’d expect from random sampling variation.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">ggplot</span>(df,<span class="kw">aes</span>(gene,p)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">sum</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha),<span class="dt">size=</span>.<span class="dv">5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span>alpha<span class="op">*</span>M,<span class="dt">size=</span>.<span class="dv">5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">sum</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha_bonf),<span class="dt">size=</span>.<span class="dv">5</span>,<span class="dt">color=</span><span class="st">&#39;blue&#39;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">sum</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha_fdr),<span class="dt">size=</span>.<span class="dv">5</span>,<span class="dt">color=</span><span class="st">&#39;darkgreen&#39;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(gene,fit),<span class="dt">color=</span><span class="st">&#39;red&#39;</span>,<span class="dt">linetype=</span><span class="dv">3</span>,<span class="dt">size=</span>.<span class="dv">5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb18-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span>.<span class="dv">3</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="st">  </span><span class="kw">scale_x_log10</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_log10</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&#39;Genes&#39;</span>,<span class="dt">y=</span><span class="st">&#39;Log10 p Value&#39;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb18-9" data-line-number="9"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,<span class="kw">sum</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha),<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb18-10" data-line-number="10"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,alpha<span class="op">*</span>M,<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha*M&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb18-11" data-line-number="11"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,<span class="kw">sum</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha_bonf),<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha[bonf]&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb18-12" data-line-number="12"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,<span class="kw">sum</span>(pvals <span class="op">&lt;</span><span class="st"> </span>alpha_fdr),<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha[fdr]&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>)</a></code></pre></div>
-<p><img src="bioinformatics_class_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df,<span class="kw">aes</span>(gene,p)) +
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">sum</span>(pvals &lt;<span class="st"> </span>alpha),<span class="dt">size=</span>.<span class="dv">5</span>) +
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span>alpha*M,<span class="dt">size=</span>.<span class="dv">5</span>) +
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">sum</span>(pvals &lt;<span class="st"> </span>alpha_bonf),<span class="dt">size=</span>.<span class="dv">5</span>,<span class="dt">color=</span><span class="st">&#39;blue&#39;</span>) +
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">sum</span>(pvals &lt;<span class="st"> </span>alpha_fdr),<span class="dt">size=</span>.<span class="dv">5</span>,<span class="dt">color=</span><span class="st">&#39;darkgreen&#39;</span>) +
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(gene,fit),<span class="dt">color=</span><span class="st">&#39;red&#39;</span>,<span class="dt">linetype=</span><span class="dv">3</span>,<span class="dt">size=</span>.<span class="dv">5</span>) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span>.<span class="dv">3</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_x_log10</span>() +<span class="st"> </span><span class="kw">scale_y_log10</span>() +<span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&#39;Genes&#39;</span>,<span class="dt">y=</span><span class="st">&#39;Log10 p Value&#39;</span>) +
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,<span class="kw">sum</span>(pvals &lt;<span class="st"> </span>alpha),<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>) +
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,alpha*M,<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha*M&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>) +
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,<span class="kw">sum</span>(pvals &lt;<span class="st"> </span>alpha_bonf),<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha[bonf]&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>) +
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;label&#39;</span>,<span class="kw">sum</span>(pvals &lt;<span class="st"> </span>alpha_fdr),<span class="fl">1e-06</span>,<span class="dt">label=</span><span class="st">&#39;alpha[fdr]&#39;</span>,<span class="dt">parse=</span><span class="ot">TRUE</span>)</code></pre></div>
+<p><img src="09_multiple_comparisons_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -505,8 +477,8 @@ This becomes our new significance threshold:</p>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
-"facebook": true,
+"github": true,
+"facebook": false,
 "twitter": true,
 "linkedin": false,
 "weibo": false,
@@ -531,9 +503,9 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["bioinformatics_class.pdf", "bioinformatics_class.epub"],
+"download": ["bioinformatics.pdf"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });
@@ -544,7 +516,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

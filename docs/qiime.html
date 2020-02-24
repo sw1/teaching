@@ -10,10 +10,10 @@
 
   <meta property="og:title" content="Chapter 9 Qiime | Worked Bioninformatics, Statistics, and Machine Learning Examples" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://sw1.github.io/teaching/" />
   
   <meta property="og:description" content="Code, notes, lectures, and research that should be helpful for learning purposes." />
-  
+  <meta name="github-repo" content="sw1/teaching" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 9 Qiime | Worked Bioninformatics, Statistics, and Machine Learning Examples" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Stephen Woloszynek" />
 
 
-<meta name="date" content="2020-02-22" />
+<meta name="date" content="2020-02-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,66 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -128,7 +103,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li></li>
+<li>Data Science Examples</li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -259,7 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.9.3" data-path="ml.html"><a href="ml.html#stick-breaking"><i class="fa fa-check"></i><b>13.9.3</b> Stick Breaking</a></li>
 </ul></li>
 <li class="chapter" data-level="13.10" data-path="ml.html"><a href="ml.html#iteratively-reweighted-least-squares"><i class="fa fa-check"></i><b>13.10</b> Iteratively Reweighted Least Squares</a></li>
-<li class="chapter" data-level="13.11" data-path="ml.html"><a href="ml.html#neural-netork"><i class="fa fa-check"></i><b>13.11</b> Neural Netork</a></li>
+<li class="chapter" data-level="13.11" data-path="ml.html"><a href="ml.html#neural-network"><i class="fa fa-check"></i><b>13.11</b> Neural Network</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/sw1/" target="blank">Published by Stephen Woloszynek</a></li>
@@ -283,27 +258,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="qiime" class="section level1">
 <h1><span class="header-section-number">Chapter 9</span> Qiime</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(Biostrings)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(Biostrings)</code></pre></div>
 <p>First we need to use some qiime functions via the command line, so we’ll save them as variable names.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">validate_mapping_file &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/validate_mapping_file.py&#39;</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">split_libraries_fastq &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/split_libraries_fastq.py&#39;</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">count_seqs &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/count_seqs.py&#39;</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">extract_barcodes &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/extract_barcodes.py&#39;</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">pick_closed_reference_otus &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/pick_closed_reference_otus.py&#39;</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">core_diversity_analyses &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/core_diversity_analyses.py&#39;</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">make_emperor &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/make_emperor.py&#39;</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">biom &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/biom&#39;</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">validate_mapping_file &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/validate_mapping_file.py&#39;</span>
+split_libraries_fastq &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/split_libraries_fastq.py&#39;</span>
+count_seqs &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/count_seqs.py&#39;</span>
+extract_barcodes &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/extract_barcodes.py&#39;</span>
+pick_closed_reference_otus &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/pick_closed_reference_otus.py&#39;</span>
+core_diversity_analyses &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/core_diversity_analyses.py&#39;</span>
+make_emperor &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/make_emperor.py&#39;</span>
+biom &lt;-<span class="st"> &#39;/data/sw1/anaconda3/envs/qiime1/bin/biom&#39;</span></code></pre></div>
 <div id="otu-picking-1" class="section level2">
 <h2><span class="header-section-number">9.1</span> OTU Picking</h2>
 <p>This will be an introduction to QIIME. We’ll start by going command by command, and then at the end will be a submission script for proteus. This should give you two flavors of running QIIME, one from within R, should you choose to install QIIME locally, and one via Proteus.</p>
 <p>We’re going to use the dataset from the QIIME illumina tutorial, moving pictures, simply because it’s small and reliable. If you choose to install QIIME and worth through this locally, you can download the dataset by running the following command in bash, or you can simply go to the link and download it manually as well.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">svn checkout https<span class="op">:</span><span class="er">//</span>github.com<span class="op">/</span>sw1<span class="op">/</span>Bioinformatics<span class="op">/</span>trunk<span class="op">/</span>Data<span class="op">/</span>moving_pictures<span class="er">}</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">svn checkout https:<span class="er">//</span>github.com/sw1/Bioinformatics/trunk/Data/moving_pictures<span class="er">}</span></code></pre></div>
 <p>Once it’s downloaded, set the directly to a variable:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">data_dir &lt;-<span class="st"> &#39;data/data_moving_pictures&#39;</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_dir &lt;-<span class="st"> &#39;data/data_moving_pictures&#39;</span></code></pre></div>
 <p>Now, we have a large FASTQ file with a ton of sequences:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">FASTQ &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(data_dir,<span class="st">&#39;forward_reads.fastq.gz&#39;</span>),<span class="dt">format=</span><span class="st">&#39;fastq&#39;</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">FASTQ</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">FASTQ &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(data_dir,<span class="st">&#39;forward_reads.fastq.gz&#39;</span>),<span class="dt">format=</span><span class="st">&#39;fastq&#39;</span>)
+FASTQ</code></pre></div>
 <pre><code>##   A DNAStringSet instance of length 302581
 ##          width seq                                          names               
 ##      [1]   152 TACGNAGGATCCGAGCGTTAT...GGCAGGGGGGGATTGGTGTG HWI-EAS440_0386:1...
@@ -318,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [302580]   152 NACGTAGGGTGCGAGCGTTAA...GGGAGGTAGAACTCCACGTG HWI-EAS440_0386:6...
 ## [302581]   152 NACGTAGGTGGCAAGCGTTGT...GAGAGGTGGATTCATAGGAG HWI-EAS440_0386:6...</code></pre>
 <p>Note the sequence header names; they have an interesting format, for examples</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">HWI<span class="op">-</span>EAS440_<span class="dv">0386</span><span class="op">:</span><span class="dv">1</span><span class="op">:</span><span class="dv">23</span><span class="op">:</span><span class="dv">17547</span><span class="op">:</span><span class="dv">1423</span><span class="co">#0/1</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">HWI-EAS440_0386:<span class="dv">1</span>:<span class="dv">23</span>:<span class="dv">17547</span>:<span class="dv">1423</span><span class="co">#0/1</span></code></pre></div>
 <p>If you look at the figure below, you can see a detailed explaination of what this all means if you are interested, but it is information from illumina sequencing. Basically, when we sequence samples using illumina, we sequence multiple samples in a single flowcell lane to save money. These headers have some of that lane information encoded in them.</p>
 <div class="figure">
 <img src="figs/seq_id.png" alt="Seq id" />
@@ -326,7 +301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Because we are mixing samples within a lane, we need a way to keep track of the samples, such that we know which sequence belongs to Frank and which belongs to Emily, despite many of their sequences sharing a lane. The way we keep track is through barcoding, where we add a short nucleotide sequence to the adapters used in PCR amplification. We therefore create sequence libraries, with each library receiving its own barcode, perform sequencing, and then parse these libraries using our barcodes to reassign sequences to our original samples.</p>
 <p>Look at the metadata mapping file below. This contains all of the relevant sample information, as well as information associated with sequencing, particularly barcode information.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">MAP &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="kw">file.path</span>(data_dir,<span class="st">&#39;map.tsv&#39;</span>),<span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MAP &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="kw">file.path</span>(data_dir,<span class="st">&#39;map.tsv&#39;</span>),<span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)</code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   `#SampleID` = col_character(),
@@ -341,7 +316,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   DaysSinceExperimentStart = col_double(),
 ##   Description = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">MAP[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MAP[<span class="dv">1</span>:<span class="dv">5</span>,<span class="dv">1</span>:<span class="dv">5</span>]</code></pre></div>
 <pre><code>## # A tibble: 5 x 5
 ##   `#SampleID` BarcodeSequence LinkerPrimerSequence SampleType  Year
 ##   &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;                &lt;chr&gt;      &lt;dbl&gt;
@@ -351,11 +326,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 L1S208      CTGAGATACGCG    GTGCCAGCMGCCGCGGTAA  gut         2009
 ## 5 L1S76       ACTACGTGTGGT    GTGCCAGCMGCCGCGGTAA  gut         2009</code></pre>
 <p>We can see that each sample receives its own unique barcode:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">nrow</span>(MAP[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]) <span class="op">==</span><span class="st"> </span><span class="kw">nrow</span>(<span class="kw">unique</span>(MAP[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(MAP[,<span class="dv">1</span>:<span class="dv">2</span>]) ==<span class="st"> </span><span class="kw">nrow</span>(<span class="kw">unique</span>(MAP[,<span class="dv">1</span>:<span class="dv">2</span>]))</code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Now take a look at the barcode file:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">BARCODE &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(data_dir,<span class="st">&#39;barcodes.fastq.gz&#39;</span>),<span class="dt">format=</span><span class="st">&#39;fastq&#39;</span>)</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">BARCODE</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">BARCODE &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(data_dir,<span class="st">&#39;barcodes.fastq.gz&#39;</span>),<span class="dt">format=</span><span class="st">&#39;fastq&#39;</span>)
+BARCODE</code></pre></div>
 <pre><code>##   A DNAStringSet instance of length 302581
 ##          width seq                                          names               
 ##      [1]    12 ATGCAGCTCAGT                                 HWI-EAS440_0386:1...
@@ -370,36 +345,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [302580]    12 GATCTTCAGTAC                                 HWI-EAS440_0386:6...
 ## [302581]    12 GACAGCGTTGAC                                 HWI-EAS440_0386:6...</code></pre>
 <p>We can see that each barcode is assigned one of the header names we saw before. What we need to do now is break up this large fastq file that contains all of our sequence information into a new large file that has headers with unique <em>sample IDs</em> for each sequence, for example, Emily_1, Emily_2, and Emily_3 for 3 sequences belonging to Emily. We can easily do this in QIIME, but we first need to ensure that our mapping file is formatted correctly; otherwise, QIIME will not run. We can do that with the following command:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">system2</span>(validate_mapping_file,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-m&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;map.tsv&#39;</span>)))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system2</span>(validate_mapping_file,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-m&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;map.tsv&#39;</span>)))</code></pre></div>
 <p>Now, let’s make some bad mapping files to see what happens. First, let’s simply remove the hashtag in the first column name:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">MAP_bad1 &lt;-<span class="st"> </span>MAP</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw">colnames</span>(MAP_bad1)[<span class="dv">1</span>] &lt;-<span class="st"> &#39;SampleID&#39;</span></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb17-4" data-line-number="4">tmp &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="kw">write_delim</span>(MAP_bad1,<span class="dt">path=</span>tmp,<span class="dt">delim=</span><span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)</a>
-<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="kw">system2</span>(validate_mapping_file,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-m&#39;</span>,tmp))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MAP_bad1 &lt;-<span class="st"> </span>MAP
+<span class="kw">colnames</span>(MAP_bad1)[<span class="dv">1</span>] &lt;-<span class="st"> &#39;SampleID&#39;</span>
+
+tmp &lt;-<span class="st"> </span><span class="kw">tempfile</span>()
+<span class="kw">write_delim</span>(MAP_bad1,<span class="dt">path=</span>tmp,<span class="dt">delim=</span><span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)
+<span class="kw">system2</span>(validate_mapping_file,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-m&#39;</span>,tmp))</code></pre></div>
 <p>Now, look what happens if we don’t have a description column as the last column:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">MAP_bad2 &lt;-<span class="st"> </span>MAP</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2">MAP_bad2 &lt;-<span class="st"> </span>MAP_bad2[,<span class="op">-</span><span class="kw">ncol</span>(MAP_bad2)]</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb18-4" data-line-number="4">tmp &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</a>
-<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="kw">write_delim</span>(MAP_bad2,<span class="dt">path=</span>tmp,<span class="dt">delim=</span><span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)</a>
-<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="kw">system2</span>(validate_mapping_file,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-m&#39;</span>,tmp))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MAP_bad2 &lt;-<span class="st"> </span>MAP
+MAP_bad2 &lt;-<span class="st"> </span>MAP_bad2[,-<span class="kw">ncol</span>(MAP_bad2)]
+
+tmp &lt;-<span class="st"> </span><span class="kw">tempfile</span>()
+<span class="kw">write_delim</span>(MAP_bad2,<span class="dt">path=</span>tmp,<span class="dt">delim=</span><span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)
+<span class="kw">system2</span>(validate_mapping_file,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-m&#39;</span>,tmp))</code></pre></div>
 <p>And lastly, what if we used separate with commas instead of tabs:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">MAP_bad3 &lt;-<span class="st"> </span>MAP</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb19-3" data-line-number="3">tmp &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</a>
-<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="kw">write_delim</span>(MAP_bad3,<span class="dt">path=</span>tmp,<span class="dt">delim=</span><span class="st">&#39;,&#39;</span>)</a>
-<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="kw">system2</span>(validate_mapping_file,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-m&#39;</span>,tmp))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MAP_bad3 &lt;-<span class="st"> </span>MAP
+
+tmp &lt;-<span class="st"> </span><span class="kw">tempfile</span>()
+<span class="kw">write_delim</span>(MAP_bad3,<span class="dt">path=</span>tmp,<span class="dt">delim=</span><span class="st">&#39;,&#39;</span>)
+<span class="kw">system2</span>(validate_mapping_file,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-m&#39;</span>,tmp))</code></pre></div>
 <p>Given that we have a good mapping file, let’s actually demultiplex our data. The following QIIME command performs demultiplexing and also the subsequent quality filtering. It also tosses out sequences that have poor matches to a given barcode. All of these parameters we can adjust.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">out &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="kw">system2</span>(validate_mapping_file,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-m&#39;</span>,tmp,</a>
-<a class="sourceLine" id="cb20-3" data-line-number="3">                                     <span class="st">&#39;-o&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;map_out&#39;</span>)))</a>
-<a class="sourceLine" id="cb20-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="kw">system2</span>(split_libraries_fastq,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-o&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_1&#39;</span>),</a>
-<a class="sourceLine" id="cb20-6" data-line-number="6">                                     <span class="st">&#39;-i&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;forward_reads.fastq.gz&#39;</span>),</a>
-<a class="sourceLine" id="cb20-7" data-line-number="7">                                     <span class="st">&#39;-b&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;barcodes.fastq.gz&#39;</span>),</a>
-<a class="sourceLine" id="cb20-8" data-line-number="8">                                     <span class="st">&#39;-m&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;map.tsv&#39;</span>)))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out &lt;-<span class="st"> </span><span class="kw">tempfile</span>()
+<span class="kw">system2</span>(validate_mapping_file,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-m&#39;</span>,tmp,
+                                     <span class="st">&#39;-o&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;map_out&#39;</span>)))
+
+<span class="kw">system2</span>(split_libraries_fastq,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-o&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_1&#39;</span>),
+                                     <span class="st">&#39;-i&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;forward_reads.fastq.gz&#39;</span>),
+                                     <span class="st">&#39;-b&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;barcodes.fastq.gz&#39;</span>),
+                                     <span class="st">&#39;-m&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;map.tsv&#39;</span>)))</code></pre></div>
 <p>Now, there are a few noteable filtering arguments:</p>
 <ul>
 <li>phred_quality_threshold</li>
@@ -409,8 +384,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Phred score is defined as follows:</p>
 <p><span class="math display">\[ 
 Q=-10\log_{10}P 
-\]</span>
-where P is the probability of a base-call error; hence,</p>
+\]</span> where P is the probability of a base-call error; hence,</p>
 <p><span class="math display">\[
 P=10^{-Q/10}
 \]</span></p>
@@ -421,206 +395,206 @@ P=10^{-Q/10}
 <p class="caption">Phred offset</p>
 </div>
 <p>I’d argue that something along the lines of Q=20 or greater makes more sense. Here, we’ll truncate at consecutive stretches of base calls where each call has 1% probability of being an error.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">system2</span>(split_libraries_fastq,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-o&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_2&#39;</span>),</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">                                     <span class="st">&#39;-i&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;forward_reads.fastq.gz&#39;</span>),</a>
-<a class="sourceLine" id="cb21-3" data-line-number="3">                                     <span class="st">&#39;-b&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;barcodes.fastq.gz&#39;</span>),</a>
-<a class="sourceLine" id="cb21-4" data-line-number="4">                                     <span class="st">&#39;-m&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;map.tsv&#39;</span>),</a>
-<a class="sourceLine" id="cb21-5" data-line-number="5">                                     <span class="st">&#39;-q&#39;</span>,<span class="st">&#39;20&#39;</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system2</span>(split_libraries_fastq,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-o&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_2&#39;</span>),
+                                     <span class="st">&#39;-i&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;forward_reads.fastq.gz&#39;</span>),
+                                     <span class="st">&#39;-b&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;barcodes.fastq.gz&#39;</span>),
+                                     <span class="st">&#39;-m&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;map.tsv&#39;</span>),
+                                     <span class="st">&#39;-q&#39;</span>,<span class="st">&#39;20&#39;</span>))</code></pre></div>
 <p>We’ll now perform OTU picking on our filtered, demultiplexed sequences. There are a ton of parameters we can adjust: <a href="http://qiime.org/scripts/pick_otus.html" class="uri">http://qiime.org/scripts/pick_otus.html</a>. To keep it somewhat simple, we’ll perform a particular kind of OTU picking called ‘closed.’ There are 3 OTU picking strategies: closed, open, and de novo.</p>
 <p>Closed reference OTU picking is fast because it simply clusters sequences into OTUs based on reference sequences found in a database. If a sequence doesn’t match above a given similiary threshold to the database sequence, it is tossed away. It should probably be obvious if a given sequence isn’t found in the reference database, it too will be removed. De novo, on the other hand, can deal with novel sequences since it doesn’t use a lookup database. Instead, it clusters sequences by aligning them against one another, with sequences above a given similarity threshold clustered into OTUs. Lastly, open reference OTU picking first performed closed reference OTU picking, and then performs de novo on sequences that failed to match reference sequences in the lookup database.</p>
 <p>To perform closed reference OTU picking, we need to specify our reference database (we’ll use GreenGenes) by setting the location of our reference sequences, our reference taxonomy. We also need to specify our picking parameters, which in this example, will consist of the OTU picking method (sortmerna), the number of threads for paralellization, and the similarity threshold (.97) for our sequences when we compare them to the GreenGenes database.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">ref_seqs &lt;-<span class="st"> &#39;/data/sw1/anaconda2/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta&#39;</span></a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">ref_tax &lt;-<span class="st"> &#39;/data/sw1/anaconda2/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/taxonomy/97_otu_taxonomy.txt&#39;</span></a>
-<a class="sourceLine" id="cb22-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb22-4" data-line-number="4">params &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="dt">fileext=</span><span class="st">&#39;.txt&#39;</span>)</a>
-<a class="sourceLine" id="cb22-5" data-line-number="5"><span class="kw">write_lines</span>(<span class="kw">c</span>(<span class="st">&#39;pick_otus:otu_picking_method sortmerna&#39;</span>,</a>
-<a class="sourceLine" id="cb22-6" data-line-number="6">              <span class="st">&#39;pick_otus:threads 4&#39;</span>,</a>
-<a class="sourceLine" id="cb22-7" data-line-number="7">              <span class="st">&#39;pick_otus:similarity: 0.97&#39;</span>),<span class="dt">path=</span>params)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ref_seqs &lt;-<span class="st"> &#39;/data/sw1/anaconda2/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta&#39;</span>
+ref_tax &lt;-<span class="st"> &#39;/data/sw1/anaconda2/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/taxonomy/97_otu_taxonomy.txt&#39;</span>
+
+params &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="dt">fileext=</span><span class="st">&#39;.txt&#39;</span>)
+<span class="kw">write_lines</span>(<span class="kw">c</span>(<span class="st">&#39;pick_otus:otu_picking_method sortmerna&#39;</span>,
+              <span class="st">&#39;pick_otus:threads 4&#39;</span>,
+              <span class="st">&#39;pick_otus:similarity: 0.97&#39;</span>),<span class="dt">path=</span>params)</code></pre></div>
 <p>And now we run the closed reference otu picking command:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">system2</span>(pick_closed_reference_otus,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-i&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_2&#39;</span>,<span class="st">&#39;seqs.fna&#39;</span>),</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2">                                          <span class="st">&#39;-o&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_2&#39;</span>,<span class="st">&#39;picked_otus_sortmerna&#39;</span>),</a>
-<a class="sourceLine" id="cb23-3" data-line-number="3">                                          <span class="st">&#39;-r&#39;</span>,ref_seqs,</a>
-<a class="sourceLine" id="cb23-4" data-line-number="4">                                          <span class="st">&#39;-t&#39;</span>,ref_tax,</a>
-<a class="sourceLine" id="cb23-5" data-line-number="5">                                          <span class="st">&#39;-p&#39;</span>,params))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system2</span>(pick_closed_reference_otus,<span class="dt">args=</span><span class="kw">c</span>(<span class="st">&#39;-i&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_2&#39;</span>,<span class="st">&#39;seqs.fna&#39;</span>),
+                                          <span class="st">&#39;-o&#39;</span>,<span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_2&#39;</span>,<span class="st">&#39;picked_otus_sortmerna&#39;</span>),
+                                          <span class="st">&#39;-r&#39;</span>,ref_seqs,
+                                          <span class="st">&#39;-t&#39;</span>,ref_tax,
+                                          <span class="st">&#39;-p&#39;</span>,params))</code></pre></div>
 <p>This was all done in R, which is probably unnecessary for proteus. You can submit an Rscript, but since there is no real looping and need for immediate downstream analysis, it’s better off just submitting a bash script. We’ll remove the system2 functions and the like, add the submission parameters, and write the following script for proteus:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="co">#!/bin/bash</span></a>
-<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="co">#$ -S /bin/bash</span></a>
-<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="co">#$ -cwd</span></a>
-<a class="sourceLine" id="cb24-4" data-line-number="4"><span class="co">#$ -j y</span></a>
-<a class="sourceLine" id="cb24-5" data-line-number="5"><span class="co">#$ -M user_name@email.edu</span></a>
-<a class="sourceLine" id="cb24-6" data-line-number="6"><span class="co">#$ -l h_rt=01:00:00</span></a>
-<a class="sourceLine" id="cb24-7" data-line-number="7"><span class="co">#$ -P namePrj</span></a>
-<a class="sourceLine" id="cb24-8" data-line-number="8"><span class="co">#$ -pe shm 16</span></a>
-<a class="sourceLine" id="cb24-9" data-line-number="9"><span class="co">#$ -l mem_free=12G</span></a>
-<a class="sourceLine" id="cb24-10" data-line-number="10"><span class="co">#$ -l h_vmem=16G</span></a>
-<a class="sourceLine" id="cb24-11" data-line-number="11"><span class="co">#$ -q all.q</span></a>
-<a class="sourceLine" id="cb24-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb24-13" data-line-number="13">. <span class="op">/</span>etc<span class="op">/</span>profile.d<span class="op">/</span>modules.sh</a>
-<a class="sourceLine" id="cb24-14" data-line-number="14">module load shared</a>
-<a class="sourceLine" id="cb24-15" data-line-number="15">module load proteus</a>
-<a class="sourceLine" id="cb24-16" data-line-number="16">module load sge<span class="op">/</span>univa</a>
-<a class="sourceLine" id="cb24-17" data-line-number="17">module load gcc<span class="op">/</span><span class="dv">4</span>.<span class="fl">8.1</span></a>
-<a class="sourceLine" id="cb24-18" data-line-number="18">module load qiime<span class="op">/</span>gcc<span class="op">/</span><span class="dv">64</span><span class="op">/</span><span class="dv">1</span>.<span class="fl">9.1</span></a>
-<a class="sourceLine" id="cb24-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb24-20" data-line-number="20">export ref_seqs=<span class="er">/</span>mnt<span class="op">/</span>HA<span class="op">/</span>opt<span class="op">/</span>qiime<span class="op">/</span>gcc<span class="op">/</span><span class="dv">64</span><span class="op">/</span><span class="dv">1</span>.<span class="fl">9.1</span><span class="op">/</span>lib<span class="op">/</span>python2<span class="fl">.7</span><span class="op">/</span>site<span class="op">-</span>packages<span class="op">/</span>qiime_default_reference<span class="op">/</span>gg_<span class="dv">13</span>_<span class="dv">8</span>_otus<span class="op">/</span>rep_set<span class="op">/</span><span class="dv">97</span>_otus.fasta</a>
-<a class="sourceLine" id="cb24-21" data-line-number="21">export ref_tax=<span class="er">/</span>mnt<span class="op">/</span>HA<span class="op">/</span>opt<span class="op">/</span>qiime<span class="op">/</span>gcc<span class="op">/</span><span class="dv">64</span><span class="op">/</span><span class="dv">1</span>.<span class="fl">9.1</span><span class="op">/</span>lib<span class="op">/</span>python2<span class="fl">.7</span><span class="op">/</span>site<span class="op">-</span>packages<span class="op">/</span>qiime_default_reference<span class="op">/</span>gg_<span class="dv">13</span>_<span class="dv">8</span>_otus<span class="op">/</span>taxonomy<span class="op">/</span><span class="dv">97</span>_otu_taxonomy.txt</a>
-<a class="sourceLine" id="cb24-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb24-23" data-line-number="23">data_dir=<span class="er">/</span>home<span class="op">/</span>user_name<span class="op">/</span>genStats<span class="op">/</span>moving_pictures</a>
-<a class="sourceLine" id="cb24-24" data-line-number="24">work_dir=<span class="er">/</span>scratch<span class="op">/</span>user_name<span class="op">/</span>moving_pictures</a>
-<a class="sourceLine" id="cb24-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb24-26" data-line-number="26">mkdir <span class="op">-</span>p <span class="op">$</span>work_dir</a>
-<a class="sourceLine" id="cb24-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb24-28" data-line-number="28">cp <span class="op">$</span>data_dir<span class="op">/</span><span class="er">*</span><span class="st"> </span><span class="er">$</span>work_dir</a>
-<a class="sourceLine" id="cb24-29" data-line-number="29"></a>
-<a class="sourceLine" id="cb24-30" data-line-number="30">out_dir=<span class="er">$</span>work_dir<span class="op">/</span>fastq_out</a>
-<a class="sourceLine" id="cb24-31" data-line-number="31">seqs=<span class="er">$</span>work_dir<span class="op">/</span>forward_reads.fastq.gz</a>
-<a class="sourceLine" id="cb24-32" data-line-number="32">bc=<span class="er">$</span>work_dir<span class="op">/</span>barcodes.fastq.gz</a>
-<a class="sourceLine" id="cb24-33" data-line-number="33">map=<span class="er">$</span>work_dir<span class="op">/</span>map.tsv</a>
-<a class="sourceLine" id="cb24-34" data-line-number="34"></a>
-<a class="sourceLine" id="cb24-35" data-line-number="35">split_libraries_fastq.py <span class="op">-</span>o <span class="op">$</span>out_dir <span class="op">-</span>i <span class="op">$</span>seqs <span class="op">-</span>b <span class="op">$</span>bc <span class="op">-</span>m <span class="op">$</span>map <span class="op">-</span>q <span class="dv">20</span></a>
-<a class="sourceLine" id="cb24-36" data-line-number="36"></a>
-<a class="sourceLine" id="cb24-37" data-line-number="37">params=<span class="er">$</span>work_dir<span class="op">/</span>sortmerna_pick_params.txt</a>
-<a class="sourceLine" id="cb24-38" data-line-number="38"></a>
-<a class="sourceLine" id="cb24-39" data-line-number="39">printf <span class="st">&quot;pick_otus:otu_picking_method sortmerna</span><span class="ch">\n</span><span class="st">pick_otus:threads 16</span><span class="ch">\n</span><span class="st">pick_otus:similarity 0.97&quot;</span> <span class="op">&gt;</span><span class="st"> </span><span class="er">$</span>params</a>
-<a class="sourceLine" id="cb24-40" data-line-number="40"></a>
-<a class="sourceLine" id="cb24-41" data-line-number="41">pick_closed_reference_otus.py <span class="op">-</span>i <span class="op">$</span>out_dir<span class="op">/</span>seqs.fna <span class="op">-</span>o <span class="op">$</span>out_dir<span class="op">/</span>picked_otus <span class="op">-</span>r <span class="op">$</span>ref_seqs <span class="op">-</span>t <span class="op">$</span>ref_tax <span class="op">-</span>p <span class="op">$</span>params</a>
-<a class="sourceLine" id="cb24-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb24-43" data-line-number="43">mv <span class="op">$</span>out_dir <span class="op">$</span>data_dir</a>
-<a class="sourceLine" id="cb24-44" data-line-number="44">rm <span class="op">-</span>r <span class="op">$</span>work_dir<span class="op">/</span><span class="er">*</span></a>
-<a class="sourceLine" id="cb24-45" data-line-number="45"><span class="st">  </span></a>
-<a class="sourceLine" id="cb24-46" data-line-number="46">exit <span class="dv">0</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#!/bin/bash</span>
+<span class="co">#$ -S /bin/bash</span>
+<span class="co">#$ -cwd</span>
+<span class="co">#$ -j y</span>
+<span class="co">#$ -M user_name@email.edu</span>
+<span class="co">#$ -l h_rt=01:00:00</span>
+<span class="co">#$ -P namePrj</span>
+<span class="co">#$ -pe shm 16</span>
+<span class="co">#$ -l mem_free=12G</span>
+<span class="co">#$ -l h_vmem=16G</span>
+<span class="co">#$ -q all.q</span>
+
+. /etc/profile.d/modules.sh
+module load shared
+module load proteus
+module load sge/univa
+module load gcc/<span class="fl">4.8.1</span>
+module load qiime/gcc/<span class="dv">64</span>/<span class="fl">1.9.1</span>
+
+export ref_seqs=<span class="er">/</span>mnt/HA/opt/qiime/gcc/<span class="dv">64</span>/<span class="fl">1.9.1</span>/lib/python2<span class="fl">.7</span>/site-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta
+export ref_tax=<span class="er">/</span>mnt/HA/opt/qiime/gcc/<span class="dv">64</span>/<span class="fl">1.9.1</span>/lib/python2<span class="fl">.7</span>/site-packages/qiime_default_reference/gg_13_8_otus/taxonomy/97_otu_taxonomy.txt
+
+data_dir=<span class="er">/</span>home/user_name/genStats/moving_pictures
+work_dir=<span class="er">/</span>scratch/user_name/moving_pictures
+
+mkdir -p $work_dir
+
+cp $data_dir/<span class="er">*</span><span class="st"> </span><span class="er">$</span>work_dir
+
+out_dir=<span class="er">$</span>work_dir/fastq_out
+seqs=<span class="er">$</span>work_dir/forward_reads.fastq.gz
+bc=<span class="er">$</span>work_dir/barcodes.fastq.gz
+map=<span class="er">$</span>work_dir/map.tsv
+
+split_libraries_fastq.py -o $out_dir -i $seqs -b $bc -m $map -q <span class="dv">20</span>
+
+params=<span class="er">$</span>work_dir/sortmerna_pick_params.txt
+
+printf <span class="st">&quot;pick_otus:otu_picking_method sortmerna</span><span class="ch">\n</span><span class="st">pick_otus:threads 16</span><span class="ch">\n</span><span class="st">pick_otus:similarity 0.97&quot;</span> &gt;<span class="st"> </span><span class="er">$</span>params
+
+pick_closed_reference_otus.py -i $out_dir/seqs.fna -o $out_dir/picked_otus -r $ref_seqs -t $ref_tax -p $params
+
+mv $out_dir $data_dir
+rm -r $work_dir/<span class="er">*</span>
+<span class="st">  </span>
+exit <span class="dv">0</span></code></pre></div>
 </div>
 <div id="summarizing-our-results" class="section level2">
 <h2><span class="header-section-number">9.2</span> Summarizing Our Results</h2>
 <p>Now that we have our OTU table, in biom format, we can summarize our results using some QIIME commands. First, let’s look at the mapping file to see what sample features we’d like to focus on:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">View</span>(MAP)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">View</span>(MAP)</code></pre></div>
 <p>Now, we’ll write a submission script to get analyses output.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co">#!/bin/bash</span></a>
-<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="co">#$ -S /bin/bash</span></a>
-<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="co">#$ -cwd</span></a>
-<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="co">#$ -j y</span></a>
-<a class="sourceLine" id="cb26-5" data-line-number="5"><span class="co">#$ -M user_name@email.edu</span></a>
-<a class="sourceLine" id="cb26-6" data-line-number="6"><span class="co">#$ -l h_rt=01:00:00</span></a>
-<a class="sourceLine" id="cb26-7" data-line-number="7"><span class="co">#$ -P namePrj</span></a>
-<a class="sourceLine" id="cb26-8" data-line-number="8"><span class="co">#$ -l mem_free=12G</span></a>
-<a class="sourceLine" id="cb26-9" data-line-number="9"><span class="co">#$ -l h_vmem=16G</span></a>
-<a class="sourceLine" id="cb26-10" data-line-number="10"><span class="co">#$ -q all.q</span></a>
-<a class="sourceLine" id="cb26-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb26-12" data-line-number="12">. <span class="op">/</span>etc<span class="op">/</span>profile.d<span class="op">/</span>modules.sh</a>
-<a class="sourceLine" id="cb26-13" data-line-number="13">module load shared</a>
-<a class="sourceLine" id="cb26-14" data-line-number="14">module load proteus</a>
-<a class="sourceLine" id="cb26-15" data-line-number="15">module load sge<span class="op">/</span>univa</a>
-<a class="sourceLine" id="cb26-16" data-line-number="16">module load gcc<span class="op">/</span><span class="dv">4</span>.<span class="fl">8.1</span></a>
-<a class="sourceLine" id="cb26-17" data-line-number="17">module load qiime<span class="op">/</span>gcc<span class="op">/</span><span class="dv">64</span><span class="op">/</span><span class="dv">1</span>.<span class="fl">9.1</span></a>
-<a class="sourceLine" id="cb26-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb26-19" data-line-number="19">export ref_seqs=<span class="er">/</span>mnt<span class="op">/</span>HA<span class="op">/</span>opt<span class="op">/</span>qiime<span class="op">/</span>gcc<span class="op">/</span><span class="dv">64</span><span class="op">/</span><span class="dv">1</span>.<span class="fl">9.1</span><span class="op">/</span>lib<span class="op">/</span>python2<span class="fl">.7</span><span class="op">/</span>site<span class="op">-</span>packages<span class="op">/</span>qiime_default_reference<span class="op">/</span>gg_<span class="dv">13</span>_<span class="dv">8</span>_otus<span class="op">/</span>rep_set<span class="op">/</span><span class="dv">97</span>_otus.fasta</a>
-<a class="sourceLine" id="cb26-20" data-line-number="20">export ref_tax=<span class="er">/</span>mnt<span class="op">/</span>HA<span class="op">/</span>opt<span class="op">/</span>qiime<span class="op">/</span>gcc<span class="op">/</span><span class="dv">64</span><span class="op">/</span><span class="dv">1</span>.<span class="fl">9.1</span><span class="op">/</span>lib<span class="op">/</span>python2<span class="fl">.7</span><span class="op">/</span>site<span class="op">-</span>packages<span class="op">/</span>qiime_default_reference<span class="op">/</span>gg_<span class="dv">13</span>_<span class="dv">8</span>_otus<span class="op">/</span>taxonomy<span class="op">/</span><span class="dv">97</span>_otu_taxonomy.txt</a>
-<a class="sourceLine" id="cb26-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb26-22" data-line-number="22">data_dir=<span class="er">/</span>home<span class="op">/</span>user_name<span class="op">/</span>genStats<span class="op">/</span>moving_pictures</a>
-<a class="sourceLine" id="cb26-23" data-line-number="23">work_dir=<span class="er">/</span>scratch<span class="op">/</span>user_name<span class="op">/</span>moving_pictures</a>
-<a class="sourceLine" id="cb26-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb26-25" data-line-number="25">mkdir <span class="op">-</span>p <span class="op">$</span>work_dir</a>
-<a class="sourceLine" id="cb26-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb26-27" data-line-number="27">cp <span class="op">$</span>data_dir<span class="op">/</span>fastq_out<span class="op">/</span>picked_otus<span class="op">/</span><span class="dv">97</span>_otus.tree <span class="op">$</span>work_dir</a>
-<a class="sourceLine" id="cb26-28" data-line-number="28">cp <span class="op">$</span>data_dir<span class="op">/</span>fastq_out<span class="op">/</span>picked_otus<span class="op">/</span>otu_table.biom <span class="op">$</span>work_dir</a>
-<a class="sourceLine" id="cb26-29" data-line-number="29">cp <span class="op">$</span>data_dir<span class="op">/</span>map.tsv <span class="op">$</span>work_dir</a>
-<a class="sourceLine" id="cb26-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb26-31" data-line-number="31">otus=<span class="er">$</span>work_dir<span class="op">/</span>otu_table.biom</a>
-<a class="sourceLine" id="cb26-32" data-line-number="32">tree=<span class="er">$</span>work_dir<span class="op">/</span><span class="dv">97</span>_otus.tree</a>
-<a class="sourceLine" id="cb26-33" data-line-number="33">map=<span class="er">$</span>work_dir<span class="op">/</span>map.tsv</a>
-<a class="sourceLine" id="cb26-34" data-line-number="34"></a>
-<a class="sourceLine" id="cb26-35" data-line-number="35">analysis_dir=<span class="er">$</span>work_dir<span class="op">/</span>analysis</a>
-<a class="sourceLine" id="cb26-36" data-line-number="36"></a>
-<a class="sourceLine" id="cb26-37" data-line-number="37">mkdir <span class="op">-</span>p <span class="op">$</span>analysis_dir</a>
-<a class="sourceLine" id="cb26-38" data-line-number="38"></a>
-<a class="sourceLine" id="cb26-39" data-line-number="39">biom summarize<span class="op">-</span>table <span class="op">-</span>i <span class="op">$</span>otus <span class="op">&gt;</span><span class="st"> </span><span class="er">$</span>analysis_dir<span class="op">/</span>sampling_depth.dat</a>
-<a class="sourceLine" id="cb26-40" data-line-number="40"></a>
-<a class="sourceLine" id="cb26-41" data-line-number="41">core_diversity_analyses.py <span class="op">-</span>o <span class="op">$</span>analysis_dir<span class="op">/</span>diversity <span class="op">-</span>i <span class="op">$</span>otus <span class="op">-</span>m <span class="op">$</span>map <span class="op">-</span>t <span class="op">$</span>tree <span class="op">-</span>c SampleType <span class="op">-</span>e <span class="dv">1000</span> <span class="op">--</span>recover_from_failure</a>
-<a class="sourceLine" id="cb26-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb26-43" data-line-number="43">mv <span class="op">$</span>analysis_dir <span class="op">$</span>data_dir</a>
-<a class="sourceLine" id="cb26-44" data-line-number="44">rm <span class="op">-</span>r <span class="op">$</span>work_dir<span class="op">/</span><span class="er">*</span></a>
-<a class="sourceLine" id="cb26-45" data-line-number="45"><span class="st">  </span></a>
-<a class="sourceLine" id="cb26-46" data-line-number="46">exit <span class="dv">0</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#!/bin/bash</span>
+<span class="co">#$ -S /bin/bash</span>
+<span class="co">#$ -cwd</span>
+<span class="co">#$ -j y</span>
+<span class="co">#$ -M user_name@email.edu</span>
+<span class="co">#$ -l h_rt=01:00:00</span>
+<span class="co">#$ -P namePrj</span>
+<span class="co">#$ -l mem_free=12G</span>
+<span class="co">#$ -l h_vmem=16G</span>
+<span class="co">#$ -q all.q</span>
+
+. /etc/profile.d/modules.sh
+module load shared
+module load proteus
+module load sge/univa
+module load gcc/<span class="fl">4.8.1</span>
+module load qiime/gcc/<span class="dv">64</span>/<span class="fl">1.9.1</span>
+
+export ref_seqs=<span class="er">/</span>mnt/HA/opt/qiime/gcc/<span class="dv">64</span>/<span class="fl">1.9.1</span>/lib/python2<span class="fl">.7</span>/site-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta
+export ref_tax=<span class="er">/</span>mnt/HA/opt/qiime/gcc/<span class="dv">64</span>/<span class="fl">1.9.1</span>/lib/python2<span class="fl">.7</span>/site-packages/qiime_default_reference/gg_13_8_otus/taxonomy/97_otu_taxonomy.txt
+
+data_dir=<span class="er">/</span>home/user_name/genStats/moving_pictures
+work_dir=<span class="er">/</span>scratch/user_name/moving_pictures
+
+mkdir -p $work_dir
+
+cp $data_dir/fastq_out/picked_otus/97_otus.tree $work_dir
+cp $data_dir/fastq_out/picked_otus/otu_table.biom $work_dir
+cp $data_dir/map.tsv $work_dir
+
+otus=<span class="er">$</span>work_dir/otu_table.biom
+tree=<span class="er">$</span>work_dir/97_otus.tree
+map=<span class="er">$</span>work_dir/map.tsv
+
+analysis_dir=<span class="er">$</span>work_dir/analysis
+
+mkdir -p $analysis_dir
+
+biom summarize-table -i $otus &gt;<span class="st"> </span><span class="er">$</span>analysis_dir/sampling_depth.dat
+
+core_diversity_analyses.py -o $analysis_dir/diversity -i $otus -m $map -t $tree -c SampleType -e <span class="dv">1000</span> --recover_from_failure
+
+mv $analysis_dir $data_dir
+rm -r $work_dir/<span class="er">*</span>
+<span class="st">  </span>
+exit <span class="dv">0</span></code></pre></div>
 <p>Or we can calculate the metrics more directly:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="co">#!/bin/bash</span></a>
-<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="co">#$ -S /bin/bash</span></a>
-<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="co">#$ -cwd</span></a>
-<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="co">#$ -j y</span></a>
-<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="co">#$ -M user_name@email.edu</span></a>
-<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="co">#$ -l h_rt=01:00:00</span></a>
-<a class="sourceLine" id="cb27-7" data-line-number="7"><span class="co">#$ -P namePrj</span></a>
-<a class="sourceLine" id="cb27-8" data-line-number="8"><span class="co">#$ -l mem_free=12G</span></a>
-<a class="sourceLine" id="cb27-9" data-line-number="9"><span class="co">#$ -l h_vmem=16G</span></a>
-<a class="sourceLine" id="cb27-10" data-line-number="10"><span class="co">#$ -q all.q</span></a>
-<a class="sourceLine" id="cb27-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb27-12" data-line-number="12">. <span class="op">/</span>etc<span class="op">/</span>profile.d<span class="op">/</span>modules.sh</a>
-<a class="sourceLine" id="cb27-13" data-line-number="13">module load shared</a>
-<a class="sourceLine" id="cb27-14" data-line-number="14">module load proteus</a>
-<a class="sourceLine" id="cb27-15" data-line-number="15">module load sge<span class="op">/</span>univa</a>
-<a class="sourceLine" id="cb27-16" data-line-number="16">module load gcc<span class="op">/</span><span class="dv">4</span>.<span class="fl">8.1</span></a>
-<a class="sourceLine" id="cb27-17" data-line-number="17">module load qiime<span class="op">/</span>gcc<span class="op">/</span><span class="dv">64</span><span class="op">/</span><span class="dv">1</span>.<span class="fl">9.1</span></a>
-<a class="sourceLine" id="cb27-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb27-19" data-line-number="19">data_dir=<span class="er">/</span>home<span class="op">/</span>user_name<span class="op">/</span>genStats<span class="op">/</span>moving_pictures</a>
-<a class="sourceLine" id="cb27-20" data-line-number="20">work_dir=<span class="er">/</span>scratch<span class="op">/</span>user_name<span class="op">/</span>moving_pictures<span class="op">/</span></a>
-<a class="sourceLine" id="cb27-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb27-22" data-line-number="22">mkdir <span class="op">-</span>p <span class="op">$</span>work_dir</a>
-<a class="sourceLine" id="cb27-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb27-24" data-line-number="24">cp <span class="op">$</span>data_dir<span class="op">/</span>fastq_out<span class="op">/</span>picked_otus<span class="op">/</span><span class="dv">97</span>_otus.tree <span class="op">$</span>work_dir</a>
-<a class="sourceLine" id="cb27-25" data-line-number="25">cp <span class="op">$</span>data_dir<span class="op">/</span>fastq_out<span class="op">/</span>picked_otus<span class="op">/</span>otu_table.biom <span class="op">$</span>work_dir</a>
-<a class="sourceLine" id="cb27-26" data-line-number="26">cp <span class="op">$</span>data_dir<span class="op">/</span>map.tsv <span class="op">$</span>work_dir</a>
-<a class="sourceLine" id="cb27-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb27-28" data-line-number="28">otus=<span class="er">$</span>work_dir<span class="op">/</span>otu_table.biom</a>
-<a class="sourceLine" id="cb27-29" data-line-number="29">tree=<span class="er">$</span>work_dir<span class="op">/</span><span class="dv">97</span>_otus.tree</a>
-<a class="sourceLine" id="cb27-30" data-line-number="30">map=<span class="er">$</span>work_dir<span class="op">/</span>map.tsv</a>
-<a class="sourceLine" id="cb27-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb27-32" data-line-number="32"></a>
-<a class="sourceLine" id="cb27-33" data-line-number="33">met_dir=<span class="er">$</span>work_dir<span class="op">/</span>metrics</a>
-<a class="sourceLine" id="cb27-34" data-line-number="34"></a>
-<a class="sourceLine" id="cb27-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb27-36" data-line-number="36">alpha_diversity.py <span class="op">-</span>i <span class="op">$</span>otus <span class="op">-</span>t <span class="op">$</span>tree <span class="op">-</span>o <span class="op">$</span>met_dir<span class="op">/</span>alpha.txt</a>
-<a class="sourceLine" id="cb27-37" data-line-number="37"></a>
-<a class="sourceLine" id="cb27-38" data-line-number="38">beta_diversity.py <span class="op">-</span>i <span class="op">$</span>otus <span class="op">-</span>o <span class="op">$</span>met_dir<span class="op">/</span>beta <span class="op">-</span>t <span class="op">$</span>tree <span class="op">-</span>m unweighted_unifrac</a>
-<a class="sourceLine" id="cb27-39" data-line-number="39">beta_diversity.py <span class="op">-</span>i <span class="op">$</span>otus <span class="op">-</span>o <span class="op">$</span>met_dir<span class="op">/</span>beta <span class="op">-</span>t <span class="op">$</span>tree <span class="op">-</span>m weighted_unifrac</a>
-<a class="sourceLine" id="cb27-40" data-line-number="40"></a>
-<a class="sourceLine" id="cb27-41" data-line-number="41">principal_coordinates.py <span class="op">-</span>i <span class="op">$</span>met_dir<span class="op">/</span>beta <span class="op">-</span>o <span class="op">$</span>met_dir<span class="op">/</span>pcoa</a>
-<a class="sourceLine" id="cb27-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb27-43" data-line-number="43">make_2d_plots.py <span class="op">-</span>i <span class="op">$</span>met_dir<span class="op">/</span>pcoa<span class="op">/</span>pcoa_unweighted_unifrac_otu_table.txt <span class="op">-</span>m <span class="op">$</span>map <span class="op">-</span>b SampleType <span class="op">-</span>o <span class="op">$</span>met_dir<span class="op">/</span>pcoa<span class="op">/</span>figures</a>
-<a class="sourceLine" id="cb27-44" data-line-number="44">make_2d_plots.py <span class="op">-</span>i <span class="op">$</span>met_dir<span class="op">/</span>pcoa<span class="op">/</span>pcoa_weighted_unifrac_otu_table.txt <span class="op">-</span>m <span class="op">$</span>map <span class="op">-</span>b SampleType <span class="op">-</span>o <span class="op">$</span>met_dir<span class="op">/</span>pcoa<span class="op">/</span>figures</a>
-<a class="sourceLine" id="cb27-45" data-line-number="45"></a>
-<a class="sourceLine" id="cb27-46" data-line-number="46">transform_coordinate_matrices.py <span class="op">-</span>i <span class="op">$</span>met_dir<span class="op">/</span>pcoa<span class="op">/</span>pcoa_unweighted_unifrac_otu_table.txt,<span class="op">$</span>met_dir<span class="op">/</span>pcoa<span class="op">/</span>pcoa_weighted_unifrac_otu_table.txt <span class="op">-</span>r <span class="dv">999</span> <span class="op">-</span>o <span class="op">$</span>met_dir<span class="op">/</span>procrustes<span class="op">/</span></a>
-<a class="sourceLine" id="cb27-47" data-line-number="47"></a>
-<a class="sourceLine" id="cb27-48" data-line-number="48">make_emperor.py <span class="op">-</span>c <span class="op">-</span>i <span class="op">$</span>met_dir<span class="op">/</span>procrustes <span class="op">-</span>o <span class="op">$</span>met_dir<span class="op">/</span>procrustes<span class="op">/</span>figures <span class="op">-</span>m <span class="op">$</span>map <span class="op">--</span>custom_axes DaysSinceExperimentStart</a>
-<a class="sourceLine" id="cb27-49" data-line-number="49"></a>
-<a class="sourceLine" id="cb27-50" data-line-number="50">mv <span class="op">$</span>met_dir <span class="op">$</span>data_dir</a>
-<a class="sourceLine" id="cb27-51" data-line-number="51"></a>
-<a class="sourceLine" id="cb27-52" data-line-number="52">exit <span class="dv">0</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#!/bin/bash</span>
+<span class="co">#$ -S /bin/bash</span>
+<span class="co">#$ -cwd</span>
+<span class="co">#$ -j y</span>
+<span class="co">#$ -M user_name@email.edu</span>
+<span class="co">#$ -l h_rt=01:00:00</span>
+<span class="co">#$ -P namePrj</span>
+<span class="co">#$ -l mem_free=12G</span>
+<span class="co">#$ -l h_vmem=16G</span>
+<span class="co">#$ -q all.q</span>
+
+. /etc/profile.d/modules.sh
+module load shared
+module load proteus
+module load sge/univa
+module load gcc/<span class="fl">4.8.1</span>
+module load qiime/gcc/<span class="dv">64</span>/<span class="fl">1.9.1</span>
+
+data_dir=<span class="er">/</span>home/user_name/genStats/moving_pictures
+work_dir=<span class="er">/</span>scratch/user_name/moving_pictures/
+
+mkdir -p $work_dir
+
+cp $data_dir/fastq_out/picked_otus/97_otus.tree $work_dir
+cp $data_dir/fastq_out/picked_otus/otu_table.biom $work_dir
+cp $data_dir/map.tsv $work_dir
+
+otus=<span class="er">$</span>work_dir/otu_table.biom
+tree=<span class="er">$</span>work_dir/97_otus.tree
+map=<span class="er">$</span>work_dir/map.tsv
+
+
+met_dir=<span class="er">$</span>work_dir/metrics
+
+
+alpha_diversity.py -i $otus -t $tree -o $met_dir/alpha.txt
+
+beta_diversity.py -i $otus -o $met_dir/beta -t $tree -m unweighted_unifrac
+beta_diversity.py -i $otus -o $met_dir/beta -t $tree -m weighted_unifrac
+
+principal_coordinates.py -i $met_dir/beta -o $met_dir/pcoa
+
+make_2d_plots.py -i $met_dir/pcoa/pcoa_unweighted_unifrac_otu_table.txt -m $map -b SampleType -o $met_dir/pcoa/figures
+make_2d_plots.py -i $met_dir/pcoa/pcoa_weighted_unifrac_otu_table.txt -m $map -b SampleType -o $met_dir/pcoa/figures
+
+transform_coordinate_matrices.py -i $met_dir/pcoa/pcoa_unweighted_unifrac_otu_table.txt,$met_dir/pcoa/pcoa_weighted_unifrac_otu_table.txt -r <span class="dv">999</span> -o $met_dir/procrustes/
+
+make_emperor.py -c -i $met_dir/procrustes -o $met_dir/procrustes/figures -m $map --custom_axes DaysSinceExperimentStart
+
+mv $met_dir $data_dir
+
+exit <span class="dv">0</span></code></pre></div>
 </div>
 <div id="loading-qiime-results-into-phyloseq" class="section level2">
 <h2><span class="header-section-number">9.3</span> Loading QIIME Results into Phyloseq</h2>
 <p>We have a ton of output from QIIME, but we could have just as easily loaded the biom table into R, specifically phyloseq. We can do this like so:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">library</span>(phyloseq)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(phyloseq)</code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;phyloseq&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:IRanges&#39;:
 ## 
 ##     distance</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">biom_path &lt;-<span class="st"> </span><span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_2&#39;</span>,<span class="st">&#39;picked_otus_sortmerna&#39;</span>,<span class="st">&#39;otu_table.biom&#39;</span>)</a>
-<a class="sourceLine" id="cb31-2" data-line-number="2">tree_path &lt;-<span class="st"> </span><span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_2&#39;</span>,<span class="st">&#39;picked_otus_sortmerna&#39;</span>,<span class="st">&#39;97_otus.tree&#39;</span>)</a>
-<a class="sourceLine" id="cb31-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb31-4" data-line-number="4">BIOM &lt;-<span class="st"> </span><span class="kw">import_biom</span>(biom_path)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biom_path &lt;-<span class="st"> </span><span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_2&#39;</span>,<span class="st">&#39;picked_otus_sortmerna&#39;</span>,<span class="st">&#39;otu_table.biom&#39;</span>)
+tree_path &lt;-<span class="st"> </span><span class="kw">file.path</span>(data_dir,<span class="st">&#39;fastq_out_2&#39;</span>,<span class="st">&#39;picked_otus_sortmerna&#39;</span>,<span class="st">&#39;97_otus.tree&#39;</span>)
+
+BIOM &lt;-<span class="st"> </span><span class="kw">import_biom</span>(biom_path)</code></pre></div>
 <pre><code>## Warning in strsplit(conditionMessage(e), &quot;\n&quot;): input string 1 is invalid in
 ## this locale</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">META &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(MAP)</a>
-<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="kw">rownames</span>(META) &lt;-<span class="st"> </span>META<span class="op">$</span><span class="st">`</span><span class="dt">#SampleID</span><span class="st">`</span></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3">PS &lt;-<span class="st"> </span><span class="kw">merge_phyloseq</span>(BIOM,<span class="kw">sample_data</span>(META))</a>
-<a class="sourceLine" id="cb33-4" data-line-number="4">PS</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">META &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(MAP)
+<span class="kw">rownames</span>(META) &lt;-<span class="st"> </span>META$<span class="st">`</span><span class="dt">#SampleID</span><span class="st">`</span>
+PS &lt;-<span class="st"> </span><span class="kw">merge_phyloseq</span>(BIOM,<span class="kw">sample_data</span>(META))
+PS</code></pre></div>
 <pre><code>## phyloseq-class experiment-level object
 ## otu_table()   OTU Table:         [ 3409 taxa and 34 samples ]
 ## sample_data() Sample Data:       [ 34 samples by 11 sample variables ]
 ## tax_table()   Taxonomy Table:    [ 3409 taxa by 7 taxonomic ranks ]</code></pre>
 <p>And then perform similar analyses:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">plot_ordination</span>(PS,<span class="kw">ordinate</span>(PS,<span class="dt">method=</span><span class="st">&#39;MDS&#39;</span>,<span class="dt">distance=</span><span class="st">&#39;bray&#39;</span>),<span class="dt">type=</span><span class="st">&#39;samples&#39;</span>,<span class="dt">color=</span><span class="st">&#39;SampleType&#39;</span>)</a></code></pre></div>
-<p><img src="bioinformatics_class_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_ordination</span>(PS,<span class="kw">ordinate</span>(PS,<span class="dt">method=</span><span class="st">&#39;MDS&#39;</span>,<span class="dt">distance=</span><span class="st">&#39;bray&#39;</span>),<span class="dt">type=</span><span class="st">&#39;samples&#39;</span>,<span class="dt">color=</span><span class="st">&#39;SampleType&#39;</span>)</code></pre></div>
+<p><img src="08_qiime_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -646,8 +620,8 @@ P=10^{-Q/10}
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
-"facebook": true,
+"github": true,
+"facebook": false,
 "twitter": true,
 "linkedin": false,
 "weibo": false,
@@ -672,9 +646,9 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["bioinformatics_class.pdf", "bioinformatics_class.epub"],
+"download": ["bioinformatics.pdf"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });
@@ -685,7 +659,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
