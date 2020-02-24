@@ -1,6 +1,8 @@
-book_filename: "bioinformatics_class"
+book_filename: "bioinformatics"
 delete_merged_file: true
+before_chapter_script: ["before_1.R"]
 language:
   ui:
     chapter_name: "Chapter "
 output_dir: "docs"
+clean: ["map.tsv*", "file*.txt", "file*.html", "file*.log"]
