@@ -359,10 +359,10 @@ run</code></pre></div>
 sra_fns &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;SRR1634425&quot;</span>,<span class="st">&quot;SRR1634428&quot;</span>)
 for (sra in sra_fns) <span class="kw">getSRAfile</span>(sra, sra_con, <span class="dt">fileType =</span> <span class="st">&#39;sra&#39;</span>,<span class="dt">destDir=</span>sra_dir)</code></pre></div>
 <pre><code>## Files are saved to: 
-## &#39;/tmp/RtmpxXYwd5&#39;
+## &#39;/tmp/Rtmp0CksBJ&#39;
 ## 
 ## Files are saved to: 
-## &#39;/tmp/RtmpxXYwd5&#39;</code></pre>
+## &#39;/tmp/Rtmp0CksBJ&#39;</code></pre>
 <p>Then, we’d use the sra toolkit to extract the sequences. Assuming you have downloaded and installed it, we can do the following</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sra_output &lt;-<span class="st"> </span><span class="kw">tempdir</span>()
 

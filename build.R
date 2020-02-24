@@ -1,6 +1,5 @@
 #!/bin/bash
 
-Rscript -e 'bookdown::render_book("index.Rmd","bookdown::pdf_book")'
 Rscript -e 'bookdown::render_book("index.Rmd","bookdown::gitbook")'
 rm map.tsv* file*.txt file*.html file*.log
 

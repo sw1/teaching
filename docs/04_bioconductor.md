@@ -191,9 +191,9 @@ seq_names
 ```
 
 ```
-## [1] "sequence_1 | User_12 | Mon Feb 24 15:21:48 2020"
-## [2] "sequence_2 | User_12 | Mon Feb 24 15:21:48 2020"
-## [3] "sequence_3 | User_12 | Mon Feb 24 15:21:48 2020"
+## [1] "sequence_1 | User_12 | Mon Feb 24 16:43:17 2020"
+## [2] "sequence_2 | User_12 | Mon Feb 24 16:43:17 2020"
+## [3] "sequence_3 | User_12 | Mon Feb 24 16:43:17 2020"
 ```
 
 Now, we'll rename the sequences in the set with these names:
