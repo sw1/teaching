@@ -170,10 +170,10 @@ for (sra in sra_fns) getSRAfile(sra, sra_con, fileType = 'sra',destDir=sra_dir)
 
 ```
 ## Files are saved to: 
-## '/tmp/RtmphpX6br'
+## '/tmp/RtmpxXYwd5'
 ## 
 ## Files are saved to: 
-## '/tmp/RtmphpX6br'
+## '/tmp/RtmpxXYwd5'
 ```
 
 Then, we'd use the sra toolkit to extract the sequences. Assuming you have downloaded and installed it, we can do the following

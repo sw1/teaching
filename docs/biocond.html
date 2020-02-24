@@ -346,9 +346,9 @@ CAT &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#3
 <p>This is how we’ll create our header names. We can grab the number of total sequences in our set using length(), which will let us create a vector to number our sequences. We’ll create a header name that includes each sequence number, the word sequence, along with a user name. We’ll also pass in the date using the <strong>date()</strong> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">seq_names &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;sequence_&#39;</span>,<span class="dv">1</span>:<span class="kw">length</span>(SS),<span class="st">&#39; | User_12 | &#39;</span>,<span class="kw">date</span>(), <span class="dt">sep=</span><span class="st">&#39;&#39;</span>)
 seq_names</code></pre></div>
-<pre><code>## [1] &quot;sequence_1 | User_12 | Mon Feb 24 14:24:24 2020&quot;
-## [2] &quot;sequence_2 | User_12 | Mon Feb 24 14:24:24 2020&quot;
-## [3] &quot;sequence_3 | User_12 | Mon Feb 24 14:24:24 2020&quot;</code></pre>
+<pre><code>## [1] &quot;sequence_1 | User_12 | Mon Feb 24 15:21:48 2020&quot;
+## [2] &quot;sequence_2 | User_12 | Mon Feb 24 15:21:48 2020&quot;
+## [3] &quot;sequence_3 | User_12 | Mon Feb 24 15:21:48 2020&quot;</code></pre>
 <p>Now, we’ll rename the sequences in the set with these names:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(SS) &lt;-<span class="st"> </span>seq_names</code></pre></div>
 <p>Finally, we can save our sequence set as a FASTA file:</p>
@@ -688,7 +688,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["bioinformatics.pdf"],
+"download": null,
 "toc": {
 "collapse": "section"
 }

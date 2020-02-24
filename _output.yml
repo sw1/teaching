@@ -11,5 +11,4 @@ bookdown::gitbook:
         <li>Data Science Examples</li>
       after: |
         <li><a href="https://github.com/sw1/" target="blank">Published by Stephen Woloszynek</a></li>
-    download: "pdf"
-bookdown::pdf_book: default
+    download: false
