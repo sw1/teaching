@@ -24,7 +24,7 @@
 <meta name="author" content="Stephen Woloszynek" />
 
 
-<meta name="date" content="2020-02-24" />
+<meta name="date" content="2020-02-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -236,6 +236,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.10" data-path="ml.html"><a href="ml.html#iteratively-reweighted-least-squares"><i class="fa fa-check"></i><b>13.10</b> Iteratively Reweighted Least Squares</a></li>
 <li class="chapter" data-level="13.11" data-path="ml.html"><a href="ml.html#neural-network"><i class="fa fa-check"></i><b>13.11</b> Neural Network</a></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="microbiome.html"><a href="microbiome.html"><i class="fa fa-check"></i><b>14</b> Microbiome Data Analysis</a><ul>
+<li class="chapter" data-level="14.1" data-path="microbiome.html"><a href="microbiome.html#loading-and-exploring-the-guerroro-negro-data"><i class="fa fa-check"></i><b>14.1</b> Loading and Exploring the Guerroro Negro Data</a></li>
+<li class="chapter" data-level="14.2" data-path="microbiome.html"><a href="microbiome.html#statistical-analysis"><i class="fa fa-check"></i><b>14.2</b> Statistical Analysis</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="microbiome.html"><a href="microbiome.html#pca-1"><i class="fa fa-check"></i><b>14.2.1</b> PCA</a></li>
+<li class="chapter" data-level="14.2.2" data-path="microbiome.html"><a href="microbiome.html#rda"><i class="fa fa-check"></i><b>14.2.2</b> RDA</a></li>
+<li class="chapter" data-level="14.2.3" data-path="microbiome.html"><a href="microbiome.html#ca"><i class="fa fa-check"></i><b>14.2.3</b> CA</a></li>
+<li class="chapter" data-level="14.2.4" data-path="microbiome.html"><a href="microbiome.html#cca"><i class="fa fa-check"></i><b>14.2.4</b> CCA</a></li>
+<li class="chapter" data-level="14.2.5" data-path="microbiome.html"><a href="microbiome.html#pcoa"><i class="fa fa-check"></i><b>14.2.5</b> PCoA</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/sw1/" target="blank">Published by Stephen Woloszynek</a></li>
 
@@ -359,10 +369,10 @@ run</code></pre></div>
 sra_fns &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;SRR1634425&quot;</span>,<span class="st">&quot;SRR1634428&quot;</span>)
 for (sra in sra_fns) <span class="kw">getSRAfile</span>(sra, sra_con, <span class="dt">fileType =</span> <span class="st">&#39;sra&#39;</span>,<span class="dt">destDir=</span>sra_dir)</code></pre></div>
 <pre><code>## Files are saved to: 
-## &#39;/tmp/Rtmp0CksBJ&#39;
+## &#39;/tmp/RtmpFmuwHl&#39;
 ## 
 ## Files are saved to: 
-## &#39;/tmp/Rtmp0CksBJ&#39;</code></pre>
+## &#39;/tmp/RtmpFmuwHl&#39;</code></pre>
 <p>Then, we’d use the sra toolkit to extract the sequences. Assuming you have downloaded and installed it, we can do the following</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sra_output &lt;-<span class="st"> </span><span class="kw">tempdir</span>()
 

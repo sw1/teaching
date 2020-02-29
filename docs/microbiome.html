@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 14 Microbiome Data Analysis | Worked Bioninformatics, Statistics, and Machine Learning Examples</title>
+  <meta name="description" content="Code, notes, lectures, and research that should be helpful for learning purposes." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 14 Microbiome Data Analysis | Worked Bioninformatics, Statistics, and Machine Learning Examples" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://sw1.github.io/teaching/" />
+  
+  <meta property="og:description" content="Code, notes, lectures, and research that should be helpful for learning purposes." />
+  <meta name="github-repo" content="sw1/teaching" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 14 Microbiome Data Analysis | Worked Bioninformatics, Statistics, and Machine Learning Examples" />
+  
+  <meta name="twitter:description" content="Code, notes, lectures, and research that should be helpful for learning purposes." />
+  
+
+<meta name="author" content="Stephen Woloszynek" />
+
+
+<meta name="date" content="2020-02-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ml.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li>Data Science Examples</li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="dynprog.html"><a href="dynprog.html"><i class="fa fa-check"></i><b>2</b> Dynamic Programming</a><ul>
+<li class="chapter" data-level="2.1" data-path="dynprog.html"><a href="dynprog.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="dynprog.html"><a href="dynprog.html#rod-cutting"><i class="fa fa-check"></i><b>2.2</b> Rod cutting</a></li>
+<li class="chapter" data-level="2.3" data-path="dynprog.html"><a href="dynprog.html#fibonacci-rabbits"><i class="fa fa-check"></i><b>2.3</b> Fibonacci rabbits</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="align.html"><a href="align.html"><i class="fa fa-check"></i><b>3</b> Alignment</a><ul>
+<li class="chapter" data-level="3.1" data-path="align.html"><a href="align.html#longest-common-subsequence"><i class="fa fa-check"></i><b>3.1</b> Longest Common Subsequence</a></li>
+<li class="chapter" data-level="3.2" data-path="align.html"><a href="align.html#global-alignment"><i class="fa fa-check"></i><b>3.2</b> Global Alignment</a></li>
+<li class="chapter" data-level="3.3" data-path="align.html"><a href="align.html#local-alignment"><i class="fa fa-check"></i><b>3.3</b> Local Alignment</a></li>
+<li class="chapter" data-level="3.4" data-path="align.html"><a href="align.html#local-alignment-homework"><i class="fa fa-check"></i><b>3.4</b> Local Alignment: Homework</a></li>
+<li class="chapter" data-level="3.5" data-path="align.html"><a href="align.html#global-alignment-code-r"><i class="fa fa-check"></i><b>3.5</b> Global Alignment Code (R)</a></li>
+<li class="chapter" data-level="3.6" data-path="align.html"><a href="align.html#global-alignment-code-python"><i class="fa fa-check"></i><b>3.6</b> Global Alignment Code (Python)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="alignalg.html"><a href="alignalg.html"><i class="fa fa-check"></i><b>4</b> Alignment Algorithms</a><ul>
+<li class="chapter" data-level="4.1" data-path="alignalg.html"><a href="alignalg.html#longest-common-subsequence-1"><i class="fa fa-check"></i><b>4.1</b> Longest Common Subsequence</a></li>
+<li class="chapter" data-level="4.2" data-path="alignalg.html"><a href="alignalg.html#global-alignment-r"><i class="fa fa-check"></i><b>4.2</b> Global Alignment (R)</a></li>
+<li class="chapter" data-level="4.3" data-path="alignalg.html"><a href="alignalg.html#global-alignment-python"><i class="fa fa-check"></i><b>4.3</b> Global Alignment (Python)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="biocond.html"><a href="biocond.html"><i class="fa fa-check"></i><b>5</b> Bioconductor</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="biocond.html"><a href="biocond.html#loading-fasta-files"><i class="fa fa-check"></i><b>5.0.1</b> Loading FASTA Files</a></li>
+<li class="chapter" data-level="5.0.2" data-path="biocond.html"><a href="biocond.html#creating-sequence-sets"><i class="fa fa-check"></i><b>5.0.2</b> Creating Sequence Sets</a></li>
+<li class="chapter" data-level="5.0.3" data-path="biocond.html"><a href="biocond.html#sample-metadata"><i class="fa fa-check"></i><b>5.0.3</b> Sample Metadata</a></li>
+<li class="chapter" data-level="5.1" data-path="biocond.html"><a href="biocond.html#creating-gc-functions"><i class="fa fa-check"></i><b>5.1</b> Creating GC Functions</a></li>
+<li class="chapter" data-level="5.2" data-path="biocond.html"><a href="biocond.html#ncbi-esearch"><i class="fa fa-check"></i><b>5.2</b> NCBI ESearch</a></li>
+<li class="chapter" data-level="5.3" data-path="biocond.html"><a href="biocond.html#cds"><i class="fa fa-check"></i><b>5.3</b> CDS</a></li>
+<li class="chapter" data-level="5.4" data-path="biocond.html"><a href="biocond.html#whole-genomes"><i class="fa fa-check"></i><b>5.4</b> Whole Genomes</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sra.html"><a href="sra.html"><i class="fa fa-check"></i><b>6</b> Retrieving Projects</a><ul>
+<li class="chapter" data-level="6.0.1" data-path="sra.html"><a href="sra.html#fastq-dump-for-paired-end-reads"><i class="fa fa-check"></i><b>6.0.1</b> Fastq Dump for Paired End Reads</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="phyloseq.html"><a href="phyloseq.html"><i class="fa fa-check"></i><b>7</b> Phyloseq</a></li>
+<li class="chapter" data-level="8" data-path="dada.html"><a href="dada.html"><i class="fa fa-check"></i><b>8</b> Dada2</a><ul>
+<li class="chapter" data-level="8.1" data-path="dada.html"><a href="dada.html#fastq-prep"><i class="fa fa-check"></i><b>8.1</b> FASTQ Prep</a></li>
+<li class="chapter" data-level="8.2" data-path="dada.html"><a href="dada.html#otu-picking"><i class="fa fa-check"></i><b>8.2</b> OTU Picking</a></li>
+<li class="chapter" data-level="8.3" data-path="dada.html"><a href="dada.html#running-dada2-on-proteus"><i class="fa fa-check"></i><b>8.3</b> Running Dada2 on Proteus</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="dada.html"><a href="dada.html#method-1-using-namegrp-shared-r-library"><i class="fa fa-check"></i><b>8.3.1</b> Method 1: Using nameGrp Shared R Library</a></li>
+<li class="chapter" data-level="8.3.2" data-path="dada.html"><a href="dada.html#method-2-creating-a-local-library"><i class="fa fa-check"></i><b>8.3.2</b> Method 2: Creating a Local Library</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="qiime.html"><a href="qiime.html"><i class="fa fa-check"></i><b>9</b> Qiime</a><ul>
+<li class="chapter" data-level="9.1" data-path="qiime.html"><a href="qiime.html#otu-picking-1"><i class="fa fa-check"></i><b>9.1</b> OTU Picking</a></li>
+<li class="chapter" data-level="9.2" data-path="qiime.html"><a href="qiime.html#summarizing-our-results"><i class="fa fa-check"></i><b>9.2</b> Summarizing Our Results</a></li>
+<li class="chapter" data-level="9.3" data-path="qiime.html"><a href="qiime.html#loading-qiime-results-into-phyloseq"><i class="fa fa-check"></i><b>9.3</b> Loading QIIME Results into Phyloseq</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="multcomp.html"><a href="multcomp.html"><i class="fa fa-check"></i><b>10</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="10.1" data-path="multcomp.html"><a href="multcomp.html#hypothesis-testing-and-power"><i class="fa fa-check"></i><b>10.1</b> Hypothesis Testing and Power</a></li>
+<li class="chapter" data-level="10.2" data-path="multcomp.html"><a href="multcomp.html#multiple-comparisons"><i class="fa fa-check"></i><b>10.2</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="multcomp.html"><a href="multcomp.html#bonferroni"><i class="fa fa-check"></i><b>10.2.1</b> Bonferroni</a></li>
+<li class="chapter" data-level="10.2.2" data-path="multcomp.html"><a href="multcomp.html#false-discovery-rate"><i class="fa fa-check"></i><b>10.2.2</b> False Discovery Rate</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="lasso.html"><a href="lasso.html"><i class="fa fa-check"></i><b>11</b> Lasso</a><ul>
+<li class="chapter" data-level="11.1" data-path="lasso.html"><a href="lasso.html#big-data-and-feature-selection"><i class="fa fa-check"></i><b>11.1</b> Big Data and Feature Selection</a></li>
+<li class="chapter" data-level="11.2" data-path="lasso.html"><a href="lasso.html#lasso-regression"><i class="fa fa-check"></i><b>11.2</b> Lasso Regression</a></li>
+<li class="chapter" data-level="11.3" data-path="lasso.html"><a href="lasso.html#multivariate-lasso-regression"><i class="fa fa-check"></i><b>11.3</b> Multivariate Lasso Regression</a></li>
+<li class="chapter" data-level="11.4" data-path="lasso.html"><a href="lasso.html#parallel-coordinate-descent"><i class="fa fa-check"></i><b>11.4</b> Parallel Coordinate Descent</a></li>
+<li class="chapter" data-level="11.5" data-path="lasso.html"><a href="lasso.html#simulations"><i class="fa fa-check"></i><b>11.5</b> Simulations</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="lasso.html"><a href="lasso.html#times-1000-matrix-5-target-coefficients"><i class="fa fa-check"></i><b>11.5.1</b> <span class="math inline">\(50 \times 1000\)</span> Matrix | 5 Target Coefficients</a></li>
+<li class="chapter" data-level="11.5.2" data-path="lasso.html"><a href="lasso.html#times-10000-matrix-5-target-coefficients"><i class="fa fa-check"></i><b>11.5.2</b> <span class="math inline">\(50 \times 10000\)</span> Matrix | 5 Target Coefficients</a></li>
+<li class="chapter" data-level="11.5.3" data-path="lasso.html"><a href="lasso.html#times-10000-matrix-5-target-coefficients-1"><i class="fa fa-check"></i><b>11.5.3</b> <span class="math inline">\(200 \times 10000\)</span> Matrix | 5 Target Coefficients</a></li>
+<li class="chapter" data-level="11.5.4" data-path="lasso.html"><a href="lasso.html#times-10000-matrix-15-target-coefficients"><i class="fa fa-check"></i><b>11.5.4</b> <span class="math inline">\(50 \times 10000\)</span> Matrix | 15 Target Coefficients</a></li>
+<li class="chapter" data-level="11.5.5" data-path="lasso.html"><a href="lasso.html#times-10000-matrix-30-target-coefficients"><i class="fa fa-check"></i><b>11.5.5</b> <span class="math inline">\(50 \times 10000\)</span> Matrix | 30 Target Coefficients</a></li>
+<li class="chapter" data-level="11.5.6" data-path="lasso.html"><a href="lasso.html#scaling-the-coeficients"><i class="fa fa-check"></i><b>11.5.6</b> Scaling the coeficients</a></li>
+<li class="chapter" data-level="11.5.7" data-path="lasso.html"><a href="lasso.html#comparison"><i class="fa fa-check"></i><b>11.5.7</b> Comparison</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="lasso.html"><a href="lasso.html#conclusion"><i class="fa fa-check"></i><b>11.6</b> Conclusion</a></li>
+<li class="chapter" data-level="11.7" data-path="lasso.html"><a href="lasso.html#code-lasso"><i class="fa fa-check"></i><b>11.7</b> Code: Lasso</a></li>
+<li class="chapter" data-level="11.8" data-path="lasso.html"><a href="lasso.html#code-lasso-via-cyclic-gradient-descent"><i class="fa fa-check"></i><b>11.8</b> Code: Lasso via cyclic gradient descent</a></li>
+<li class="chapter" data-level="11.9" data-path="lasso.html"><a href="lasso.html#code-parallel-lasso"><i class="fa fa-check"></i><b>11.9</b> Code: Parallel lasso</a></li>
+<li class="chapter" data-level="11.10" data-path="lasso.html"><a href="lasso.html#references"><i class="fa fa-check"></i><b>11.10</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="tm.html"><a href="tm.html"><i class="fa fa-check"></i><b>12</b> Topic Models</a><ul>
+<li class="chapter" data-level="12.1" data-path="tm.html"><a href="tm.html#variational-inference"><i class="fa fa-check"></i><b>12.1</b> Variational Inference</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="tm.html"><a href="tm.html#evidence-lower-bound-elbo"><i class="fa fa-check"></i><b>12.1.1</b> Evidence Lower Bound (ELBO)</a></li>
+<li class="chapter" data-level="12.1.2" data-path="tm.html"><a href="tm.html#elbo-and-kl-divergence"><i class="fa fa-check"></i><b>12.1.2</b> ELBO and KL Divergence</a></li>
+<li class="chapter" data-level="12.1.3" data-path="tm.html"><a href="tm.html#mean-field-method"><i class="fa fa-check"></i><b>12.1.3</b> Mean Field Method</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="tm.html"><a href="tm.html#lda"><i class="fa fa-check"></i><b>12.2</b> LDA</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="tm.html"><a href="tm.html#expectation-of-pthetaalpha"><i class="fa fa-check"></i><b>12.2.1</b> Expectation of p(<span class="math inline">\(\theta|\alpha)\)</span></a></li>
+<li class="chapter" data-level="12.2.2" data-path="tm.html"><a href="tm.html#expectation-of-pztheta"><i class="fa fa-check"></i><b>12.2.2</b> Expectation of p(<span class="math inline">\(z|\theta)\)</span></a></li>
+<li class="chapter" data-level="12.2.3" data-path="tm.html"><a href="tm.html#expectation-of-pwzbeta"><i class="fa fa-check"></i><b>12.2.3</b> Expectation of p(<span class="math inline">\(w|z,\beta)\)</span></a></li>
+<li class="chapter" data-level="12.2.4" data-path="tm.html"><a href="tm.html#entropy-of-gamma-and-phi"><i class="fa fa-check"></i><b>12.2.4</b> Entropy of <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(\phi\)</span></a></li>
+<li class="chapter" data-level="12.2.5" data-path="tm.html"><a href="tm.html#complete-objective-function"><i class="fa fa-check"></i><b>12.2.5</b> Complete Objective Function</a></li>
+<li class="chapter" data-level="12.2.6" data-path="tm.html"><a href="tm.html#parameter-optimization"><i class="fa fa-check"></i><b>12.2.6</b> Parameter Optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="tm.html"><a href="tm.html#supervised-lda"><i class="fa fa-check"></i><b>12.3</b> Supervised LDA</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="tm.html"><a href="tm.html#expectations-of-pthetaalpha-pztheta-and-pwzbeta"><i class="fa fa-check"></i><b>12.3.1</b> Expectations of <span class="math inline">\(p(\theta|\alpha)\)</span>, <span class="math inline">\(p(z|\theta)\)</span>, and <span class="math inline">\(p(w|z,\beta)\)</span></a></li>
+<li class="chapter" data-level="12.3.2" data-path="tm.html"><a href="tm.html#expectation-of-pyzetasigma2"><i class="fa fa-check"></i><b>12.3.2</b> Expectation of <span class="math inline">\(p(y|z,\eta,\sigma^2)\)</span></a></li>
+<li class="chapter" data-level="12.3.3" data-path="tm.html"><a href="tm.html#entropy-of-gamma-and-phi-1"><i class="fa fa-check"></i><b>12.3.3</b> Entropy of <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(\phi\)</span></a></li>
+<li class="chapter" data-level="12.3.4" data-path="tm.html"><a href="tm.html#complete-objective-function-1"><i class="fa fa-check"></i><b>12.3.4</b> Complete Objective Function</a></li>
+<li class="chapter" data-level="12.3.5" data-path="tm.html"><a href="tm.html#parameter-optimization-1"><i class="fa fa-check"></i><b>12.3.5</b> Parameter Optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="tm.html"><a href="tm.html#the-correlated-topic-model"><i class="fa fa-check"></i><b>12.4</b> The Correlated Topic Model</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="tm.html"><a href="tm.html#multinomial-distribution-in-exponential-form"><i class="fa fa-check"></i><b>12.4.1</b> Multinomial Distribution in Exponential Form</a></li>
+<li class="chapter" data-level="12.4.2" data-path="tm.html"><a href="tm.html#variational-em"><i class="fa fa-check"></i><b>12.4.2</b> Variational EM</a></li>
+<li class="chapter" data-level="12.4.3" data-path="tm.html"><a href="tm.html#expectation-of-pwzbeta-1"><i class="fa fa-check"></i><b>12.4.3</b> Expectation of <span class="math inline">\(p(w|z,\beta)\)</span></a></li>
+<li class="chapter" data-level="12.4.4" data-path="tm.html"><a href="tm.html#expectation-of-pzeta"><i class="fa fa-check"></i><b>12.4.4</b> Expectation of <span class="math inline">\(p(z|\eta)\)</span></a></li>
+<li class="chapter" data-level="12.4.5" data-path="tm.html"><a href="tm.html#expectation-of-petamusigma"><i class="fa fa-check"></i><b>12.4.5</b> Expectation of <span class="math inline">\(p(\eta|\mu,\sigma)\)</span></a></li>
+<li class="chapter" data-level="12.4.6" data-path="tm.html"><a href="tm.html#entropy-of-lambda-nu-and-phi"><i class="fa fa-check"></i><b>12.4.6</b> Entropy of <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(\nu\)</span>, and <span class="math inline">\(\phi\)</span></a></li>
+<li class="chapter" data-level="12.4.7" data-path="tm.html"><a href="tm.html#complete-objective-function-2"><i class="fa fa-check"></i><b>12.4.7</b> Complete Objective Function</a></li>
+<li class="chapter" data-level="12.4.8" data-path="tm.html"><a href="tm.html#parameter-optimization-2"><i class="fa fa-check"></i><b>12.4.8</b> Parameter Optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="tm.html"><a href="tm.html#dirichlet-distribution"><i class="fa fa-check"></i><b>12.5</b> Dirichlet Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="ml.html"><a href="ml.html"><i class="fa fa-check"></i><b>13</b> Machine Learning</a><ul>
+<li class="chapter" data-level="13.1" data-path="ml.html"><a href="ml.html#cross-valdiation"><i class="fa fa-check"></i><b>13.1</b> Cross Valdiation</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="ml.html"><a href="ml.html#loocv"><i class="fa fa-check"></i><b>13.1.1</b> LOOCV</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="ml.html"><a href="ml.html#naive-bayes"><i class="fa fa-check"></i><b>13.2</b> Naive Bayes</a></li>
+<li class="chapter" data-level="13.3" data-path="ml.html"><a href="ml.html#svm"><i class="fa fa-check"></i><b>13.3</b> SVM</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="ml.html"><a href="ml.html#manual-rbf-kernal"><i class="fa fa-check"></i><b>13.3.1</b> Manual rbf kernal</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="ml.html"><a href="ml.html#k-means"><i class="fa fa-check"></i><b>13.4</b> K-means</a></li>
+<li class="chapter" data-level="13.5" data-path="ml.html"><a href="ml.html#gaussian-mixtures"><i class="fa fa-check"></i><b>13.5</b> Gaussian Mixtures</a></li>
+<li class="chapter" data-level="13.6" data-path="ml.html"><a href="ml.html#pca"><i class="fa fa-check"></i><b>13.6</b> PCA</a></li>
+<li class="chapter" data-level="13.7" data-path="ml.html"><a href="ml.html#viterbi-algorithm"><i class="fa fa-check"></i><b>13.7</b> Viterbi Algorithm</a></li>
+<li class="chapter" data-level="13.8" data-path="ml.html"><a href="ml.html#gradient-descent"><i class="fa fa-check"></i><b>13.8</b> Gradient Descent</a><ul>
+<li class="chapter" data-level="13.8.1" data-path="ml.html"><a href="ml.html#linear-regression"><i class="fa fa-check"></i><b>13.8.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="13.8.2" data-path="ml.html"><a href="ml.html#logistic-regression"><i class="fa fa-check"></i><b>13.8.2</b> Logistic Regression</a></li>
+<li class="chapter" data-level="13.8.3" data-path="ml.html"><a href="ml.html#softmax-regression"><i class="fa fa-check"></i><b>13.8.3</b> Softmax regression</a></li>
+</ul></li>
+<li class="chapter" data-level="13.9" data-path="ml.html"><a href="ml.html#nonparametric-bayesian-processes"><i class="fa fa-check"></i><b>13.9</b> Nonparametric Bayesian Processes</a><ul>
+<li class="chapter" data-level="13.9.1" data-path="ml.html"><a href="ml.html#chinese-restaurant"><i class="fa fa-check"></i><b>13.9.1</b> Chinese Restaurant</a></li>
+<li class="chapter" data-level="13.9.2" data-path="ml.html"><a href="ml.html#polyas-urn"><i class="fa fa-check"></i><b>13.9.2</b> Polyas Urn</a></li>
+<li class="chapter" data-level="13.9.3" data-path="ml.html"><a href="ml.html#stick-breaking"><i class="fa fa-check"></i><b>13.9.3</b> Stick Breaking</a></li>
+</ul></li>
+<li class="chapter" data-level="13.10" data-path="ml.html"><a href="ml.html#iteratively-reweighted-least-squares"><i class="fa fa-check"></i><b>13.10</b> Iteratively Reweighted Least Squares</a></li>
+<li class="chapter" data-level="13.11" data-path="ml.html"><a href="ml.html#neural-network"><i class="fa fa-check"></i><b>13.11</b> Neural Network</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="microbiome.html"><a href="microbiome.html"><i class="fa fa-check"></i><b>14</b> Microbiome Data Analysis</a><ul>
+<li class="chapter" data-level="14.1" data-path="microbiome.html"><a href="microbiome.html#loading-and-exploring-the-guerroro-negro-data"><i class="fa fa-check"></i><b>14.1</b> Loading and Exploring the Guerroro Negro Data</a></li>
+<li class="chapter" data-level="14.2" data-path="microbiome.html"><a href="microbiome.html#statistical-analysis"><i class="fa fa-check"></i><b>14.2</b> Statistical Analysis</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="microbiome.html"><a href="microbiome.html#pca-1"><i class="fa fa-check"></i><b>14.2.1</b> PCA</a></li>
+<li class="chapter" data-level="14.2.2" data-path="microbiome.html"><a href="microbiome.html#rda"><i class="fa fa-check"></i><b>14.2.2</b> RDA</a></li>
+<li class="chapter" data-level="14.2.3" data-path="microbiome.html"><a href="microbiome.html#ca"><i class="fa fa-check"></i><b>14.2.3</b> CA</a></li>
+<li class="chapter" data-level="14.2.4" data-path="microbiome.html"><a href="microbiome.html#cca"><i class="fa fa-check"></i><b>14.2.4</b> CCA</a></li>
+<li class="chapter" data-level="14.2.5" data-path="microbiome.html"><a href="microbiome.html#pcoa"><i class="fa fa-check"></i><b>14.2.5</b> PCoA</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/sw1/" target="blank">Published by Stephen Woloszynek</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Worked Bioninformatics, Statistics, and Machine Learning Examples</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="microbiome" class="section level1">
+<h1><span class="header-section-number">Chapter 14</span> Microbiome Data Analysis</h1>
+<p> </p>
+<div id="loading-and-exploring-the-guerroro-negro-data" class="section level2">
+<h2><span class="header-section-number">14.1</span> Loading and Exploring the Guerroro Negro Data</h2>
+<p>Metagenome sequence information was downloaded by the NCBI link provided in the the tutorial summary page on learn. The OTUs were then clustered and classified, resulting in a read table (“table”) and a taxa table (“utax”).</p>
+<p>To load the tables, we’ll do the following</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counts &lt;-<span class="st"> </span>GN16SData$otuTable
+tax &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">tax=</span><span class="kw">rownames</span>(counts)) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">separate</span>(tax,<span class="kw">c</span>(<span class="st">&#39;Kingdom&#39;</span>,<span class="st">&#39;Phylum&#39;</span>,<span class="st">&#39;Class&#39;</span>,<span class="st">&#39;Order&#39;</span>,<span class="st">&#39;Family&#39;</span>,<span class="st">&#39;Genus&#39;</span>,<span class="st">&#39;Species&#39;</span>,<span class="st">&#39;Subspecies&#39;</span>),<span class="dt">sep=</span><span class="st">&#39;;&#39;</span>) %&gt;%
+<span class="st">  </span><span class="kw">data.frame</span>(<span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
+tax[<span class="kw">is.na</span>(tax)] &lt;-<span class="st"> &#39;&#39;</span>
+<span class="kw">rownames</span>(counts) &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:<span class="kw">nrow</span>(counts),function(x) <span class="kw">paste0</span>(<span class="st">&#39;OTU_&#39;</span>,x,<span class="dt">collapse=</span><span class="st">&#39;&#39;</span>))
+<span class="kw">rownames</span>(tax) &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:<span class="kw">nrow</span>(counts),function(x) <span class="kw">paste0</span>(<span class="st">&#39;OTU_&#39;</span>,x,<span class="dt">collapse=</span><span class="st">&#39;&#39;</span>))
+
+depth &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">gsub</span>(<span class="st">&#39;^GNmat</span><span class="ch">\\</span><span class="st">.(.*?)mm$&#39;</span>,<span class="st">&#39;</span><span class="ch">\\</span><span class="st">1&#39;</span>,<span class="kw">colnames</span>(counts)))
+zone &lt;-<span class="st"> </span><span class="kw">if_else</span>(depth &lt;<span class="st"> </span><span class="dv">2</span>,<span class="st">&#39;A&#39;</span>,<span class="kw">if_else</span>(depth &gt;=<span class="st"> </span><span class="dv">6</span>,<span class="st">&#39;C&#39;</span>,<span class="st">&#39;B&#39;</span>))</code></pre></div>
+<p>Knowing what every command means is probably beyond the scope of this tutorial. We simply want two clean tables with the OTU numbers set as the row names.</p>
+<p>Counts is a table of OTU counts for each mat, so rows 1 (OTU 4973) and 2 (OTU 41) from column 1 had 1 and 14 occurrences, respectively.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counts[<span class="dv">1</span>,<span class="dv">1</span>] ## row 1, column 1</code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counts[<span class="dv">2</span>,<span class="dv">1</span>] ## row 2, column 1</code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>Note the sparsity of the count table, which could pose problems in traditional statistical methods.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(counts ==<span class="st"> </span><span class="dv">0</span>)</code></pre></div>
+<pre><code>## [1] 0.476699</code></pre>
+<p>The taxa table shows the taxonomic breakdown (Kingdom - Phylum - … - Species) for each OTU.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(tax)</code></pre></div>
+<pre><code>##        Kingdom        Phylum         Class       Order  Family
+## OTU_1 Bacteria Acidobacteria Acidobacteria Subgroup 21        
+## OTU_2 Bacteria Acidobacteria Acidobacteria Subgroup 25        
+## OTU_3 Bacteria Acidobacteria Acidobacteria  Subgroup 3 PAUC26f
+## OTU_4 Bacteria Acidobacteria Acidobacteria  Subgroup 3 PAUC26f
+## OTU_5 Bacteria Acidobacteria Acidobacteria  Subgroup 9        
+## OTU_6 Bacteria Acidobacteria    Holophagae BP-U1C-1g10        
+##                                    Genus Species Subspecies
+## OTU_1                                                      
+## OTU_2                                                      
+## OTU_3                                                      
+## OTU_4 uncultured Acidobacteria bacterium                   
+## OTU_5                                                      
+## OTU_6</code></pre>
+<p>Note that it’s not possible to classify every OTU taxonomically, so you will see similar taxons for different OTUs. These should still be considered different. For example, look at OTUs 8 and 9:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tax[<span class="st">&quot;OTU_8&quot;</span>,]</code></pre></div>
+<pre><code>##        Kingdom        Phylum      Class       Order Family Genus Species
+## OTU_8 Bacteria Acidobacteria Holophagae Subgroup 23  NKB17              
+##       Subspecies
+## OTU_8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tax[<span class="st">&quot;OTU_9&quot;</span>,]</code></pre></div>
+<pre><code>##        Kingdom        Phylum       Class Order Family Genus Species Subspecies
+## OTU_9 Bacteria Acidobacteria Subgroup 22</code></pre>
+<p>They have the same taxonomic names, but, again, they should be considered unique OTUs.</p>
+</div>
+<div id="statistical-analysis" class="section level2">
+<h2><span class="header-section-number">14.2</span> Statistical Analysis</h2>
+<p>The goal is to cover Canonical Correspondence Analysis (CCA) and Redundancy Analysis (RDA). These are extensions of “simpler” algorithms, Correspondence Analysis (CA) and Principal Component Analysis (PCA), respectively, so it’s best to cover those first.</p>
+<div id="pca-1" class="section level3">
+<h3><span class="header-section-number">14.2.1</span> PCA</h3>
+<p>PCA is an unsupervised learning algorithm to essentially cluster unlabeled data. The trick is through dimensionality reduction, we will end up with principal components that explain as much variation as possible to make latent groups more separable. This process is driven by reducing the squared orthogonal projection distance. This is a similar problem to minimizing sums of squares in linear regression.</p>
+<p>Given a unit vector <span class="math inline">\(u\)</span> and a data vector <span class="math inline">\(x\)</span>, to minimize the projection residuals, we must minimize the following:</p>
+<p><span class="math display">\[
+\begin{align}
+  \text{MSE}(u) &amp;= \frac{1}{n}\sum_{i}(||x_i||^2-(x_{}^{T} u)^2)\\
+                &amp;= \frac{1}{n}\sum_{i}||x_i||^2 - \frac{1}{n}\sum_{i}(x_{i}^{T} u)^2
+\end{align}
+\]</span></p>
+<p>As the right side of the second term gets large, the mean squared error of the projection residuals gets small. If we assume <span class="math inline">\(||u||=1\)</span>, then the length of the <span class="math inline">\(x^{(i)}\)</span> projection onto <span class="math inline">\(u\)</span> is <span class="math inline">\(x^{(i)T}u\)</span>:</p>
+<p><span class="math display">\[
+\text{proj}_{u}(x)=\frac{x^{T}u}{||u||}=x^{T}u
+\]</span></p>
+<p>The plan is then to choose a vector <span class="math inline">\(u\)</span> that maximizes</p>
+<p><span class="math display">\[
+\frac{1}{n}\sum_{i}(x^{(i)T}u)^2\\
+\text{s.t. }||u||=1
+\]</span></p>
+<p>We can rearrange the equation, so it will make a little more sense:</p>
+<p><span class="math display">\[
+\begin{align}
+  \frac{1}{n} \sum_{i}(x^{(i)T}u)^2 &amp;= \frac{1}{n}\sum_{i}(u^{T}x)(u^{T}x)\\
+                                  &amp;= u^{T}(\frac{1}{n}\sum_{i}xx^{T})u\\
+                                  &amp;= u^{T}\Sigma u
+\end{align}
+\]</span></p>
+<p>Now the maximization requires a Lagrange multiplier:</p>
+<p><span class="math display">\[
+\begin{align}
+  \text{argmax }u^{T}\Sigma u &amp;= \mathcal{L}(u,\lambda) \text{     s.t. }||u||=1\\
+                             &amp;= u^{T}\Sigma u-\lambda(u^{T}u-1)\\\\
+  \therefore \nabla_{u}\mathcal{L} &amp;= \Sigma u - \lambda u\\\\
+\end{align}
+\]</span></p>
+<p>Which we set to <span class="math inline">\(0\)</span> and solve:</p>
+<p><span class="math display">\[
+\begin{align}
+  \Sigma u - \lambda u &amp;= 0\\
+                            \Sigma u &amp;= \lambda u   
+\end{align}
+\]</span></p>
+<p>Let’s rearrange this one last time:</p>
+<p><span class="math display">\[
+u^{T}\Sigma u = \lambda
+\]</span></p>
+<p>We can think of the left side as the variation. Remember, the goal is to maximize this to give us the greatest separation. There’s a few things that should be mentioned here. First, <span class="math inline">\(\Sigma\)</span> is the covariance matrix in this problem (or correlation matrix, assuming scaling beforehand), <span class="math inline">\(u\)</span> is an eigenvector, and <span class="math inline">\(\lambda\)</span> is the associated eigenvalue. By finding the eigenvalues and choosing those that are largest, we effectively will maximize the left side, the variation.</p>
+<p>Assuming we have a matrix <span class="math inline">\(X\)</span> of centered, rescaled data, PCA proceeds as follows. We first calculate the correlation matrix of <span class="math inline">\(X\)</span> and then compute its eigenvalues and eigenvectors. We then find the largest eigenvalue <span class="math inline">\(\lambda_{1}\)</span> and rescale <span class="math inline">\(X\)</span> with its corresponding eigenvector <span class="math inline">\(u_{1}\)</span>, resulting in the first principal component. We repeat this process using the second largest eigenvalue <span class="math inline">\(\lambda_{2}\)</span>, rescaling the data using <span class="math inline">\(u_{2}\)</span> to acquire the second principal component. These two vectors can be regressed against one another, effectively reducing the dimentionality of <span class="math inline">\(X\)</span> to <span class="math inline">\(\mathbb{R}^{2}\)</span>. We can proceed to calculate the remaining principal components, regressing different combinations to find patterns. One indirect assumption in PCA (and therefore will be quite important for RDA) is that the covariance (correlation) matrix is calculated via the Pearson method, which assumes a linear association between two variables. Our data of interest could very well be related, but not linearly, posing problems for computing the correlations, which in turn leads to problems in the PCA. Considering OTU data tables are often zero-inflated, it shouldn’t be surprising that the linearity assumption could be violated.</p>
+<p>Let’s quickly run through some sample data (where the labels are known), performing PCA “manually,” to show you what’s happening. Then, we’ll rerun the analysis with the same sample data but with a base PCA command in R called princomp(). Finally, we’ll run PCA on the Guerrero Negro matrix.</p>
+<div id="pca-example-with-labeled-data" class="section level4">
+<h4><span class="header-section-number">14.2.1.1</span> PCA Example with Labeled Data</h4>
+<p>Let’s say we are given weight lifting data. The PCA won’t know this, but we know the labels beforehand, which basically breakdown into three groups: (1) average sized men, (2) very tall men, and (3) average sized women. The recorded information (“features”) are height, weight, and amount of weight moved (say, for benching).</p>
+<p>First, we have to generate the data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">4131</span>)
+x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">68</span>,<span class="dv">5</span>),<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">78</span>,<span class="dv">5</span>),<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">63</span>,<span class="dv">4</span>))        ## height
+x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">215</span>,<span class="dv">40</span>),<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">200</span>,<span class="dv">20</span>),<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">125</span>,<span class="dv">15</span>))  ## weight
+x3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">280</span>,<span class="dv">50</span>),<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">180</span>,<span class="dv">15</span>),<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">95</span>,<span class="dv">15</span>))   ## exercise
+label &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Compact Guys&quot;</span>,<span class="st">&quot;Tall Guys&quot;</span>,<span class="st">&quot;Women&quot;</span>),<span class="dt">each=</span><span class="dv">100</span>)    ## labels</code></pre></div>
+<p>Now, scale and center the data <span class="math inline">\((x_{i}-\bar x)/\sigma_{i}\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">scale</span>(x1)
+x2 &lt;-<span class="st"> </span><span class="kw">scale</span>(x2)
+x3 &lt;-<span class="st"> </span><span class="kw">scale</span>(x3)</code></pre></div>
+<p>Form the data matrix <span class="math inline">\(X\)</span> and the covariance matrix <span class="math inline">\(\Sigma\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">cbind</span>(x1,x2,x3)
+colnames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Average Guys&quot;</span>,<span class="st">&quot;Tall Guys&quot;</span>,<span class="st">&quot;Women&quot;</span>)
+E &lt;-<span class="st"> </span><span class="kw">cov</span>(x)</code></pre></div>
+<p>This was mentioned above in passing, but just to prove it, because we scaled the data, we are essentially working with the correlation matrix:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(x)</code></pre></div>
+<pre><code>##           [,1]      [,2]      [,3]
+## [1,] 1.0000000 0.4360384 0.2365420
+## [2,] 0.4360384 1.0000000 0.7292495
+## [3,] 0.2365420 0.7292495 1.0000000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(x)</code></pre></div>
+<pre><code>##           [,1]      [,2]      [,3]
+## [1,] 1.0000000 0.4360384 0.2365420
+## [2,] 0.4360384 1.0000000 0.7292495
+## [3,] 0.2365420 0.7292495 1.0000000</code></pre>
+<p>Perform an eigendecomposition of <span class="math inline">\(\Sigma\)</span> by solving <span class="math inline">\(\text{det}(\Sigma - \lambda I)=0\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">evd &lt;-<span class="st"> </span><span class="kw">eigen</span>(E)</code></pre></div>
+<p>This results in a list of 3 eigenvalues and 3 eigenvectors</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(evd)</code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.9662182 0.7956439 0.2381379
+## 
+## $vectors
+##            [,1]       [,2]       [,3]
+## [1,] -0.4456653 -0.8665488  0.2246679
+## [2,] -0.6586780  0.1474612 -0.7378336
+## [3,] -0.6062390  0.4768106  0.6364950</code></pre>
+<p>Rescale the data <span class="math inline">\(X\)</span> using the eigenvectors</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ev1 &lt;-<span class="st"> </span>evd$vectors[,<span class="dv">1</span>]    ## eigenvector 1, corresponding to the largest eigenvalue thus most variation
+ev2 &lt;-<span class="st"> </span>evd$vectors[,<span class="dv">2</span>]    ## eigenvector 2
+ev3 &lt;-<span class="st"> </span>evd$vectors[,<span class="dv">3</span>]    ## eigenvector 3
+
+pc1 &lt;-<span class="st"> </span>x %*%<span class="st"> </span>ev1
+pc2 &lt;-<span class="st"> </span>x %*%<span class="st"> </span>ev2
+pc3 &lt;-<span class="st"> </span>x %*%<span class="st"> </span>ev3</code></pre></div>
+<p>Regress the first two principal components:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">cbind</span>(pc1,pc2),label)
+<span class="kw">names</span>(df) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;PC1&#39;</span>,<span class="st">&#39;PC2&#39;</span>,<span class="st">&#39;Group&#39;</span>)
+<span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x=</span>PC1,<span class="dt">y=</span>PC2,<span class="dt">colour=</span>Group)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span><span class="dv">1</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>The figure shows clear separation between men and women, and clustering of all three groups. Had we not know the labels to colorcode the output, we would at least been able to confidently separate the data into two groups, men and women.</p>
+<p>Now, let’s see what the base PCA command gives us.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out &lt;-<span class="st"> </span><span class="kw">princomp</span>(x)
+
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">cbind</span>(out$scores[,<span class="dv">1</span>],out$scores[,<span class="dv">2</span>]),label)
+<span class="kw">names</span>(df) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;PC1&#39;</span>,<span class="st">&#39;PC2&#39;</span>,<span class="st">&#39;Group&#39;</span>)
+<span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x=</span>PC1,<span class="dt">y=</span>PC2,<span class="dt">colour=</span>Group)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span><span class="dv">1</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Not surprisingly, it’s the same figure, albeit rotated because of differences in sign from the respective outputs:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cbind</span>(ev1,ev2,ev3)</code></pre></div>
+<pre><code>##             ev1        ev2        ev3
+## [1,] -0.4456653 -0.8665488  0.2246679
+## [2,] -0.6586780  0.1474612 -0.7378336
+## [3,] -0.6062390  0.4768106  0.6364950</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out$loadings</code></pre></div>
+<pre><code>## 
+## Loadings:
+##      Comp.1 Comp.2 Comp.3
+## [1,]  0.446  0.867  0.225
+## [2,]  0.659 -0.147 -0.738
+## [3,]  0.606 -0.477  0.636
+## 
+##                Comp.1 Comp.2 Comp.3
+## SS loadings     1.000  1.000  1.000
+## Proportion Var  0.333  0.333  0.333
+## Cumulative Var  0.333  0.667  1.000</code></pre>
+<p>We should look at one other figure, one that shows the variation as a function of the principal components. While not incredibly useful here because we are only working with three features, given other situations, being able to quickly identify which components explain the majority of the variation will help hone in on important components for regression and the like.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(out,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>We can see that most of the variance is accounted for by the first two components, which is consistent with the fact that the groups were indeed separable in the figure.</p>
+<p>Here’s a figure of the third component plotted against the second to show how the separability is far less pronounced since these two explain far less variation than PC1.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">cbind</span>(out$scores[,<span class="dv">2</span>],out$scores[,<span class="dv">3</span>]),label)
+<span class="kw">names</span>(df) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;PC2&#39;</span>,<span class="st">&#39;PC3&#39;</span>,<span class="st">&#39;Group&#39;</span>)
+<span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x=</span>PC2,<span class="dt">y=</span>PC3,<span class="dt">colour=</span>Group)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span><span class="dv">1</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</div>
+<div id="pca-with-guerroro-negro-data" class="section level4">
+<h4><span class="header-section-number">14.2.1.2</span> PCA with Guerroro Negro Data</h4>
+<p>If you no longer have the GN data loaded, go ahead and redo that. We need the “counts” matrix. Let’s go ahead and perform PCA. We will will center the data, but abstain from rescaling the data because we are working with counts.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cen.counts &lt;-<span class="st"> </span>counts -<span class="st"> </span><span class="kw">mean</span>(counts)
+gn.out &lt;-<span class="st"> </span><span class="kw">princomp</span>(cen.counts)</code></pre></div>
+<p>If you print output, you’ll notice that there are 10 PCs now since there were 10 mats (columns).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gn.out$scores)</code></pre></div>
+<pre><code>##          Comp.1   Comp.2    Comp.3     Comp.4     Comp.5      Comp.6     Comp.7
+## OTU_1 -24.10579 30.65369 21.304671 -4.8520464 -6.5525493 -20.2214730 12.7670072
+## OTU_2 -66.23146 18.34410  7.000803 -0.7268435  1.4621818   2.0476116 -1.8187592
+## OTU_3 -64.57958 18.37032  8.211154 -1.9224696  0.4742431  -0.7159185 -0.4629319
+## OTU_4 -66.23146 18.34410  7.000803 -0.7268435  1.4621818   2.0476116 -1.8187592
+## OTU_5 -62.30987 19.99805  9.428531 -2.0385229  1.2811694  -1.0441444 -2.0007094
+## OTU_6 -66.18372 17.57568  6.466316 -0.2582377  1.1171936   2.6468088 -2.6923849
+##           Comp.8   Comp.9    Comp.10
+## OTU_1 -0.7624848 1.593170  0.6960046
+## OTU_2 -0.2682508 2.042739 -0.6984811
+## OTU_3 -0.9452909 2.643072 -1.0240168
+## OTU_4 -0.2682508 2.042739 -0.6984811
+## OTU_5 -0.8321114 2.450719 -0.2960276
+## OTU_6 -0.8707250 2.550741 -0.4993186</code></pre>
+<p>Considering there are so many, figuring out how many explain most of the variance would be beneficial.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(gn.out,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Explained Variance&quot;</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(gn.out)</code></pre></div>
+<pre><code>## Importance of components:
+##                             Comp.1      Comp.2      Comp.3      Comp.4
+## Standard deviation     271.0884625 122.5042408 72.51082720 51.03068959
+## Proportion of Variance   0.7409823   0.1513171  0.05301411  0.02625721
+## Cumulative Proportion    0.7409823   0.8922994  0.94531350  0.97157071
+##                              Comp.5       Comp.6       Comp.7       Comp.8
+## Standard deviation     31.107169019 26.981018606 19.822764254 18.072669171
+## Proportion of Variance  0.009756785  0.007340108  0.003961997  0.003293293
+## Cumulative Proportion   0.981327494  0.988667602  0.992629599  0.995922892
+##                              Comp.9      Comp.10
+## Standard deviation     15.234734815 13.124832323
+## Proportion of Variance  0.002340214  0.001736894
+## Cumulative Proportion   0.998263106  1.000000000</code></pre>
+<p>We can see that the first 6 PCs explain more than 95% of the variance. Let’s plot the first two components.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">cbind</span>(gn.out$scores[,<span class="dv">1</span>],gn.out$scores[,<span class="dv">2</span>]),<span class="kw">rownames</span>(cen.counts),tax[,<span class="dv">2</span>])
+<span class="kw">names</span>(df) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;PC1&#39;</span>,<span class="st">&#39;PC2&#39;</span>,<span class="st">&#39;OTU&#39;</span>,<span class="st">&#39;Phylum&#39;</span>)
+<span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x=</span>PC1,<span class="dt">y=</span>PC2,<span class="dt">label=</span>OTU)) +<span class="st"> </span><span class="kw">geom_text</span>(<span class="dt">size=</span><span class="dv">3</span>,<span class="dt">position=</span><span class="st">&quot;jitter&quot;</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x=</span>PC1,<span class="dt">y=</span>PC2,<span class="dt">label=</span>Phylum)) +<span class="st"> </span><span class="kw">geom_text</span>(<span class="dt">size=</span><span class="dv">3</span>,<span class="dt">position=</span><span class="st">&quot;jitter&quot;</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-24-2.png" width="672" /></p>
+<p>Given the number of OTUs, this figure is difficult to read. One thing to note is that the taxa information we loaded from before can be quite useful. Notice in the second plot, instead of using OTU labels, we used phylum labels. We could potentially see clusters of the same phyla, then look at their OTUs and mat location, and draw interesting conclusions.</p>
+<p>Let’s quickly zoom in:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x=</span>PC1,<span class="dt">y=</span>PC2,<span class="dt">label=</span>Phylum)) +<span class="st"> </span><span class="kw">geom_text</span>(<span class="dt">size=</span><span class="dv">3</span>,<span class="dt">position=</span><span class="st">&quot;jitter&quot;</span>) +<span class="kw">xlim</span>(-<span class="dv">50</span>,<span class="dv">20</span>) +<span class="kw">ylim</span>(-<span class="dv">25</span>,<span class="dv">25</span>)</code></pre></div>
+<pre><code>## Warning: Removed 472 rows containing missing values (geom_text).</code></pre>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Note the peculiar shape of the distribution; it’s curved, “horseshoe-like.” This is a serious problem resulting from secondary gradients in the data; hence, the figure cannot be trusted. A detailed explanation of this artifact is below in the “arch effect” section (“arch effect” is simply the term for essentially the same problem in CA).</p>
+<p>Despite this analysis being flawed, we can still explore some of the output for PCA. Here are the loadings for the PCA results. These values tell us, for each PC, how much variance is explained by a variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gn.out$loadings</code></pre></div>
+<pre><code>## 
+## Loadings:
+##               Comp.1 Comp.2 Comp.3 Comp.4 Comp.5 Comp.6 Comp.7 Comp.8 Comp.9
+## GNmat.10.22mm  0.388  0.180         0.132         0.350  0.380         0.343
+## GNmat.1.2mm    0.195 -0.571        -0.153 -0.400  0.158        -0.212  0.572
+## GNmat.6.10mm   0.401  0.150         0.268 -0.138  0.353  0.321 -0.379 -0.387
+## GNmat.22.34mm  0.498  0.259  0.401 -0.167  0.195  0.166 -0.618  0.143       
+## GNmat.34.49mm  0.364  0.149  0.290 -0.261 -0.147 -0.730  0.352 -0.116       
+## GNmat.2.3mm    0.229 -0.216 -0.327 -0.643 -0.201  0.159         0.114 -0.468
+## GNmat.4.5mm    0.281        -0.337  0.378 -0.349 -0.193         0.692       
+## GNmat.3.4mm    0.263 -0.142 -0.512 -0.127  0.708 -0.134  0.108         0.230
+## GNmat.0.1mm    0.150 -0.679  0.411  0.301  0.292                0.141 -0.358
+## GNmat.5.6mm    0.217        -0.296  0.360        -0.289 -0.469 -0.507       
+##               Comp.10
+## GNmat.10.22mm  0.630 
+## GNmat.1.2mm   -0.226 
+## GNmat.6.10mm  -0.443 
+## GNmat.22.34mm -0.168 
+## GNmat.34.49mm        
+## GNmat.2.3mm    0.285 
+## GNmat.4.5mm   -0.153 
+## GNmat.3.4mm   -0.219 
+## GNmat.0.1mm    0.118 
+## GNmat.5.6mm    0.401 
+## 
+##                Comp.1 Comp.2 Comp.3 Comp.4 Comp.5 Comp.6 Comp.7 Comp.8 Comp.9
+## SS loadings       1.0    1.0    1.0    1.0    1.0    1.0    1.0    1.0    1.0
+## Proportion Var    0.1    0.1    0.1    0.1    0.1    0.1    0.1    0.1    0.1
+## Cumulative Var    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8    0.9
+##                Comp.10
+## SS loadings        1.0
+## Proportion Var     0.1
+## Cumulative Var     1.0</code></pre>
+<p>A biplot will show the same distribution of points we’ve been looking at in the above PCA plots where we regress components against each other, but it also plots information about these loadings.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">biplot</span>(gn.out)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p>What we care about here are those red lines. You can interpret their orientation the same way you’d interpret regression lines. Notice in the printout of the loadings above, mats 5 and 6 explain very little variation for PC2; we would expect a nearly zero slope with respect to PC2, something easily identifiable in the biplot.</p>
+<p>Other useful information we can gather is based on which mats pair with one another. If mats explain a similar amount of information for both PCs, then one would expect that their “lines” would be nearly identically positioned. We can extrapolate from this that, say, mats 1 and 2 are likely similar, whereas mats 1 and 9, which are at right angles, are quite different.</p>
+</div>
+</div>
+<div id="rda" class="section level3">
+<h3><span class="header-section-number">14.2.2</span> RDA</h3>
+<p>Because we got PCA out of the way, we’ve basically covered the second step in Redundancy Analysis (RDA). The term “redundancy” in this context can be thought of as a synonym for “explained variation.” The procedure is quite simple. Assume we are working with the same data matrix, “counts.” Now, say we have some explanatory variables that are capable of explaining some of the variation across mats. We actually loaded two of these in earlier: depth and zone. In our case, multiple regression would be performed using these two variables, with a particular OTU as the response. The fitted values from the best fit line would then replace the original response values in our matrix. Regressions are performed for every OTU. Essentially, each column is being smoothed based on the linear relationships between OTUs and the explanatory variables. This new “smoothed” matrix is then thrown into PCA. The reason this is called a “redundancy” analysis may make more sense now. Say two OTUs have very similar best fit lines after their respective regressions; the fitted values would then be the same and we can then consider these OTUs to be redundant – i.e., they explain the same information. It should also be noted that the linearity assumption presents itself twice in RDA: first, the regressions themselves assume a linear association between variables, and second, as mentioned before, the covariances calculated for the PCA covariance matrix too assume a linear association between variables. Zero-inflated data could very well pose a problem.</p>
+<p>We’ll start by demonstrating exactly how this new matrix is generated. Because we’re performing a linear regression, and we care about accurate estimates, the typical regression assumptions apply. While this can be tedious for large datasets, it’s nevertheless good practice to deal with normality and outlier issues. If you are familiar with generalized linear models, you may be concerned about the sparsity of the matrix, which would severely affect the accuracy of said predictions, and hence are considering some zero-inflated implementation. While this is beyond the scope of this tutorial, the sparsity is certainly a concern.</p>
+<p>First, let’s transpose the matrix to make our responses column vectors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cen.counts &lt;-<span class="st"> </span><span class="kw">t</span>(cen.counts)</code></pre></div>
+<p>The overall regression model will be</p>
+<p><span class="math display">\[
+\begin{align}
+  \hat{Counts}_{\dot j} = \beta_{1}Depth + \beta_{2}Zone + \beta_{3}Depth\times Zone\\
+\end{align}
+\]</span></p>
+<p>Note that <span class="math inline">\(\hat{Counts}_{\dot j}\)</span> is the column vector <span class="math inline">\(j\)</span> in the matrix <span class="math inline">\(\hat Counts\)</span>. Also, notice that we have added an interaction term. Let’s work with only column 3 and just the explanatory variable depth. We’re going to center and scale depth as well.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cen.depth &lt;-<span class="st"> </span><span class="kw">scale</span>(depth)
+
+m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(cen.counts[,<span class="dv">3</span>] ~<span class="st"> </span>cen.depth)
+fit1 &lt;-<span class="st"> </span><span class="kw">fitted</span>(m1)
+
+<span class="kw">plot</span>(cen.depth,cen.counts[,<span class="dv">3</span>],<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">ylab=</span><span class="st">&quot;counts&quot;</span>)
+<span class="kw">points</span>(cen.depth,fit1,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>Here, we would replace the raw values in column 3 of the matrix with the values from the best fit line. For comparison, here are the raw and fitted values:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(<span class="st">&quot;raw&quot;</span>=cen.counts[,<span class="dv">3</span>],<span class="st">&quot;fit&quot;</span>=fit1)</code></pre></div>
+<pre><code>##     GNmat.10.22mm GNmat.1.2mm GNmat.6.10mm GNmat.22.34mm GNmat.34.49mm
+## raw     -21.90563   -20.90563    -21.90563     -21.90563     -16.90563
+## fit     -21.17410   -22.16691    -21.62758     -19.84008     -18.50276
+##     GNmat.2.3mm GNmat.4.5mm GNmat.3.4mm GNmat.0.1mm GNmat.5.6mm
+## raw   -21.90563   -21.90563   -21.90563   -21.90563   -21.90563
+## fit   -22.04583   -21.80369   -21.92476   -22.28798   -21.68261</code></pre>
+<p>The plotting can be tricky, so it’s probably easiest to jump right into using the rda() function from vegan, so let’s run rda on our matrix. Note that I’m setting zone to a factor. Most functions do this automatically, but it’s nevertheless good practice. In case you are unsure, you can think of a factor the way you would in statistics, a categorical variable composed of levels. (I’m simply renaming them here so the figures later on will be easier to read because the names will be shorter.)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Zone &lt;-<span class="st"> </span><span class="kw">factor</span>(zone)
+Depth &lt;-<span class="st"> </span>cen.depth
+gn.rda &lt;-<span class="st"> </span><span class="kw">rda</span>(cen.counts ~<span class="st"> </span>Depth*Zone) 
+<span class="kw">print</span>(gn.rda)</code></pre></div>
+<pre><code>## Call: rda(formula = cen.counts ~ Depth * Zone)
+## 
+##                 Inertia Proportion Rank
+## Total         1.850e+06  1.000e+00     
+## Constrained   1.653e+06  8.935e-01    5
+## Unconstrained 1.970e+05  1.065e-01    4
+## Inertia is variance 
+## 
+## Eigenvalues for constrained axes:
+##    RDA1    RDA2    RDA3    RDA4    RDA5 
+## 1126900  308575  140383   51510   25627 
+## 
+## Eigenvalues for unconstrained axes:
+##   PC1   PC2   PC3   PC4 
+## 95397 48394 38098 15143</code></pre>
+<p>Focus in on the proportion of constrained and unconstrained variance. RDA is a “constrained” ordination model, so the proportion of constrained variance is the amount of variance explained by our explanatory variables, depth and zone. We can see that this amounts to about 81% of the variance. Note that this is analogous to an <span class="math inline">\(R^2\)</span> value in regression models. We can obtain an adjusted <span class="math inline">\(R^2\)</span> via the following command:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">RsquareAdj</span>(gn.rda)$adj.r.squared</code></pre></div>
+<pre><code>## [1] 0.7603705</code></pre>
+<p>There’s also a way to compare our model to chance:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(gn.rda)</code></pre></div>
+<pre><code>## Permutation test for rda under reduced model
+## Permutation: free
+## Number of permutations: 999
+## 
+## Model: rda(formula = cen.counts ~ Depth * Zone)
+##          Df Variance      F Pr(&gt;F)    
+## Model     5  1652996 6.7116  0.001 ***
+## Residual  4   197032                  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>This performs a permutation test, where the unconstrained data matrix is randomized by row. Given the small p-value, we can assume that the constraining variables, and hence our model, performed better than the permuted matrix. Between the amount of constrained variance and the significance of the permutation test, there’s quite a bit of evidence that these variables help explain the distribution of OTUs across mats.</p>
+<p>Lastly, we’ll plot the results.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(gn.rda,<span class="dt">scaling=</span><span class="dv">2</span>,<span class="dt">type=</span><span class="st">&quot;n&quot;</span>)
+<span class="kw">points</span>(gn.rda,<span class="st">&quot;sp&quot;</span>,<span class="dt">col=</span><span class="st">&quot;darkgreen&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>)
+<span class="kw">text</span>(gn.rda,<span class="dt">display=</span><span class="st">&quot;sites&quot;</span>,<span class="dt">cex=</span>.<span class="dv">6</span>)
+<span class="kw">text</span>(gn.rda,<span class="dt">display=</span><span class="st">&quot;cn&quot;</span>,<span class="dt">cex=</span>.<span class="dv">8</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>The figure tells quite a bit. Note that zone A clusters with the more superficial mats, which should be expected. This relationship is found among the other zones and mats. The interaction levels differ from one another, where zone B’s behavior with respect to depth differs the most from zone A’s. Still, if you recall that odd shape in the PCA; well, it’s present in the RDA model as well. Notice the shape of the mats.</p>
+</div>
+<div id="ca" class="section level3">
+<h3><span class="header-section-number">14.2.3</span> CA</h3>
+<p>Before we begin with CCA, we have to first understand CA. Recall that RDA is simply an extension of PCA, where we perform multivariate regression followed by PCA and eigenvalue decomposition of a covariance matrix. CCA is similar in that it involves <em>weighted</em> linear regression and CA, an eigenvalue decomposition of a <em>Chi-squared distance</em> matrix.</p>
+<p>Chi-squared distance is defined as follows:</p>
+<p><span class="math display">\[
+\begin{align}
+  \chi_{ij}^{2} &amp;= \frac{(Obs_{ij}-\mathbb{E}_{ij})^2}{\mathbb{E}_{ij}}\\
+      \chi_{ij} &amp;= \frac{Obs_{ij}-\mathbb{E}_{ij}}{\sqrt{\mathbb{E}_{ij}}}\\
+\end{align}
+\]</span></p>
+<p>where <span class="math inline">\(Obs_{ij}\)</span> is the observed cell <em>frequency</em> for element <span class="math inline">\((i,j)\)</span> and <span class="math inline">\(\mathbb{E}_{ij}\)</span> is the expected <em>frequency</em> for element <span class="math inline">\((i,j)\)</span>. One thing that should be stressed here, unlike the Pearson correlation used in PCA (and therefore RDA), the chi squared distance <strong>does not</strong> assume a linear relationship between variables.</p>
+<p>To be consistent with various packages and Legendre and Legendre, let’s make the species (OTUs) and sites (mats) into the columns and rows, respectively.</p>
+<p>While Legendre and Lenendre assume <span class="math inline">\(|r|&gt;|c|\)</span>, we want to compare our results with vegan’s cca() results, so we’ll have to transpose the matrix, setting the mats and OTUs as the rows and columns, respectively.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counts &lt;-<span class="st"> </span><span class="kw">t</span>(counts)
+counts[<span class="dv">1</span>:<span class="dv">5</span>,<span class="dv">1</span>:<span class="dv">5</span>]</code></pre></div>
+<pre><code>##               OTU_1 OTU_2 OTU_3 OTU_4 OTU_5
+## GNmat.10.22mm    17     0     0     0     1
+## GNmat.1.2mm       1     0     1     0     0
+## GNmat.6.10mm     14     0     0     0     0
+## GNmat.22.34mm    16     0     0     0     3
+## GNmat.34.49mm    46     1     5     1     6</code></pre>
+<p>We begin by calculated the Chi-squared distance of our count matrix, but hopefully you noticed that the distance deals with frequencies. Let’s first convert our count matrix to a frequency matrix which we’ll call <span class="math inline">\(O_{ij}\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Oij &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(counts/<span class="kw">sum</span>(counts))  ## counts to frequencies</code></pre></div>
+<p>Now, the <span class="math inline">\(\mathbb{E}_{ij}\)</span> is simply the outer product of this matrix’s column and row sums. Note that the row sums will be used for weighting by OTU abundance (“OTU weight”) ; whereas, the column sums will be used for weighting by mat abundance (“mat weight”). This come in handy later because they will be our weights for visualization (and recall CCA uses <em>weighted</em> regression):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pi &lt;-<span class="st"> </span><span class="kw">rowSums</span>(Oij)  ## OTU weight
+pj &lt;-<span class="st"> </span><span class="kw">colSums</span>(Oij)  ## mat weight
+Eij &lt;-<span class="st"> </span><span class="kw">outer</span>(pi,pj)</code></pre></div>
+<p>We now can compare the Chi-squared distances, which we’ll call <span class="math inline">\(\bar Q\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Qbar &lt;-<span class="st"> </span>(Oij-Eij)/<span class="kw">sqrt</span>(Eij)</code></pre></div>
+<p>You can imagine we are at the step in PCA where we have just computed the covariance matrix. If you recall, we would now perform an eigenvalue decomposition. The same holds true here for CA, but with our Chi-squared matrix. Because an eigenvalue decomposition requires a square matrix, we can just perform a singular value decomposition with the svd() function. (Tangent: there are two PCA function in R base, prcomp() and princomp(), which perform singular value decomposition and eigenvalue decomposition, respectively, with similar results.)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Qbar &lt;-<span class="st"> </span><span class="kw">svd</span>(Qbar)</code></pre></div>
+<p>The svd factorizes <span class="math inline">\(\bar Q = U \Sigma V\)</span>, where <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are the left and right eigenvectors, respectively. We use these weights to adjust of the positions of the points in <span class="math inline">\(\bar Q\)</span> for visualization. As we’ll see, CA (and CCA) can be plotted on two different scales; therefore, we need two separate adjustments of <span class="math inline">\(\bar Q\)</span> for two separate sets of positions in space.</p>
+<p><span class="math inline">\(U\)</span> is adjusted with the diagonal of the inverse of the row weight, <span class="math inline">\(p_{i}\)</span>, and <span class="math inline">\(V\)</span> with the diagonal of the inverse of the column weight, <span class="math inline">\(p_{j}\)</span>. These weighted matrices will be called <span class="math inline">\(\hat V\)</span> and <span class="math inline">\(V\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Vhat &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="dv">1</span>/<span class="kw">sqrt</span>(pi)) %*%<span class="st"> </span>Qbar$u
+V &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="dv">1</span>/<span class="kw">sqrt</span>(pj)) %*%<span class="st"> </span>Qbar$v</code></pre></div>
+<p>Finally, we calculate <span class="math inline">\(F\)</span> and <span class="math inline">\(\hat F\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">FF &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="dv">1</span>/pi) %*%<span class="st"> </span>Oij %*%<span class="st"> </span>V
+FFhat &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="dv">1</span>/pj) %*%<span class="st"> </span><span class="kw">t</span>(Oij) %*%<span class="st"> </span>Vhat</code></pre></div>
+<p>We now have two sets of spatial positions for two scalings:</p>
+<ul>
+<li>scaling 1 involves plotting the second versus the first eigenvector from <span class="math inline">\(\hat V\)</span> and the second versus the first eigenvector from <span class="math inline">\(\hat F\)</span> on the same figure.</li>
+<li>scaling 2 involves plotting the second versus the first eigenvector from <span class="math inline">\(V\)</span> and the second versus the first eigenvector from <span class="math inline">\(F\)</span> on the same figure.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;x&quot;</span> =<span class="st"> </span><span class="kw">c</span>(FF[,<span class="dv">1</span>],V[,<span class="dv">1</span>],Vhat[,<span class="dv">1</span>],FFhat[,<span class="dv">1</span>]), 
+                 <span class="st">&quot;y&quot;</span> =<span class="st"> </span><span class="kw">c</span>(FF[,<span class="dv">2</span>],V[,<span class="dv">2</span>],Vhat[,<span class="dv">2</span>],FFhat[,<span class="dv">2</span>]), 
+                 <span class="st">&quot;points&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">2</span>,<span class="kw">c</span>(<span class="kw">dim</span>(FF)[<span class="dv">1</span>],<span class="kw">dim</span>(V)[<span class="dv">1</span>])),<span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">2</span>,<span class="kw">c</span>(<span class="kw">dim</span>(Vhat)[<span class="dv">1</span>],<span class="kw">dim</span>(FFhat)[<span class="dv">1</span>]))),
+                 <span class="st">&quot;scaling&quot;</span> =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">2</span>,<span class="kw">c</span>(<span class="kw">dim</span>(FF)[<span class="dv">1</span>]+<span class="kw">dim</span>(V)[<span class="dv">1</span>],<span class="kw">dim</span>(Vhat)[<span class="dv">1</span>]+<span class="kw">dim</span>(FFhat)[<span class="dv">1</span>])),
+                 <span class="st">&quot;names&quot;</span> =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rownames</span>(counts),<span class="kw">colnames</span>(counts)),<span class="dv">2</span>))
+df$points &lt;-<span class="st"> </span><span class="kw">factor</span>(df$points)
+df$scaling &lt;-<span class="st"> </span><span class="kw">factor</span>(df$scaling)
+<span class="kw">ggplot</span>(df,<span class="kw">aes</span>(x,y,<span class="dt">colour=</span>points,<span class="dt">size=</span>points)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>scaling) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">3</span>) +
+<span class="st">  </span><span class="kw">scale_size_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)) +<span class="st"> </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;red&quot;</span>)) +
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data=</span><span class="kw">subset</span>(df,points==<span class="st">&quot;1&quot;</span>),<span class="kw">aes</span>(<span class="dt">label=</span>names),<span class="dt">size=</span><span class="dv">4</span>) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) </code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p>Which is the same as what vegan gives us (except prettier):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">cca</span>(counts)
+
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))
+<span class="kw">plot</span>(m1,<span class="dt">scaling=</span><span class="dv">1</span>)
+<span class="kw">text</span>(m1, <span class="st">&quot;sites&quot;</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>)
+<span class="kw">plot</span>(m1,<span class="dt">scaling=</span><span class="dv">2</span>)
+<span class="kw">text</span>(m1, <span class="st">&quot;sites&quot;</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>It might be difficult to appreciate what the scaling is doing, but look at scaling 1. Here we first use the <span class="math inline">\(F\)</span> matrix to plot the mat centroids (“center”). This matrix <span class="math inline">\(F\)</span> preserves the Chi-squared distance between mats, so this figure is a spatially accurate representation of the relationship among sites. The positions of the centroids are weighted (and thus determined) by the relative frequencies of each OTU (i.e., each column). Finally, we superimpose the <span class="math inline">\(V\)</span> matrix (the OTU coordinates) on top. The OTUs in the vicinity of a particular mat are more likely to be found in that mat.</p>
+<p>For scaling 2, we first plot <span class="math inline">\(\hat F\)</span>, which are the centroids of the OTU data (which are positioned by weighting them with the relative frequencies of each mat), and then superimpose <span class="math inline">\(\hat V\)</span>, the coordinates for mats. This scaling is therefore an accurate spatial representation of the relationship among OTUs. Like scaling 1, any species in the vicinity of a specific mat is more likely to be found in that mat.</p>
+<p>Clearly, the gradient for the mats we’ve seen so far is also present in the CA plots. Something we could try is to color code the OTUs based on taxa. This will allow us to appreciate scaling 2 more since we can visualize the relationship among OTUs. Let’s just work with Archaea, only using scaling 2:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;x&quot;</span> =<span class="st"> </span><span class="kw">c</span>(FF[,<span class="dv">1</span>],V[,<span class="dv">1</span>],Vhat[,<span class="dv">1</span>],FFhat[,<span class="dv">1</span>]), 
+                 <span class="st">&quot;y&quot;</span> =<span class="st"> </span><span class="kw">c</span>(FF[,<span class="dv">2</span>],V[,<span class="dv">2</span>],Vhat[,<span class="dv">2</span>],FFhat[,<span class="dv">2</span>]), 
+                 <span class="st">&quot;points&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">2</span>,<span class="kw">c</span>(<span class="kw">dim</span>(FF)[<span class="dv">1</span>],<span class="kw">dim</span>(V)[<span class="dv">1</span>])),<span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">2</span>,<span class="kw">c</span>(<span class="kw">dim</span>(Vhat)[<span class="dv">1</span>],<span class="kw">dim</span>(FFhat)[<span class="dv">1</span>]))),
+                 <span class="st">&quot;scaling&quot;</span> =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">2</span>,<span class="kw">c</span>(<span class="kw">dim</span>(FF)[<span class="dv">1</span>]+<span class="kw">dim</span>(V)[<span class="dv">1</span>],<span class="kw">dim</span>(Vhat)[<span class="dv">1</span>]+<span class="kw">dim</span>(FFhat)[<span class="dv">1</span>])),
+                 <span class="st">&quot;names&quot;</span> =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rownames</span>(counts),<span class="kw">colnames</span>(counts)),<span class="dv">2</span>),
+                 <span class="st">&quot;kingdom&quot;</span> =<span class="st"> </span><span class="kw">c</span>(tax[,<span class="dv">1</span>],<span class="kw">rep</span>(<span class="st">&quot;Site&quot;</span>,<span class="dv">10</span>),tax[,<span class="dv">1</span>],<span class="kw">rep</span>(<span class="st">&quot;Site&quot;</span>,<span class="dv">10</span>)),
+                 <span class="st">&quot;phylum&quot;</span> =<span class="st"> </span><span class="kw">c</span>(tax[,<span class="dv">2</span>],<span class="kw">rep</span>(<span class="st">&quot;Site&quot;</span>,<span class="dv">10</span>),tax[,<span class="dv">2</span>],<span class="kw">rep</span>(<span class="st">&quot;Site&quot;</span>,<span class="dv">10</span>)),
+                 <span class="st">&quot;class&quot;</span> =<span class="st"> </span><span class="kw">c</span>(tax[,<span class="dv">3</span>],<span class="kw">rep</span>(<span class="st">&quot;Site&quot;</span>,<span class="dv">10</span>),tax[,<span class="dv">3</span>],<span class="kw">rep</span>(<span class="st">&quot;Site&quot;</span>,<span class="dv">10</span>)))
+df.scale2 &lt;-<span class="st"> </span><span class="kw">subset</span>(df, scaling==<span class="dv">2</span>)
+<span class="kw">ggplot</span>(<span class="kw">subset</span>(df.scale2,kingdom==<span class="st">&quot;Bacteria&quot;</span>),
+       <span class="kw">aes</span>(x,y,<span class="dt">colour=</span>kingdom,<span class="dt">alpha=</span>kingdom,<span class="dt">size=</span>kingdom)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">colour=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">alpha=</span>.<span class="dv">7</span>) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span><span class="kw">subset</span>(df.scale2,kingdom==<span class="st">&quot;Archaea&quot;</span>),
+            <span class="kw">aes</span>(<span class="dt">colour=</span>phylum),<span class="dt">size=</span><span class="dv">4</span>,<span class="dt">alpha=</span><span class="dv">1</span>) +
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data=</span><span class="kw">subset</span>(df.scale2,points==<span class="st">&quot;1&quot;</span>),
+            <span class="kw">aes</span>(<span class="dt">label=</span>names),<span class="dt">size=</span><span class="dv">4</span>,<span class="dt">colour=</span><span class="st">&quot;red&quot;</span>,<span class="dt">alpha=</span>.<span class="dv">6</span>) +
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">size=</span><span class="ot">FALSE</span>,<span class="dt">alpha=</span><span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## Warning: Using size for a discrete variable is not advised.</code></pre>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>The green and blue dots represent the two Archaea phyla in the data set. There doesn’t seem to be much of a pattern, but let’s see what those are as a function of class (one taxa level lower).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">subset</span>(df.scale2,kingdom==<span class="st">&quot;Bacteria&quot;</span>),
+       <span class="kw">aes</span>(x,y,<span class="dt">colour=</span>kingdom,<span class="dt">alpha=</span>kingdom,<span class="dt">size=</span>kingdom)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">colour=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">alpha=</span>.<span class="dv">7</span>) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span><span class="kw">subset</span>(df.scale2,kingdom==<span class="st">&quot;Archaea&quot;</span>),
+             <span class="kw">aes</span>(<span class="dt">colour=</span>class),<span class="dt">size=</span><span class="dv">4</span>,<span class="dt">alpha=</span><span class="dv">1</span>,
+             <span class="dt">position=</span><span class="kw">position_jitter</span>(<span class="dt">w=</span>.<span class="dv">075</span>,<span class="dt">h=</span>.<span class="dv">075</span>)) +
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data=</span><span class="kw">subset</span>(df.scale2,points==<span class="st">&quot;1&quot;</span>),
+            <span class="kw">aes</span>(<span class="dt">label=</span>names),<span class="dt">size=</span><span class="dv">4</span>,<span class="dt">colour=</span><span class="st">&quot;red&quot;</span>,<span class="dt">alpha=</span>.<span class="dv">6</span>) +
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">size=</span><span class="ot">FALSE</span>,<span class="dt">alpha=</span><span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## Warning: Using size for a discrete variable is not advised.</code></pre>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p>Note that the points are jittered to ease distinguishing them. There now seems to be an interesting trend: Halobacteria species are found more in the center; whereas, Methanomicrobia, Thermococci, and Thermoplasmata are located at the extremes (i.e., superficial or deep mats).</p>
+<p>Lastly, lets just colorcode all of the OTUs based on Phylum.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df.scale2,<span class="kw">aes</span>(x,y,<span class="dt">colour=</span>phylum)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">5</span>) +
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data=</span><span class="kw">subset</span>(df.scale2,points==<span class="st">&quot;1&quot;</span>),
+            <span class="kw">aes</span>(<span class="dt">label=</span>names),<span class="dt">size=</span><span class="dv">4</span>,<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>) +
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">size=</span><span class="ot">FALSE</span>, <span class="dt">colour=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">3</span>))</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-46-1.png" width="960" /></p>
+<p>There doesn’t seem to be much of a pattern.</p>
+<div id="arch-effect" class="section level4">
+<h4><span class="header-section-number">14.2.3.1</span> Arch effect</h4>
+<p>If you look at the pattern of the figures we’ve been working with, you may have noticed it’s shape. It tends to look like an arch. This is due to our mats being correlated with one another. This should be of no surprise considering the whole system is built as a gradient, so mats 1 and 2 would be far more related than mats 1 and 9. This gradient manifests itself in the matrix and hence the analysis can’t help but join correlated sites to one another.</p>
+<p>To demonstrate this, consider the the following simple matrix:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comm &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dt">nrow=</span><span class="dv">10</span>,<span class="dt">ncol=</span><span class="dv">10</span>)
+<span class="kw">rownames</span>(comm) &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;site&quot;</span>,<span class="dv">1</span>:<span class="kw">dim</span>(comm)[<span class="dv">1</span>])
+<span class="kw">colnames</span>(comm) &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;sp&quot;</span>,<span class="dv">1</span>:<span class="kw">dim</span>(comm)[<span class="dv">2</span>])
+for (i in <span class="dv">1</span>:<span class="dv">10</span>){
+  left &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>,i<span class="dv">-1</span>)
+  right &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>-i)
+  comm[i,] &lt;-<span class="st"> </span><span class="kw">c</span>(left,<span class="dv">1</span>,right)
+}
+
+<span class="kw">levelplot</span>(comm,
+          <span class="dt">panel =</span> function(...){
+            <span class="kw">panel.levelplot</span>(...)
+            <span class="kw">panel.abline</span>(<span class="dt">h=</span><span class="kw">seq</span>(.<span class="dv">5</span>,<span class="fl">9.5</span>,<span class="dv">1</span>))
+            <span class="kw">panel.abline</span>(<span class="dt">v=</span><span class="kw">seq</span>(.<span class="dv">5</span>,<span class="fl">9.5</span>,<span class="dv">1</span>))
+          },<span class="dt">colorkey=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>Let pink and cyan be 0 and 1s, respectively. For this matrix, there would be no correlation between sites; each site is associated with its own unique species with no overlap. There is no implicit way for the matrix to “know” that site 1 could be similar to site 2 because there is no information in the matrix reflecting that. By extension, there should be no pattern between sites when we perform CA.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arch1 &lt;-<span class="st"> </span><span class="kw">cca</span>(comm)
+<span class="kw">plot</span>(arch1,<span class="dt">scaling=</span><span class="dv">1</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p>It might be difficult to tell, but the site text is superimposed onto the species text, so as we saw in the matrix, each site is associated with its own species, and there is no pattern between sites because there are no overlapping species.</p>
+<p>Now, take a look at this matrix:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comm &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dt">nrow=</span><span class="dv">8</span>,<span class="dt">ncol=</span><span class="dv">10</span>)
+<span class="kw">rownames</span>(comm) &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;site&quot;</span>,<span class="dv">1</span>:<span class="kw">dim</span>(comm)[<span class="dv">1</span>])
+<span class="kw">colnames</span>(comm) &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;sp&quot;</span>,<span class="dv">1</span>:<span class="kw">dim</span>(comm)[<span class="dv">2</span>])
+for (i in <span class="dv">1</span>:<span class="dv">8</span>){
+  left &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>,i<span class="dv">-1</span>)
+  right &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">10-2</span>-i)
+  comm[i,] &lt;-<span class="st"> </span><span class="kw">c</span>(left,<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>),right)
+}
+
+<span class="kw">levelplot</span>(comm,
+          <span class="dt">panel =</span> function(...){
+            <span class="kw">panel.levelplot</span>(...)
+            <span class="kw">panel.abline</span>(<span class="dt">h=</span><span class="kw">seq</span>(.<span class="dv">5</span>,<span class="fl">9.5</span>,<span class="dv">1</span>))
+            <span class="kw">panel.abline</span>(<span class="dt">v=</span><span class="kw">seq</span>(.<span class="dv">5</span>,<span class="fl">7.5</span>,<span class="dv">1</span>))
+          },<span class="dt">colorkey=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>Now there are shared species among sites: site 1 shares species 2 and 3 with site 2, site 2 shares species 3 and 4 with site 3, and so on. The sites are therefore correlated and CA will do its best to maintain the pattern we’re seeing between sites: site 1 will be near site 2, site 2 near site 3, etc. Let’s look at the result from CA.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arch2 &lt;-<span class="st"> </span><span class="kw">cca</span>(comm)
+<span class="kw">plot</span>(arch2,<span class="dt">scaling=</span><span class="dv">1</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p>To no surprise, the gradient is preserved, but what causes the arch? This is an artifact from forcing the data into two dimensions. There are a few things going on here. Notice that the first ordination axis, alone, accurately separates the data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(arch2)$sites</code></pre></div>
+<pre><code>##               CA1        CA2        CA3        CA4        CA5        CA6
+## site 1  1.4052206  1.3715075 -1.2840067 -1.0537453  0.4472136 -0.4203353
+## site 2  1.1582833  0.4443882  0.5582954  1.4545015 -1.3416408  0.7393822
+## site 3  0.7807006 -0.5386597  1.2288611  0.3885801  1.3416408  0.2835610
+## site 4  0.2724727 -1.2772361  0.7276904 -0.7893363 -0.4472136 -1.7877990
+## site 5 -0.2724727 -1.2772361 -0.7276904 -0.7893363  0.4472136  1.7877990
+## site 6 -0.7807006 -0.5386597 -1.2288611  0.3885801 -1.3416408 -0.2835610
+## site 7 -1.1582833  0.4443882 -0.5582954  1.4545015  1.3416408 -0.7393822
+## site 8 -1.4052206  1.3715075  1.2840067 -1.0537453 -0.4472136  0.4203353</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">summary</span>(arch2)$sites[,<span class="dv">1</span>],<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">8</span>),<span class="dt">type=</span><span class="st">&quot;n&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;CA1&quot;</span>)
+<span class="kw">text</span>(<span class="kw">summary</span>(arch2)$sites[,<span class="dv">1</span>],<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">8</span>),<span class="kw">rownames</span>(comm))</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p>CA attempts to maximize the variation (i.e., separation) between sites, which the first axis accomplishes completely, The second axis nevertheless tries, but must remain uncorrelated with the first. Because the sites are completely separated, there are no remaining gradients to drive the second axis. The only candidate left for the second axis is a folded version of the first axis; the folding allows the two axes to no longer be linearly correlated, satisfying that aforementioned constraint, and after folding, it explains over half the variance explained by the first axis (which shouldn’t be surprising considering it’s essentially the first axis):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(arch2)$cont</code></pre></div>
+<pre><code>## $importance
+## Importance of components:
+##                          CA1    CA2    CA3     CA4     CA5     CA6     CA7
+## Eigenvalue            0.9018 0.6575 0.3840 0.18672 0.11111 0.04754 0.04470
+## Proportion Explained  0.3865 0.2818 0.1646 0.08002 0.04762 0.02037 0.01916
+## Cumulative Proportion 0.3865 0.6683 0.8328 0.91285 0.96047 0.98084 1.00000</code></pre>
+<p>You can gain appreciation for the folding if you simply plot the two axes on top of one another:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">summary</span>(arch2)$sites[,<span class="dv">1</span>],<span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">ylab=</span><span class="st">&quot;CA Axes&quot;</span>)
+<span class="kw">points</span>(<span class="kw">summary</span>(arch2)$sites[,<span class="dv">2</span>],<span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;CA Axes&quot;</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p>The underlying issue with the arch effect is that CA2 is not interpretable, rendering these arch shaped figures flawed. Just look at the shifts in spacing between sites and species in <span class="math inline">\(\mathbb{R}^1\)</span> and <span class="math inline">\(\mathbb{R}^2\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))
+<span class="kw">plot</span>(<span class="kw">summary</span>(arch2)$species[,<span class="dv">1</span>],<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="dt">type=</span><span class="st">&quot;n&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;CA1&quot;</span>,<span class="dt">ylim=</span><span class="kw">range</span>(-<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)
+<span class="kw">text</span>(<span class="kw">summary</span>(arch2)$sites[,<span class="dv">1</span>],<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">8</span>),<span class="kw">rownames</span>(comm))
+<span class="kw">text</span>(<span class="kw">summary</span>(arch2)$species[,<span class="dv">1</span>],<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="kw">colnames</span>(comm),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+<span class="kw">plot</span>(arch2,<span class="dt">scaling=</span><span class="dv">2</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p>The separation at the extremes is different when regressed against CA2, and considering it’s an artifact, the shift in separation is not to be trusted.</p>
+</div>
+<div id="dca" class="section level4">
+<h4><span class="header-section-number">14.2.3.2</span> DCA</h4>
+<p>One solution to the arch effect is to perform a detrended CA (DCA), which can also alleviate some of the compression between points at the end of the gradient. We’ll use the decorana() function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arch3 &lt;-<span class="st"> </span><span class="kw">decorana</span>(comm)
+<span class="kw">plot</span>(arch3)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p>And let’s compare this to the CA figures in <span class="math inline">\(\mathbb{R}^1\)</span> and <span class="math inline">\(\mathbb{R}^2\)</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levelplot</span>(comm,
+          <span class="dt">panel =</span> function(...){
+            <span class="kw">panel.levelplot</span>(...)
+            <span class="kw">panel.abline</span>(<span class="dt">h=</span><span class="kw">seq</span>(.<span class="dv">5</span>,<span class="fl">9.5</span>,<span class="dv">1</span>))
+            <span class="kw">panel.abline</span>(<span class="dt">v=</span><span class="kw">seq</span>(.<span class="dv">5</span>,<span class="fl">7.5</span>,<span class="dv">1</span>))
+          },<span class="dt">colorkey=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))
+<span class="kw">plot</span>(<span class="kw">summary</span>(arch2)$species[,<span class="dv">1</span>],<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>),
+     <span class="dt">type=</span><span class="st">&quot;n&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;CA1&quot;</span>,<span class="dt">ylim=</span><span class="kw">range</span>(-<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">main=</span><span class="st">&quot;CA 1D&quot;</span>)
+<span class="kw">text</span>(<span class="kw">summary</span>(arch2)$sites[,<span class="dv">1</span>],<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">8</span>),<span class="kw">rownames</span>(comm))
+<span class="kw">text</span>(<span class="kw">summary</span>(arch2)$species[,<span class="dv">1</span>],<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="kw">colnames</span>(comm),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+<span class="kw">plot</span>(arch2,<span class="dt">scaling=</span><span class="dv">2</span>,<span class="dt">main=</span><span class="st">&quot;CA 2D&quot;</span>)
+<span class="kw">plot</span>(arch3,<span class="dt">main=</span><span class="st">&quot;DCA&quot;</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+<p>If you take a look at the matrix, you can see that species 1 and 10 are exclusive to sites 1 and 8, respectively. This is a feature that neither of our previous methods picked up, but DCA did. Moreover, it makes the most sense for site 1 to be centered among species 1, 2, and 3, and 10 between 8, 9, and 10, which DCA clearly accomplished.</p>
+<p>DCA is basically first running CA, allowing the first axis to bend into the second axis, and then divides the first axis into segments. For each segment, the corresponding segment mean for the second axis is forced to 0. With a zero mean in each segment, the overall mean of axis 2 is now zero, forcing the “arch” into a straight line. By straitening the second axis, any compression at the ends is also alleviated.</p>
+<p>Let’s quickly run DCA on our real data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gn.dca &lt;-<span class="st"> </span><span class="kw">decorana</span>(counts,<span class="dt">iweigh=</span><span class="dv">1</span>)</code></pre></div>
+<p>Note that I have “iweigh” set to 1. This downweights rare species, since CA is sensitive to these outliers.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(gn.dca,<span class="dt">display=</span><span class="st">&quot;species&quot;</span>,<span class="dt">type=</span><span class="st">&quot;n&quot;</span>)
+<span class="kw">points</span>(gn.dca,<span class="dt">display=</span><span class="st">&quot;species&quot;</span>,<span class="dt">col=</span><span class="st">&quot;black&quot;</span>,<span class="dt">pch=</span><span class="dv">3</span>)
+<span class="kw">points</span>(gn.dca,<span class="dt">display=</span><span class="st">&quot;sites&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out &lt;-<span class="st"> </span><span class="kw">summary</span>(gn.dca,<span class="dt">scaling=</span><span class="dv">1</span>)</code></pre></div>
+<pre><code>## 
+## Call:
+## decorana(veg = counts, iweigh = 1) 
+## 
+## Detrended correspondence analysis with 26 segments.
+## Rescaling of axes with 4 iterations.
+## Downweighting of rare species from fraction 1/5.
+## 
+##                   DCA1    DCA2    DCA3     DCA4
+## Eigenvalues     0.3069 0.08541 0.06107 0.066908
+## Decorana values 0.3254 0.05762 0.01047 0.001119
+## Axis lengths    1.9024 0.95188 0.81913 0.737697</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;DCA1&quot;</span>=<span class="kw">c</span>(out$spec.scores[,<span class="dv">1</span>],out$site.scores[,<span class="dv">1</span>]),
+                 <span class="st">&quot;DCA2&quot;</span>=<span class="kw">c</span>(out$spec.scores[,<span class="dv">2</span>],out$site.scores[,<span class="dv">2</span>]),
+                 <span class="st">&quot;points&quot;</span> =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">2</span>,<span class="kw">c</span>(<span class="kw">dim</span>(counts)[<span class="dv">2</span>],<span class="kw">dim</span>(counts)[<span class="dv">1</span>])),
+                 <span class="st">&quot;kingdom&quot;</span> =<span class="st"> </span><span class="kw">c</span>(tax[,<span class="dv">1</span>],<span class="kw">rep</span>(<span class="st">&quot;site&quot;</span>,<span class="kw">dim</span>(counts)[<span class="dv">1</span>])),
+                 <span class="st">&quot;phylum&quot;</span> =<span class="st"> </span><span class="kw">c</span>(tax[,<span class="dv">2</span>],<span class="kw">rep</span>(<span class="st">&quot;site&quot;</span>,<span class="kw">dim</span>(counts)[<span class="dv">1</span>])),
+                 <span class="st">&quot;order&quot;</span> =<span class="st"> </span><span class="kw">c</span>(tax[,<span class="dv">3</span>],<span class="kw">rep</span>(<span class="st">&quot;site&quot;</span>,<span class="kw">dim</span>(counts)[<span class="dv">1</span>])),
+                 <span class="st">&quot;family&quot;</span> =<span class="st"> </span><span class="kw">c</span>(tax[,<span class="dv">4</span>],<span class="kw">rep</span>(<span class="st">&quot;site&quot;</span>,<span class="kw">dim</span>(counts)[<span class="dv">1</span>])),
+                 <span class="st">&quot;names&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="kw">colnames</span>(counts),<span class="kw">rownames</span>(counts))
+                  )
+df$points &lt;-<span class="st"> </span><span class="kw">factor</span>(df$points)
+
+df.sp &lt;-<span class="st"> </span><span class="kw">subset</span>(df,points ==<span class="st"> &quot;1&quot;</span> &amp;<span class="st"> </span>kingdom !=<span class="st"> &quot;Archaea&quot;</span>)
+<span class="kw">ggplot</span>(df.sp,<span class="kw">aes</span>(DCA1,DCA2)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>,<span class="dt">alpha=</span>.<span class="dv">2</span>) +
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">data=</span><span class="kw">subset</span>(df,points ==<span class="st"> &quot;2&quot;</span>),<span class="kw">aes</span>(<span class="dt">label=</span>names),<span class="dt">size=</span><span class="dv">5</span>) +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">data=</span><span class="kw">subset</span>(df,kingdom==<span class="st">&quot;Archaea&quot;</span>),
+            <span class="kw">aes</span>(<span class="dt">colour=</span>phylum),<span class="dt">size=</span><span class="dv">4</span>,<span class="dt">alpha=</span><span class="dv">1</span>) </code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-59-2.png" width="672" /></p>
+</div>
+</div>
+<div id="cca" class="section level3">
+<h3><span class="header-section-number">14.2.4</span> CCA</h3>
+<p>Canonical Correspondence Analysis (CCA) involves similar steps seen in RDA. We first measure the distances between rows (mats) and columns (OTUs) in our matrix using Chi squared distance. Weighted linear regression is performed on the Chi squared matrix versus a set of explanatory variables (e.g., Depth and Zone), replacing the original distances with the fitted distances, just like RDA. Note that the weights are the same weights used in CA – i.e., the row sums (a vector of the total abundances for each mat). Finally, we project the matrix via eigenvalue decomposition (or SVD).</p>
+<p>Let’s first start with the computation performed by CCA and note the similarities with CA and RDA. CCA begins with calculating the Chi squared distance matrix <span class="math inline">\(\bar Q\)</span> seen in CA. Let’s quickly recalculate <span class="math inline">\(\bar Q\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Oij &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(counts/<span class="kw">sum</span>(counts))  ## counts to frequencies
+pi &lt;-<span class="st"> </span><span class="kw">rowSums</span>(Oij)  ## OTU weight
+pj &lt;-<span class="st"> </span><span class="kw">colSums</span>(Oij)  ## mat weight
+Eij &lt;-<span class="st"> </span><span class="kw">outer</span>(pi,pj) ## expected value for each element in Oij
+Qbar &lt;-<span class="st"> </span>(Oij-Eij)/<span class="kw">sqrt</span>(Eij) ## Chi sqaured distance matrix</code></pre></div>
+<p>So that much is identical to CA and is equivalent to calculating the covariance matrix in RDA. Now, like RDA, we perform linear regression, but this time it will be <strong>weighted</strong> linear regression. We’ll take it easy for now and only use one of our two explanatory variables, so we’ll be regressing each OTU’s set of mat values against the explanatory variable depth. First, we’ll adjust depth with our weights:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xw &lt;-<span class="st"> </span><span class="kw">sum</span>(depth*pi)         ## note pi from above, the OTU weigh
+xw &lt;-<span class="st"> </span>(depth-xw)*<span class="kw">sqrt</span>(pi)   ## weighted depth</code></pre></div>
+<p>The weights are adjusting depth by the square root of the abundance of OTUs for each of their respective mats:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="kw">plot</span>(depth,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">ylim=</span><span class="kw">range</span>(<span class="kw">min</span>(xw,depth),<span class="kw">max</span>(xw,depth)),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Depth&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Depth&quot;</span>)
+<span class="kw">points</span>(xw,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+<span class="kw">plot</span>(<span class="kw">sqrt</span>(pi),<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">ylim=</span><span class="kw">range</span>(<span class="dv">0</span>,.<span class="dv">5</span>),
+     <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylab=</span><span class="kw">expression</span>(<span class="kw">paste</span>(<span class="kw">sqrt</span>(Mat~<span class="er">~</span>Weight))),
+     <span class="dt">main=</span><span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;OTU Weight (&quot;</span>,<span class="kw">sqrt</span>(p[i]),<span class="st">&quot;)&quot;</span>)))</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p>The left plot shows the raw depths (black) and the weighted depths (red). Because the OTU weights for each mat are quite similar, we are effectively rescaling the raw depths to 30% of their original values. While our set of data isn’t a great example, one can imagine how these weights could influence the explanatory variables if the site (mat) proportion varied drastically.</p>
+<p>Now we can perform our regression:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">yhat &lt;-<span class="st"> </span><span class="kw">fitted</span>(<span class="kw">lm</span>(Qbar ~<span class="st"> </span><span class="dv">0</span> +<span class="st"> </span>xw))</code></pre></div>
+<p>In case you’re curious, here’s the simple and weighted regression lines for OTU 43 (column 3, same regression shown for RDA).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simp &lt;-<span class="st"> </span><span class="kw">fitted</span>(<span class="kw">lm</span>(Qbar[,<span class="dv">3</span>] ~<span class="st"> </span><span class="dv">0</span> +<span class="st"> </span>depth))
+<span class="kw">plot</span>(xw,Qbar[,<span class="dv">3</span>],<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;OTU Freq.&quot;</span>)
+<span class="kw">points</span>(xw,yhat[,<span class="dv">3</span>],<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">3</span>)
+<span class="kw">points</span>(xw,simp,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">3</span>)
+<span class="kw">points</span>(xw,pi,<span class="dt">col=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">pch=</span><span class="dv">3</span>)
+<span class="kw">legend</span>(-<span class="dv">4</span>,.<span class="dv">1</span>,<span class="kw">c</span>(<span class="st">&quot;Weighted&quot;</span>,<span class="st">&quot;Unweighted&quot;</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>),<span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p>It might see as if that extreme value is having more of an effect, but what you should focus on is that the weighted regression line fits the first 7 values much better; hence, the line is more so a function of them as opposed to the latter 3.</p>
+<p>The next step in CCA is what you’d expect if you remembered what came after regression in RDA: we now perform a singular value decomposition (remember, the matrix isn’t square, hence SVD over EVD).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">yout &lt;-<span class="st"> </span><span class="kw">svd</span>(yhat)</code></pre></div>
+<p>Vegan performs the following normalizations, so we’ll do the same to compare our results:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m3.man &lt;-<span class="st"> </span><span class="kw">list</span>()
+m3.man$eig &lt;-<span class="st"> </span>yout$d[<span class="dv">1</span>]^<span class="dv">2</span>
+m3.man$u &lt;-<span class="st"> </span>yout$u[,<span class="dv">1</span>]*(<span class="dv">1</span>/<span class="kw">sqrt</span>(pi))
+m3.man$v &lt;-<span class="st">  </span>yout$v[,<span class="dv">1</span>]*(<span class="dv">1</span>/<span class="kw">sqrt</span>(pj))
+m3.man$wa &lt;-<span class="st"> </span>(Qbar %*%<span class="st"> </span>yout$v[,<span class="dv">1</span>])*(<span class="dv">1</span>/<span class="kw">sqrt</span>(pi))*(<span class="dv">1</span>/yout$d[<span class="dv">1</span>])</code></pre></div>
+<p>Now, lets compare our results to vegan’s:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m3.veg &lt;-<span class="st"> </span><span class="kw">cca</span>(counts ~<span class="st"> </span>depth)
+
+<span class="kw">cbind</span>(m3.man$eig,m3.veg$CCA$eig)</code></pre></div>
+<pre><code>##          [,1]     [,2]
+## CCA1 0.204745 0.204745</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">cbind</span>(m3.man$u, m3.veg$CCA$u))</code></pre></div>
+<pre><code>##                                  CCA1
+## GNmat.10.22mm -0.09210092 -0.09210092
+## GNmat.1.2mm    0.76472726  0.76472726
+## GNmat.6.10mm   0.29926628  0.29926628
+## GNmat.22.34mm -1.24340441 -1.24340441
+## GNmat.34.49mm -2.39755767 -2.39755767
+## GNmat.2.3mm    0.66023602  0.66023602</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">cbind</span>(m3.man$v, m3.veg$CCA$v))</code></pre></div>
+<pre><code>##                      CCA1
+## OTU_1 -2.196639 -2.196639
+## OTU_2 -5.298616 -5.298616
+## OTU_3 -4.133838 -4.133838
+## OTU_4 -5.298616 -5.298616
+## OTU_5 -3.588426 -3.588426
+## OTU_6  1.228199  1.228199</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">cbind</span>(m3.man$wa, m3.veg$CCA$wa))</code></pre></div>
+<pre><code>##                                CCA1
+## GNmat.10.22mm -0.8346479 -0.8346479
+## GNmat.1.2mm    1.3763977  1.3763977
+## GNmat.6.10mm  -0.3939395 -0.3939395
+## GNmat.22.34mm -1.3700096 -1.3700096
+## GNmat.34.49mm -1.9558609 -1.9558609
+## GNmat.2.3mm    0.8231456  0.8231456</code></pre>
+<p>And that’s the math behind CCA. Because we only used one explanatory variable, we only have one component to work with. Vegan, by default, plots this component (CCA1) against the first (normalized) component from CA. Because of the normalization procedure, our CA1 from earlier will not match vegan’s, so it’s probably better to go ahead and add our second explanatory variable. We could have manually calculated the components for the full model, but because zone is categorical, we’d have to work with dummy variables, which can make it seem far more confusing than it needs to be.</p>
+<p>Let’s build our full model, run it in vegan, and plot the results. We’ll use an interaction term like our RDA model; hence, the overall regression model will be the same:</p>
+<p><span class="math display">\[
+\begin{align}
+  \hat{Counts}_{\dot j} = \beta_{1}Depth + \beta_{2}Zone + \beta_{3}Depth\times Zone\\
+\end{align}
+\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gn.cca &lt;-<span class="st"> </span><span class="kw">cca</span>(counts ~<span class="st"> </span>Depth*Zone)</code></pre></div>
+<p>We can perform the same analyses as we did for RDA. For example, here is the permutation test against the null model:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(gn.cca)</code></pre></div>
+<pre><code>## Permutation test for cca under reduced model
+## Permutation: free
+## Number of permutations: 999
+## 
+## Model: cca(formula = counts ~ Depth * Zone)
+##          Df ChiSquare      F Pr(&gt;F)    
+## Model     5   0.64731 4.6984  0.001 ***
+## Residual  4   0.11022                  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>And the model output:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(gn.cca)</code></pre></div>
+<pre><code>## Call: cca(formula = counts ~ Depth * Zone)
+## 
+##               Inertia Proportion Rank
+## Total          0.7575     1.0000     
+## Constrained    0.6473     0.8545    5
+## Unconstrained  0.1102     0.1455    4
+## Inertia is scaled Chi-square 
+## 
+## Eigenvalues for constrained axes:
+##   CCA1   CCA2   CCA3   CCA4   CCA5 
+## 0.3223 0.1601 0.1021 0.0386 0.0242 
+## 
+## Eigenvalues for unconstrained axes:
+##     CA1     CA2     CA3     CA4 
+## 0.03775 0.03652 0.02490 0.01105</code></pre>
+<p>The constrained variance is much greater than unconstrained, implying our independent variables did a good job of accounting for the variation. Let’s plot the figure:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(gn.cca,<span class="dt">scaling=</span><span class="dv">2</span>,<span class="dt">type=</span><span class="st">&quot;n&quot;</span>)
+<span class="kw">points</span>(gn.cca,<span class="st">&quot;sp&quot;</span>,<span class="dt">col=</span><span class="st">&quot;darkgreen&quot;</span>,<span class="dt">pch=</span><span class="dv">3</span>)
+<span class="kw">text</span>(gn.cca,<span class="dt">display=</span><span class="st">&quot;sites&quot;</span>,<span class="dt">cex=</span><span class="dv">1</span>)
+<span class="kw">text</span>(gn.cca,<span class="dt">display=</span><span class="st">&quot;cn&quot;</span>,<span class="dt">cex=</span>.<span class="dv">8</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<p>And there is the amazing arch effect. Per the R documentation for CCA, the arch effect should be corrected for by the model <em>unless</em> the constraints (explanatory variables) are curvilinear with one another. Considering our two constraints, depth and zone, likely explain the same information (the variation in OTU abundance with respect to depth into the system), a curvilinear relationship should not be surprising. Ultimately, the poor fits to our data boils down to a lack of adequate constraints.</p>
+<p>Here are the RDA and CCA models plotted side by side:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="kw">plot</span>(gn.rda,<span class="dt">scaling=</span><span class="dv">2</span>,<span class="dt">type=</span><span class="st">&quot;n&quot;</span>)
+<span class="kw">points</span>(gn.rda,<span class="st">&quot;sp&quot;</span>,<span class="dt">col=</span><span class="st">&quot;darkgreen&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>)
+<span class="kw">text</span>(gn.rda,<span class="dt">display=</span><span class="st">&quot;sites&quot;</span>,<span class="dt">cex=</span>.<span class="dv">6</span>)
+<span class="kw">text</span>(gn.rda,<span class="dt">display=</span><span class="st">&quot;cn&quot;</span>,<span class="dt">cex=</span>.<span class="dv">8</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)
+<span class="kw">plot</span>(gn.cca,<span class="dt">scaling=</span><span class="dv">2</span>,<span class="dt">type=</span><span class="st">&quot;n&quot;</span>)
+<span class="kw">points</span>(gn.cca,<span class="st">&quot;sp&quot;</span>,<span class="dt">col=</span><span class="st">&quot;darkgreen&quot;</span>,<span class="dt">pch=</span><span class="dv">3</span>)
+<span class="kw">text</span>(gn.cca,<span class="dt">display=</span><span class="st">&quot;sites&quot;</span>,<span class="dt">cex=</span><span class="dv">1</span>)
+<span class="kw">text</span>(gn.cca,<span class="dt">display=</span><span class="st">&quot;cn&quot;</span>,<span class="dt">cex=</span>.<span class="dv">8</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p>Although we didn’t introduce the arch effect until after our RDA run, it’s quite clear that both models suffer from this artifact.</p>
+</div>
+<div id="pcoa" class="section level3">
+<h3><span class="header-section-number">14.2.5</span> PCoA</h3>
+<p>This last section will quickly try to tie together the above analyses to a unsupervised clustering method you may have heard of: Principal <strong>Coordinate</strong> Analysis (PCoA, cf. PCA). You can think of PCoA as a more general ordination method that can involve various distance metrics. If one uses Euclidean distance, then the ordination is equivalent to PCA; on the other hand, if the distance metric is Chi-squared distance, then the ordination is essentially the same as CA.</p>
+<p>Let’s compare. Note that we’ll use a smaller matrix to speed up the computation</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counts &lt;-<span class="st"> </span><span class="kw">t</span>(counts)
+
+pcoa.counts &lt;-<span class="st"> </span>counts[<span class="dv">1</span>:<span class="dv">500</span>,]
+pcoa.euc &lt;-<span class="st"> </span><span class="kw">pco</span>(<span class="kw">dist</span>(pcoa.counts,<span class="st">&quot;euclidean&quot;</span>))
+pcoa.pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(pcoa.counts)
+
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="kw">plot</span>(pcoa.euc$points[,<span class="dv">1</span>],pcoa.euc$points[,<span class="dv">2</span>],
+     <span class="dt">pch=</span><span class="dv">3</span>,<span class="dt">xlab=</span><span class="st">&quot;PC1&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;PC2&quot;</span>,<span class="dt">main=</span><span class="st">&quot;PCoA: Euclidean&quot;</span>)
+<span class="kw">plot</span>(pcoa.pca$x[,<span class="dv">1</span>],pcoa.pca$x[,<span class="dv">2</span>],
+     <span class="dt">pch=</span><span class="dv">3</span>,<span class="dt">xlab=</span><span class="st">&quot;PC1&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;PC2&quot;</span>,<span class="dt">main=</span><span class="st">&quot;PCA&quot;</span>)</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pcoa.chi &lt;-<span class="st"> </span><span class="kw">pco</span>(<span class="kw">dsvdis</span>(pcoa.counts,<span class="dt">index=</span><span class="st">&quot;chisq&quot;</span>))
+pcoa.ca &lt;-<span class="st"> </span><span class="kw">scores</span>(<span class="kw">cca</span>(pcoa.counts),<span class="dt">scaling=</span><span class="dv">1</span>)
+<span class="kw">plot</span>(pcoa.chi$points[,<span class="dv">1</span>],pcoa.chi$points[,<span class="dv">2</span>],
+     <span class="dt">pch=</span><span class="dv">3</span>,<span class="dt">xlab=</span><span class="st">&quot;PC1&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;PC2&quot;</span>,<span class="dt">main=</span><span class="st">&quot;PCoA: Chi-Squared&quot;</span>,
+     <span class="dt">xlim=</span><span class="kw">range</span>(-<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">ylim=</span><span class="kw">range</span>(-<span class="dv">2</span>,<span class="dv">2</span>))
+<span class="kw">plot</span>(-pcoa.ca$sites[,<span class="dv">1</span>],-pcoa.ca$sites[,<span class="dv">2</span>],
+     <span class="dt">pch=</span><span class="dv">3</span>,<span class="dt">xlab=</span><span class="st">&quot;PC1&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;PC2&quot;</span>,<span class="dt">main=</span><span class="st">&quot;CA&quot;</span>,
+     <span class="dt">xlim=</span><span class="kw">range</span>(-<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">ylim=</span><span class="kw">range</span>(-<span class="dv">2</span>,<span class="dv">2</span>))</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-73-2.png" width="672" /></p>
+<p>The are many other distance metrics that can be used; a more popular one is Bray-Curtis.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pcoa.bc &lt;-<span class="st"> </span><span class="kw">pco</span>(<span class="kw">dsvdis</span>(pcoa.counts,<span class="dt">index=</span><span class="st">&quot;bray/curtis&quot;</span>))
+<span class="kw">plot</span>(pcoa.bc$points[,<span class="dv">1</span>],pcoa.bc$points[,<span class="dv">2</span>],
+     <span class="dt">pch=</span><span class="dv">3</span>,<span class="dt">xlab=</span><span class="st">&quot;PC1&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;PC2&quot;</span>,<span class="dt">main=</span><span class="st">&quot;PCoA: Bray-Curtis&quot;</span>,
+     <span class="dt">xlim=</span><span class="kw">range</span>(-<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">ylim=</span><span class="kw">range</span>(-<span class="dv">2</span>,<span class="dv">2</span>))</code></pre></div>
+<p><img src="13_microbiome_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ml.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

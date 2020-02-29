@@ -3,9 +3,9 @@
 
 ## Cross Valdiation
 
-Proof that k-fold CV has less variance around the mean than LOOCV -- better for k-fold CV.
-
 ### LOOCV
+
+Proof that k-fold CV has less variance around the mean than LOOCV -- better for k-fold CV.
 
 
 ```r
