@@ -24,7 +24,7 @@
 <meta name="author" content="Stephen Woloszynek" />
 
 
-<meta name="date" content="2020-02-28" />
+<meta name="date" content="2020-03-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -356,9 +356,9 @@ CAT &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#3
 <p>This is how we’ll create our header names. We can grab the number of total sequences in our set using length(), which will let us create a vector to number our sequences. We’ll create a header name that includes each sequence number, the word sequence, along with a user name. We’ll also pass in the date using the <strong>date()</strong> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">seq_names &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;sequence_&#39;</span>,<span class="dv">1</span>:<span class="kw">length</span>(SS),<span class="st">&#39; | User_12 | &#39;</span>,<span class="kw">date</span>(), <span class="dt">sep=</span><span class="st">&#39;&#39;</span>)
 seq_names</code></pre></div>
-<pre><code>## [1] &quot;sequence_1 | User_12 | Fri Feb 28 19:10:31 2020&quot;
-## [2] &quot;sequence_2 | User_12 | Fri Feb 28 19:10:31 2020&quot;
-## [3] &quot;sequence_3 | User_12 | Fri Feb 28 19:10:31 2020&quot;</code></pre>
+<pre><code>## [1] &quot;sequence_1 | User_12 | Mon Mar  2 14:48:00 2020&quot;
+## [2] &quot;sequence_2 | User_12 | Mon Mar  2 14:48:00 2020&quot;
+## [3] &quot;sequence_3 | User_12 | Mon Mar  2 14:48:00 2020&quot;</code></pre>
 <p>Now, we’ll rename the sequences in the set with these names:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(SS) &lt;-<span class="st"> </span>seq_names</code></pre></div>
 <p>Finally, we can save our sequence set as a FASTA file:</p>
@@ -465,40 +465,20 @@ ids2 &lt;-<span class="st"> </span><span class="kw">esearch</span>(<span class="
 ids3 &lt;-<span class="st"> </span><span class="kw">esearch</span>(<span class="st">&quot;DMPK AND human[Organism] AND complete&quot;</span>,<span class="dt">db=</span><span class="st">&#39;nucleotide&#39;</span>,<span class="dt">retmax=</span><span class="dv">15</span>,<span class="dt">sort=</span><span class="st">&#39;relevance&#39;</span>)</code></pre></div>
 <p>We can parse a particular entry into a dataframe:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ids_df &lt;-<span class="st"> </span>reutils::<span class="kw">content</span>(<span class="kw">esummary</span>(ids1),<span class="st">&#39;parsed&#39;</span>)</code></pre></div>
+<pre><code>## Warning: HTTP error: Status 429; Too Many Requests</code></pre>
+<pre><code>## Warning: Errors parsing DocumentSummary</code></pre>
 <p>We can also look at the text entries for each gene:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">efetch</span>(ids1[<span class="dv">1</span>], <span class="dt">rettype =</span> <span class="st">&quot;fasta&quot;</span>, <span class="dt">retmode =</span> <span class="st">&quot;text&quot;</span>)</code></pre></div>
+<pre><code>## Warning: HTTP error: Status 429; Too Many Requests</code></pre>
 <pre><code>## Object of class &#39;efetch&#39; 
-## &gt;AH006034.2 Homo sapiens cystic fibrosis transmembrane conductance regulator (CFTR) gene, complete cds
-## CCACCCTTGGAGTTCACTCACCTAAACCTCAAACTAATAAAGCTTGGTTCTTTTCTCCGACACGCAAAGG
-## AAGCGCTAAGGTAAATGCATCAGACCCACACTGCCGCGGAACTTTTCGGCTCTCTAAGGCTGTATTTTGA
-## TATACGAAAGGCACATTTTCCTTCCCTTTTCAAAATGCACCTTGCAAACGTAACAGGGACCCGACTAGGA
-## TCATCGGGAAAAGGAGGAGGAGGAGGAAGGCAGGCTCCGGGGAAGCTGGTGGCAGCGGGTCCTGGGTCTG
-## GCGGACCCTGACGCGAAGGAGGGTCTAGGAAGCTCTCCGGGGAGCCGTTCTCCCGCCGGTGGCTTCTTCT
-## GTCCTCCAGCGTTGCCAACTGGACCTAAAGAGAGGCCGCGACTGTCGCCCACCTGCGGGATGGGCCTGGT
-## GCTGGGCGGTAAGGACACGGACCTGGAAGGAGCGCGCGCGAGGGAGGGAGGCTGGGAGTCAGAATCGGGA
-## AAGGGAGGTGCGGGGCGGCGAGGGAGCGAAGGAGGAGAGGAGGAAGGAGCGGGAGGGGTGCTGGCGGGGG
-## TGCGTAGTGGGTGGAGAAAGCCGCTAGAGCAAATTTGGGGCCGGACCAGGCAGCACTCGGCTTTTAACCT
-## GGGCAGTGAAGGCGGGGGAAAGAGCAAAAGGAAGGGGTGGTGTGCGGAGTAGGGGTGGGTGGGGGGAATT
-## GGAAGCCAAATGACATCACAGCAGGTCAGAGAAAAAGGGTTGAGCGGCAGGCACCCAGAGTAGTAGGTCT
-## ...
+## [1] &quot;HTTP error: Status 429; Too Many Requests&quot;
 ## EFetch query using the &#39;nucleotide&#39; database.
 ## Query url: &#39;https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?=efe...&#39;
 ## Retrieval type: &#39;fasta&#39;, retrieval mode: &#39;text&#39;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">efetch</span>(ids2[<span class="dv">4</span>], <span class="dt">rettype =</span> <span class="st">&quot;fasta&quot;</span>, <span class="dt">retmode =</span> <span class="st">&quot;text&quot;</span>)</code></pre></div>
+<pre><code>## Warning: HTTP error: Status 429; Too Many Requests</code></pre>
 <pre><code>## Object of class &#39;efetch&#39; 
-## &gt;AH006528.2 Homo sapiens polycystic kidney disease 1 protein (PKD1) gene, complete cds
-## GCACTGCAGCGCCAGCGTCCGAGCGGGCGGCCGAGCTCCCGGAGCGGCCTGGCCCCGAGCCCCGAGCGGG
-## CGTCGCTCAGCAGCAGGTCGCGGCCGCGCAGCCCCATCCAGCCCCGCGCCCGCCATGCCGTCCGCGGGCC
-## CCGCCTGAGCTGCGGTCTCCGCGCGCGGGCGGGCCTGGGGACGGCGGGGCCATGCGCGCGCTGCCCTAAC
-## GATGCCGCCCGCCGCGCCCGCCCGCCTGGCGCTGGCCCTGGGCCTGGGCCTGTGGCTCGGGGCGCTGGCG
-## GGGGGCCCCGGGCGCGGCTGCGGGCCCTGCGAGCCCCCCTGCCTCTGCGGCCCAGCGCCCGGCGCCGCCT
-## GCCGCGTCAACTGCTCGGGCCGCGGGCTGCGGACGCTCGGTCCCGCGCTGCGCATCCCCGCGGACGCCAC
-## AGCGCTGTGAGTAGCGGGCCCAGCGGCACCCGGGAGAGGCCGCGGGACGGGCGGGCGTGGGCGCGTTCCC
-## TGGCCCGGGACGGGAAGCAGGACGCGGGCCAGGACGCTCCCAGGGCGAGGCTCCGGCGCGGCACGGCGGC
-## CCTGCTAAATAAGGAACGCCTGGAGCCGCGGTTGGCACGGCCCCGGGGAGCCGAAAAACCCCGGGTCTGG
-## AGACAGACGTCCCACCCGGGGGCTCTGCAGACGCCAGCGGGGGCGGGGCGCGGAGGCCGCGCTCAGCTGG
-## GAGGACAAACAGTCGCTAATTGGAGAGGAATTGGGATGCGGCCTGGGGCTGCGGGGTACCCGGAGAGGTG
-## ...
+## [1] &quot;HTTP error: Status 429; Too Many Requests&quot;
 ## EFetch query using the &#39;nucleotide&#39; database.
 ## Query url: &#39;https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?=efe...&#39;
 ## Retrieval type: &#39;fasta&#39;, retrieval mode: &#39;text&#39;</code></pre>
